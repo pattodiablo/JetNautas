@@ -1,0 +1,88 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "chickBear",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.Sprite",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "38cadf10-6b65-42d4-8bc0-1465a1a85b81",
+    "info": {
+      "editorName": "chickBear",
+      "setAll": [],
+      "children": [{
+        "type": "atlas-sprite",
+        "id": "fe0860ed-7a09-410a-83b2-a42506b4bc8f",
+        "asset": "0",
+        "info": {
+          "editorName": "chick0000",
+          "anchor.x": 0.5,
+          "anchor.y": 0.5,
+          "animations": [{
+            "name": "help",
+            "frameRate": 48,
+            "loop": true,
+            "autoPlay": true,
+            "frames": [
+              "chick0000",
+              "chick0001",
+              "chick0002",
+              "chick0003",
+              "chick0004",
+              "chick0005",
+              "chick0006",
+              "chick0007",
+              "chick0008",
+              "chick0009",
+              "chick0010",
+              "chick0011",
+              "chick0012",
+              "chick0013",
+              "chick0014",
+              "chick0015",
+              "chick0016",
+              "chick0017",
+              "chick0018",
+              "chick0019"
+            ]
+          }]
+        }
+      }]
+    }
+  },
+  "type": "SPRITE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "animations",
+    "asset": "atlas6",
+    "sprite": "chick0000"
+  }},
+  "prefab-table": {}
+}

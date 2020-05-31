@@ -1,0 +1,85 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "elevator",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.Sprite",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "this.myCreate()\n"
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "15ec3925-f9c4-4747-8154-1a96cdf14aed",
+    "info": {
+      "editorName": "elevator",
+      "setAll": [],
+      "children": [{
+        "type": "atlas-sprite",
+        "id": "6d84f3ae-ddc2-435d-9962-02a6a0e98809",
+        "asset": "0",
+        "info": {
+          "editorName": "elevator0000",
+          "anchor.x": 0.5,
+          "anchor.y": 0.5,
+          "animations": [{
+            "name": "elevate",
+            "frameRate": 48,
+            "loop": true,
+            "autoPlay": true,
+            "frames": [
+              "elevator0000",
+              "elevator0001",
+              "elevator0002",
+              "elevator0003",
+              "elevator0004",
+              "elevator0005",
+              "elevator0006",
+              "elevator0007",
+              "elevator0008",
+              "elevator0009"
+            ]
+          }],
+          "body": {
+            "type": "ARCADE_RECT",
+            "immovable": true,
+            "velocityY": 30,
+            "checkCollisionDown": false
+          }
+        }
+      }]
+    }
+  },
+  "type": "SPRITE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "animations",
+    "asset": "atlas4",
+    "sprite": "elevator0000"
+  }},
+  "prefab-table": {}
+}

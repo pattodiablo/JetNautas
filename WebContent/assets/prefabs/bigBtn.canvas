@@ -1,0 +1,178 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "bigBtn",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.Sprite",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "this.myCreate();"
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "ec2c9c4e-ac43-46ed-ac5f-86cd0726510c",
+    "info": {
+      "editorName": "bigBtn",
+      "setAll": [],
+      "children": [{
+        "type": "atlas-sprite",
+        "id": "a568865c-5059-42bf-9f5a-7f9886b721e7",
+        "asset": "0",
+        "info": {
+          "editorName": "BigBtn",
+          "editorField": true,
+          "anchor.x": 0.5,
+          "anchor.y": 0.5,
+          "animations": [
+            {
+              "name": "cooking",
+              "frameRate": 30,
+              "frames": [
+                "BigBtnAnim instancia 10000",
+                "BigBtnAnim instancia 10001",
+                "BigBtnAnim instancia 10002",
+                "BigBtnAnim instancia 10003",
+                "BigBtnAnim instancia 10004",
+                "BigBtnAnim instancia 10005",
+                "BigBtnAnim instancia 10006",
+                "BigBtnAnim instancia 10007",
+                "BigBtnAnim instancia 10008",
+                "BigBtnAnim instancia 10009",
+                "BigBtnAnim instancia 10010",
+                "BigBtnAnim instancia 10011",
+                "BigBtnAnim instancia 10012",
+                "BigBtnAnim instancia 10013",
+                "BigBtnAnim instancia 10014",
+                "BigBtnAnim instancia 10015",
+                "BigBtnAnim instancia 10016",
+                "BigBtnAnim instancia 10017",
+                "BigBtnAnim instancia 10018",
+                "BigBtnAnim instancia 10019",
+                "BigBtnAnim instancia 10020",
+                "BigBtnAnim instancia 10021",
+                "BigBtnAnim instancia 10022",
+                "BigBtnAnim instancia 10023",
+                "BigBtnAnim instancia 10024",
+                "BigBtnAnim instancia 10025",
+                "BigBtnAnim instancia 10026",
+                "BigBtnAnim instancia 10027",
+                "BigBtnAnim instancia 10028",
+                "BigBtnAnim instancia 10029",
+                "BigBtnAnim instancia 10030",
+                "BigBtnAnim instancia 10031",
+                "BigBtnAnim instancia 10032",
+                "BigBtnAnim instancia 10033",
+                "BigBtnAnim instancia 10034",
+                "BigBtnAnim instancia 10035",
+                "BigBtnAnim instancia 10036",
+                "BigBtnAnim instancia 10037",
+                "BigBtnAnim instancia 10038",
+                "BigBtnAnim instancia 10039",
+                "BigBtnAnim instancia 10040",
+                "BigBtnAnim instancia 10041",
+                "BigBtnAnim instancia 10042",
+                "BigBtnAnim instancia 10043",
+                "BigBtnAnim instancia 10044",
+                "BigBtnAnim instancia 10045",
+                "BigBtnAnim instancia 10046",
+                "BigBtnAnim instancia 10047",
+                "BigBtnAnim instancia 10048",
+                "BigBtnAnim instancia 10049",
+                "BigBtnAnim instancia 10050",
+                "BigBtnAnim instancia 10051",
+                "BigBtnAnim instancia 10052",
+                "BigBtnAnim instancia 10053",
+                "BigBtnAnim instancia 10054",
+                "BigBtnAnim instancia 10055",
+                "BigBtnAnim instancia 10056",
+                "BigBtnAnim instancia 10057",
+                "BigBtnAnim instancia 10058",
+                "BigBtnAnim instancia 10059"
+              ]
+            },
+            {
+              "name": "idle",
+              "frameRate": 1,
+              "frames": ["ovenCooking0000"]
+            },
+            {
+              "name": "cooking2",
+              "frameRate": 15,
+              "frames": [
+                "ovenCooking0001",
+                "ovenCooking0002",
+                "ovenCooking0003",
+                "ovenCooking0004",
+                "ovenCooking0005",
+                "ovenCooking0006",
+                "ovenCooking0007",
+                "ovenCooking0008",
+                "ovenCooking0009",
+                "ovenCooking0010",
+                "ovenCooking0011",
+                "ovenCooking0012",
+                "ovenCooking0013",
+                "ovenCooking0014",
+                "ovenCooking0015",
+                "ovenCooking0016",
+                "ovenCooking0017",
+                "ovenCooking0018",
+                "ovenCooking0019",
+                "ovenCooking0020",
+                "ovenCooking0021",
+                "ovenCooking0022",
+                "ovenCooking0023",
+                "ovenCooking0024",
+                "ovenCooking0025",
+                "ovenCooking0026",
+                "ovenCooking0027",
+                "ovenCooking0028",
+                "ovenCooking0029"
+              ]
+            }
+          ],
+          "body": {
+            "type": "ARCADE_RECT",
+            "offsetX": 23.3966064453125,
+            "offsetY": 6.951545715332031,
+            "moves": false,
+            "width": 212.05045318603516,
+            "height": 137.17124938964844
+          }
+        }
+      }]
+    }
+  },
+  "type": "SPRITE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "animations",
+    "asset": "atlas4",
+    "sprite": "ovenCooking0000"
+  }},
+  "prefab-table": {}
+}

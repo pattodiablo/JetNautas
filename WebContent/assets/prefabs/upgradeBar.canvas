@@ -1,0 +1,92 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "upgradeBar",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.Sprite",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "this.myCreate();"
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "207dcb33-0548-4bb9-9f70-12a46863a343",
+    "info": {
+      "editorName": "upgradeBar",
+      "setAll": [],
+      "children": [{
+        "type": "atlas-sprite",
+        "id": "959d6636-fac0-4827-ad5f-b6383b39c7ad",
+        "asset": "0",
+        "info": {
+          "editorName": "upgradeBar1",
+          "editorField": true,
+          "anchor.x": 0.5,
+          "anchor.y": 0.5,
+          "animations": [{
+            "name": "updating",
+            "frameRate": 6,
+            "frames": [
+              "updating0000",
+              "updating0001",
+              "updating0002",
+              "updating0003",
+              "updating0004",
+              "updating0005",
+              "updating0006",
+              "updating0007",
+              "updating0008",
+              "updating0009",
+              "updating0010",
+              "updating0011",
+              "updating0012",
+              "updating0013",
+              "updating0014",
+              "updating0015",
+              "updating0016",
+              "updating0017",
+              "updating0018",
+              "updating0019",
+              "updating0020",
+              "updating0021",
+              "updating0022",
+              "updating0023"
+            ]
+          }]
+        }
+      }]
+    }
+  },
+  "type": "SPRITE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "animations",
+    "asset": "atlas6",
+    "sprite": "updating0000"
+  }},
+  "prefab-table": {}
+}

@@ -1,0 +1,1355 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Level2",
+    "sceneWidth": 1280,
+    "sceneHeight": 1920,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      48,
+      48,
+      48
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": false,
+    "create_after": "\r\n\r\nthis.myCreate();",
+    "state_init_before": "this.myInit();",
+    "state_preload_before": "this.myPreload();"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "d97d4a29-bf86-461d-8abd-384055296f2b",
+          "asset": "0",
+          "info": {"editorName": "newBackground"}
+        },
+        {
+          "type": "image",
+          "id": "eb032449-b632-4556-90af-735d384cef22",
+          "asset": "1",
+          "info": {
+            "editorName": "elevatorPipe",
+            "editorField": true,
+            "x": 74,
+            "y": 382
+          }
+        },
+        {
+          "type": "image",
+          "id": "e894b14e-f2cd-48f9-8156-d18b00b50491",
+          "asset": "2",
+          "info": {
+            "editorName": "newBackground1",
+            "x": -7,
+            "y": 1507
+          }
+        },
+        {
+          "type": "group",
+          "id": "8c36d33e-da03-4028-b295-32d3848d0a37",
+          "info": {
+            "editorName": "groupCheer",
+            "editorField": true,
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "871124d9-1dfa-47db-800a-f4dc41acd678",
+                "asset": "3",
+                "info": {
+                  "editorName": "prizeBanner",
+                  "editorField": true,
+                  "x": -5,
+                  "y": -128
+                }
+              },
+              {
+                "type": "bitmapText",
+                "id": "834132a2-ae80-4504-b02d-ec35d241328c",
+                "asset": "4",
+                "info": {
+                  "editorName": "cheerUpText",
+                  "editorField": true,
+                  "x": 172,
+                  "y": -89,
+                  "text": "Excelent",
+                  "fontSize": 64
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "efbd74fc-2c15-4768-956e-4513d5cbef39",
+          "info": {
+            "editorName": "sewer",
+            "x": 167,
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "6263f78b-fc8c-47c8-b0ba-daf9442374da",
+                "asset": "5",
+                "info": {
+                  "editorName": "zombieZewer1",
+                  "x": 908,
+                  "y": 448,
+                  "scale.y": 0.5
+                }
+              },
+              {
+                "type": "image",
+                "id": "f0b9b958-9488-424b-bea6-8374ce5bc038",
+                "asset": "5",
+                "info": {
+                  "editorName": "zombieZewer2",
+                  "x": 909,
+                  "y": 755,
+                  "scale.y": 0.5
+                }
+              },
+              {
+                "type": "image",
+                "id": "081b4c7b-6db3-4762-bc17-f27beec2bd8b",
+                "asset": "5",
+                "info": {
+                  "editorName": "zombieZewer3",
+                  "x": 910,
+                  "y": 1067,
+                  "scale.y": 0.5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "052e9ced-1b10-4f4e-90eb-9687230c416e",
+          "info": {
+            "editorName": "platforms",
+            "editorField": true,
+            "x": 56,
+            "y": 401,
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "3ea32bd8-303f-479d-8548-1e656a69de75",
+                "asset": "6",
+                "info": {
+                  "editorName": "floor",
+                  "x": -235,
+                  "y": 1111,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "94ce081c-4d79-4785-8966-0aaaa3592a8b",
+                "asset": "7",
+                "info": {
+                  "editorName": "bigWall",
+                  "x": 1196,
+                  "y": -450,
+                  "scale.y": 3,
+                  "alpha": 0,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "offsetY": -6,
+                    "moves": false,
+                    "immovable": true,
+                    "width": 28,
+                    "height": 926.2138671875
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "95a2e888-492c-43e2-914f-3ae42b919fc3",
+                "asset": "7",
+                "info": {
+                  "editorName": "bigWall1",
+                  "x": -60,
+                  "y": -669,
+                  "scale.y": 3,
+                  "alpha": 0,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "offsetY": -6,
+                    "moves": false,
+                    "immovable": true,
+                    "width": 28,
+                    "height": 926.2138671875
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "69b224a2-175f-4041-9c2f-7696c2127735",
+                "asset": "8",
+                "info": {
+                  "editorName": "separatingWall",
+                  "x": 1153,
+                  "y": 50,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "7a1c8931-a640-440a-b708-6d20871303fa",
+                "asset": "8",
+                "info": {
+                  "editorName": "separatingWall2",
+                  "x": 1155,
+                  "y": 360,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "immovable": true,
+                    "collideWorldBounds": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "e31c74c3-a870-42fe-8b92-814667aa7313",
+                "asset": "8",
+                "info": {
+                  "editorName": "separatingWall3",
+                  "x": 1163,
+                  "y": 668,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "immovable": true,
+                    "collideWorldBounds": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "35c26363-0070-48c5-9f7b-40019ab0961b",
+                "asset": "9",
+                "info": {
+                  "editorName": "thaCeiling",
+                  "x": 137,
+                  "y": -63,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "2443ccc1-65ce-4263-8293-3c5448faac1c",
+                "asset": "10",
+                "info": {
+                  "editorName": "floorNew",
+                  "x": 283,
+                  "y": 313,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "2f306ea0-f941-49fe-b545-fa7842375455",
+                "asset": "10",
+                "info": {
+                  "editorName": "floorNew2",
+                  "x": 283,
+                  "y": 622,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "6e9b15b5-fee9-4861-ac84-8dddeefbbdba",
+                "asset": "10",
+                "info": {
+                  "editorName": "floorNew3",
+                  "x": 283,
+                  "y": 931,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "prefab",
+          "prefab": "0",
+          "id": "9bd44805-ff0a-4088-9b0d-e6456fd9a4ed",
+          "asset-ref": {
+            "file": "WebContent/assets/pack.json",
+            "section": "animations",
+            "asset": "atlas4",
+            "sprite": "ascensor0000"
+          },
+          "info": {
+            "editorName": "ascensor1",
+            "x": 95,
+            "y": 291
+          }
+        },
+        {
+          "type": "group",
+          "id": "4f316744-1954-46ce-94e7-49ba0159dd8c",
+          "info": {
+            "editorName": "enemies",
+            "editorField": true,
+            "x": -246,
+            "y": -59,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "b4e14f6d-89bd-490c-82f7-fa2a3a09717a",
+          "info": {
+            "editorName": "spawnPoints",
+            "editorField": true,
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "4bc3a448-2842-4832-ba5a-ce5ab7ec057a",
+                "asset": "11",
+                "info": {
+                  "editorName": "spawner2",
+                  "editorField": true,
+                  "x": 1361,
+                  "y": 580,
+                  "renderable": false
+                }
+              },
+              {
+                "type": "image",
+                "id": "91284526-098a-446f-87b7-310d7793a8c5",
+                "asset": "11",
+                "info": {
+                  "editorName": "spawner3",
+                  "editorField": true,
+                  "x": 1358,
+                  "y": 894,
+                  "renderable": false
+                }
+              },
+              {
+                "type": "image",
+                "id": "2042dec8-8e99-43e5-93a7-8c7edf8662cb",
+                "asset": "11",
+                "info": {
+                  "editorName": "spawner4",
+                  "editorField": true,
+                  "x": 1356,
+                  "y": 1199,
+                  "renderable": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "1daff2cf-5cd2-41a8-b92d-524929d79e4a",
+          "info": {
+            "editorName": "elevators",
+            "editorField": true,
+            "x": 64,
+            "y": 402,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "03afa359-9ec4-4b9c-bb20-9560e68913ee",
+          "info": {
+            "editorName": "cannons",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "image",
+          "id": "5e175a7a-ac32-42f8-b982-dd9121e1b1ab",
+          "asset": "12",
+          "info": {
+            "editorName": "store",
+            "editorField": true,
+            "x": 184,
+            "y": 181,
+            "body": {
+              "type": "ARCADE_RECT",
+              "moves": false,
+              "immovable": true,
+              "width": 194.69912719726562,
+              "height": 160
+            }
+          }
+        },
+        {
+          "type": "image",
+          "id": "e0baf6ab-1289-4c70-8128-5e288b9266b1",
+          "asset": "13",
+          "info": {
+            "editorName": "menuBtn",
+            "editorField": true,
+            "x": -1,
+            "y": 12,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "1d030cfa-680f-4348-8db7-fe25ffc85ba8",
+          "asset": "14",
+          "info": {
+            "editorName": "shootBtn",
+            "editorField": true,
+            "editorShow": false,
+            "x": 30,
+            "y": 823,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "d7bb2988-aa63-4950-be63-f51cf8ebe373",
+          "asset": "15",
+          "info": {
+            "editorName": "pickUpButton",
+            "editorField": true,
+            "editorShow": false,
+            "x": 31,
+            "y": 709,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "f43cf754-d582-4b3f-b9f6-a50b14731fae",
+          "asset": "16",
+          "info": {
+            "editorName": "dropCannonBtn",
+            "editorField": true,
+            "editorShow": false,
+            "x": 150,
+            "y": 824,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "8a181c00-6ef6-43db-96d1-370780b187d9",
+          "asset": "17",
+          "info": {
+            "editorName": "enterHouseBtn",
+            "editorField": true,
+            "editorShow": false,
+            "x": 31,
+            "y": 596,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "group",
+          "id": "4ecf7491-92d0-45cd-91ce-c53edc3427cc",
+          "info": {
+            "editorName": "coins",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "ee3a7f4b-44ad-4b03-ba99-09ff9f4fa06f",
+          "info": {
+            "editorName": "directions",
+            "editorField": true,
+            "setAll": [],
+            "children": [{
+              "type": "image",
+              "id": "a1629345-21ec-4bb9-ae29-bc9cf12e1dba",
+              "asset": "18",
+              "info": {
+                "editorName": "directionChange3",
+                "x": 9,
+                "y": 1426,
+                "body": {
+                  "type": "ARCADE_RECT",
+                  "moves": false,
+                  "immovable": true
+                }
+              }
+            }]
+          }
+        },
+        {
+          "type": "group",
+          "id": "75b337e2-78d4-43ef-8938-43f46989b4d7",
+          "info": {
+            "editorName": "storeGroup",
+            "editorPick": false,
+            "editorField": true,
+            "editorShow": false,
+            "x": -97,
+            "y": 183,
+            "setAll": [],
+            "children": [
+              {
+                "type": "text",
+                "id": "e0196613-014a-4e99-afa5-c2d7f768629d",
+                "info": {
+                  "editorName": "yourMoney",
+                  "editorField": true,
+                  "x": 173,
+                  "y": 58,
+                  "fixedToCamera": true,
+                  "text": "0000",
+                  "style.fill": "#f0f0f0",
+                  "style.align": "CENTER"
+                }
+              },
+              {
+                "type": "image",
+                "id": "aa96fce6-7713-4572-b780-bacb6f3adee9",
+                "asset": "19",
+                "info": {
+                  "editorName": "storeBackground",
+                  "x": 97,
+                  "y": -200,
+                  "fixedToCamera": true
+                }
+              },
+              {
+                "type": "group",
+                "id": "5123743b-dcbe-46fc-bf5b-6bf73082ef0d",
+                "info": {
+                  "editorName": "buySlot",
+                  "y": 9,
+                  "setAll": [],
+                  "children": [
+                    {
+                      "type": "image",
+                      "id": "6d8abc96-882a-49d9-a96e-e290d11be84b",
+                      "asset": "20",
+                      "info": {
+                        "editorName": "gunBuyBtn",
+                        "editorField": true,
+                        "x": 148,
+                        "y": 203,
+                        "fixedToCamera": true
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "4031c578-5703-4ab4-b54c-8137f663ce2e",
+                      "asset": "21",
+                      "info": {
+                        "editorName": "cannonBuyBtn",
+                        "editorField": true,
+                        "x": 150,
+                        "y": 293,
+                        "fixedToCamera": true
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "ee88a2cf-6fc6-407a-8f19-4269fe1c5020",
+                      "info": {
+                        "editorName": "item1",
+                        "x": 219,
+                        "y": 220,
+                        "text": "10",
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "36a58c2b-5420-453f-b627-60de85622c2b",
+                      "info": {
+                        "editorName": "item2",
+                        "x": 221,
+                        "y": 309,
+                        "text": "30",
+                        "style.fill": "#f0f0f0"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "group",
+                "id": "ec6cf57d-499b-4c5c-8549-8e6e86a97bfa",
+                "info": {
+                  "editorName": "cookSlot",
+                  "editorField": true,
+                  "y": 9,
+                  "setAll": [],
+                  "children": [
+                    {
+                      "type": "prefab",
+                      "prefab": "1",
+                      "id": "e8177042-205f-4498-aacc-e2b36066448a",
+                      "asset-ref": {
+                        "file": "WebContent/assets/pack.json",
+                        "section": "animations",
+                        "asset": "atlas4",
+                        "sprite": "smallPot instancia 10000"
+                      },
+                      "info": {
+                        "editorName": "pot1",
+                        "name": "pot",
+                        "x": 402,
+                        "y": 349
+                      }
+                    },
+                    {
+                      "type": "prefab",
+                      "prefab": "1",
+                      "id": "a542eaae-d694-4b74-b921-f8e2fc4d068e",
+                      "asset-ref": {
+                        "file": "WebContent/assets/pack.json",
+                        "section": "animations",
+                        "asset": "atlas4",
+                        "sprite": "smallPot instancia 10000"
+                      },
+                      "info": {
+                        "editorName": "pot2",
+                        "name": "pot",
+                        "x": 530,
+                        "y": 349
+                      }
+                    },
+                    {
+                      "type": "prefab",
+                      "prefab": "1",
+                      "id": "2011622d-c411-49d6-a530-66ecf08d1bee",
+                      "asset-ref": {
+                        "file": "WebContent/assets/pack.json",
+                        "section": "animations",
+                        "asset": "atlas4",
+                        "sprite": "smallPot instancia 10000"
+                      },
+                      "info": {
+                        "editorName": "pot3",
+                        "name": "pot",
+                        "x": 662,
+                        "y": 349
+                      }
+                    },
+                    {
+                      "type": "prefab",
+                      "prefab": "2",
+                      "id": "d8aa7250-f751-4acc-8b42-0cca92630d1f",
+                      "asset-ref": {
+                        "file": "WebContent/assets/pack.json",
+                        "section": "animations",
+                        "asset": "atlas4",
+                        "sprite": "BigBtnAnim instancia 10000"
+                      },
+                      "info": {
+                        "editorName": "bigBtn",
+                        "editorField": true,
+                        "name": "bigPot",
+                        "x": 533,
+                        "y": 473
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "group",
+                "id": "e2a86f0d-c5bf-4c19-b172-e3757bb61786",
+                "info": {
+                  "editorName": "flavorSlot",
+                  "editorField": true,
+                  "y": -8,
+                  "setAll": [],
+                  "children": [
+                    {
+                      "type": "image",
+                      "id": "694ffeab-6c1c-4dc7-95d7-026174e3dc62",
+                      "asset": "22",
+                      "info": {
+                        "editorName": "flavorPot4",
+                        "editorField": true,
+                        "x": 363,
+                        "y": 573
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "4272fc22-ee97-4100-a92d-32b216855f1b",
+                      "asset": "22",
+                      "info": {
+                        "editorName": "flavorPot5",
+                        "editorField": true,
+                        "x": 494,
+                        "y": 573
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "d5a0f55e-4a3a-4a13-9c09-a99cfa020237",
+                      "asset": "22",
+                      "info": {
+                        "editorName": "flavorPot6",
+                        "editorField": true,
+                        "x": 623,
+                        "y": 573
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "e39ad269-88fb-4c59-b4f4-3dcf9b2f3b0a",
+                      "asset": "22",
+                      "info": {
+                        "editorName": "flavorPot1",
+                        "editorField": true,
+                        "x": 356,
+                        "y": 180
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "2f09d69c-79d4-4dcf-bc4e-f8684f74905b",
+                      "asset": "22",
+                      "info": {
+                        "editorName": "flavorPot2",
+                        "editorField": true,
+                        "x": 487,
+                        "y": 180
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "9328bbd7-643d-490b-8667-68dbcc13f0b1",
+                      "asset": "22",
+                      "info": {
+                        "editorName": "flavorPot3",
+                        "editorField": true,
+                        "x": 619,
+                        "y": 180
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "5d81eea5-110f-4fe3-b0c1-f650f28ff57a",
+                      "asset": "23",
+                      "info": {
+                        "editorName": "bannaFlavor",
+                        "editorField": true,
+                        "x": 664,
+                        "y": 221,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "5ca59c96-7739-4585-a712-f5573c0077ab",
+                      "asset": "24",
+                      "info": {
+                        "editorName": "lemonFlavor",
+                        "editorField": true,
+                        "x": 532,
+                        "y": 219,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "moves": false,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "d4113fd4-d77a-4617-bec9-193b8ebf73f6",
+                      "asset": "25",
+                      "info": {
+                        "editorName": "straberryFlavor",
+                        "editorField": true,
+                        "x": 399,
+                        "y": 222,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "moves": false,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "42a087de-87d8-41d3-af34-da14748a6a90",
+                      "info": {
+                        "editorName": "flavor1",
+                        "editorField": true,
+                        "x": 404,
+                        "y": 273,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "407a0e9c-9126-4b33-97f9-40824469c0bd",
+                      "info": {
+                        "editorName": "flavor2",
+                        "editorField": true,
+                        "x": 526,
+                        "y": 272,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "17e90f68-2500-42b9-964d-e5dd382ed766",
+                      "info": {
+                        "editorName": "flavor3",
+                        "editorField": true,
+                        "x": 654,
+                        "y": 273,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "b0576807-8595-4316-a25e-f18a72978a3d",
+                      "info": {
+                        "editorName": "flavor4",
+                        "editorField": true,
+                        "x": 406,
+                        "y": 674,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "e42b4a79-a387-41d3-9c02-5b15deb346cf",
+                      "info": {
+                        "editorName": "flavor5",
+                        "editorField": true,
+                        "x": 533,
+                        "y": 670,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "ecd6944f-e083-439e-b87b-fbd34d14de88",
+                      "info": {
+                        "editorName": "flavor6",
+                        "editorField": true,
+                        "x": 657,
+                        "y": 676,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "0a6e90dc-3754-4d2d-b641-4bc7da1d13f9",
+                      "asset": "26",
+                      "info": {
+                        "editorName": "chocolateCore",
+                        "editorField": true,
+                        "x": 404,
+                        "y": 614,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "4091d2a8-117f-45d3-9460-bee03697eeb7",
+                      "asset": "27",
+                      "info": {
+                        "editorName": "chiliCore",
+                        "editorField": true,
+                        "x": 539,
+                        "y": 613,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "3e5917a4-594d-46ad-9628-fad3007eb524",
+                      "asset": "28",
+                      "info": {
+                        "editorName": "cherryCore",
+                        "editorField": true,
+                        "x": 668,
+                        "y": 612,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "group",
+                "id": "ff3e8195-6e85-4f13-95d4-de2e5672085b",
+                "info": {
+                  "editorName": "candyReady",
+                  "editorField": true,
+                  "setAll": [],
+                  "children": []
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "image",
+          "id": "9dda1b99-6fb7-463d-bb96-e7e71d1c3f46",
+          "asset": "29",
+          "info": {
+            "editorName": "exitHouseBtn",
+            "editorField": true,
+            "x": 32,
+            "y": 596,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "group",
+          "id": "90d1ea13-3356-4c7f-b4bc-dbfd2aaf730d",
+          "info": {
+            "editorName": "clientes",
+            "editorField": true,
+            "x": -665,
+            "setAll": [],
+            "children": [
+              {
+                "type": "prefab",
+                "prefab": "3",
+                "id": "2a8c8c73-8a65-4447-b958-32d83e745325",
+                "asset-ref": {
+                  "file": "WebContent/assets/pack.json",
+                  "section": "animations",
+                  "asset": "atlas5",
+                  "sprite": "cliente10000"
+                },
+                "info": {
+                  "editorName": "cliente",
+                  "x": 1174,
+                  "y": 289
+                }
+              },
+              {
+                "type": "prefab",
+                "prefab": "3",
+                "id": "2115912f-c9ab-441f-a134-ddd46b51c42d",
+                "asset-ref": {
+                  "file": "WebContent/assets/pack.json",
+                  "section": "animations",
+                  "asset": "atlas5",
+                  "sprite": "cliente10000"
+                },
+                "info": {
+                  "editorName": "cliente2",
+                  "x": 1372,
+                  "y": 291
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "prefab",
+          "prefab": "4",
+          "id": "6ab0e6b3-862d-4c94-b511-0b8cfb6bdbaf",
+          "asset-ref": {
+            "file": "WebContent/assets/pack.json",
+            "section": "animations",
+            "asset": "atlas3",
+            "sprite": "idle instancia 10000"
+          },
+          "info": {
+            "editorName": "Player",
+            "x": 290,
+            "y": 292
+          }
+        },
+        {
+          "type": "image",
+          "id": "564a72fa-89f2-4674-af7d-3ad7c91f98ce",
+          "asset": "30",
+          "info": {
+            "editorName": "elevatorInn",
+            "editorField": true,
+            "x": 33,
+            "y": 595,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "dd59bbbc-8112-4552-a5c0-b5e0e80bab84",
+          "asset": "31",
+          "info": {
+            "editorName": "elevatorOut",
+            "editorField": true,
+            "x": 33,
+            "y": 595,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "f39e1c6e-191e-4df6-a49b-f11acf2a3e2c",
+          "asset": "32",
+          "info": {
+            "editorName": "coin",
+            "x": 485,
+            "y": 29,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "text",
+          "id": "ee917d60-d697-42ee-9cd2-4ee8588192d5",
+          "info": {
+            "editorName": "moneyCount",
+            "editorField": true,
+            "x": 533,
+            "y": 26,
+            "fixedToCamera": true,
+            "text": "0000",
+            "style.fontSize": 40,
+            "style.fill": "#ffffff"
+          }
+        },
+        {
+          "type": "image",
+          "id": "a1f4997c-84c6-45fc-beb8-7e98b9bfc789",
+          "asset": "33",
+          "info": {
+            "editorName": "deathBar",
+            "editorField": true,
+            "x": 1129,
+            "y": 1617,
+            "body": {
+              "type": "ARCADE_RECT",
+              "moves": false,
+              "immovable": true
+            }
+          }
+        },
+        {
+          "type": "group",
+          "id": "a46b733c-99ab-4cae-a4e0-88e664658409",
+          "info": {
+            "editorName": "ordersFlavor",
+            "editorField": true,
+            "setAll": [],
+            "children": [{
+              "type": "group",
+              "id": "459c7433-82db-4056-b877-ce22e11da4d2",
+              "info": {
+                "editorName": "ordersBG",
+                "editorField": true,
+                "setAll": [],
+                "children": []
+              }
+            }]
+          }
+        },
+        {
+          "type": "group",
+          "id": "6663a6d3-eb28-45f5-8d46-9e2e80f7bf78",
+          "info": {
+            "editorName": "clientReady",
+            "editorField": true,
+            "x": -650,
+            "setAll": [],
+            "children": []
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "newBackground"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "elevatorPipe"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "newBackground2"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "prizeBanner"
+    },
+    "4": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Fonts",
+      "asset": "PixelFont"
+    },
+    "5": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "zombieZewer"
+    },
+    "6": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "floor21"
+    },
+    "7": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "bigWall"
+    },
+    "8": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "separatingWall"
+    },
+    "9": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "thaCeiling"
+    },
+    "10": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "floorNew"
+    },
+    "11": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "spawner"
+    },
+    "12": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "store"
+    },
+    "13": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "menuBtn"
+    },
+    "14": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "shootBtn"
+    },
+    "15": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "pickUpButton"
+    },
+    "16": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "dropCannonBtn"
+    },
+    "17": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "enterHouseBtn"
+    },
+    "18": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "directionChange"
+    },
+    "19": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "storeBackground"
+    },
+    "20": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "gunBuyBtn"
+    },
+    "21": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "cannonBuyBtn"
+    },
+    "22": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "emptyBtn"
+    },
+    "23": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "bannaFlavor"
+    },
+    "24": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "lemonFlavor"
+    },
+    "25": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "straberryFlavor"
+    },
+    "26": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "chocolateCore"
+    },
+    "27": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "chiliCore"
+    },
+    "28": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "cherryCore"
+    },
+    "29": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "exitHouseBtn"
+    },
+    "30": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "elevatorInn"
+    },
+    "31": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "elevatorOut"
+    },
+    "32": {
+      "file": "WebContent/assets/pack.json",
+      "section": "animations",
+      "asset": "atlas4",
+      "sprite": "coin0000"
+    },
+    "33": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "floor3"
+    }
+  },
+  "prefab-table": {
+    "0": "WebContent/assets/prefabs/ascensor.canvas",
+    "1": "WebContent/assets/prefabs/smallPot.canvas",
+    "2": "WebContent/assets/prefabs/bigBtn.canvas",
+    "3": "WebContent/assets/prefabs/client1.canvas",
+    "4": "WebContent/assets/prefabs/player.canvas"
+  }
+}

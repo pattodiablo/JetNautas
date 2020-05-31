@@ -1,0 +1,259 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "player",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.Sprite",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "\tthis.afterCreate(_anim_shooting);"
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "5255901d-8bec-4fe3-9277-d958ac6a40d9",
+    "info": {
+      "editorName": "player",
+      "setAll": [],
+      "children": [{
+        "type": "atlas-sprite",
+        "id": "460ab585-03b2-43e4-832b-236b5d366b18",
+        "asset": "0",
+        "info": {
+          "editorName": "MainChar",
+          "editorField": true,
+          "anchor.x": 0.5,
+          "anchor.y": 0.5,
+          "animations": [
+            {
+              "name": "idle",
+              "frameRate": 12,
+              "loop": true,
+              "frames": [
+                "idle1 instancia 10000",
+                "idle1 instancia 10001",
+                "idle1 instancia 10002",
+                "idle1 instancia 10003",
+                "idle1 instancia 10004",
+                "idle1 instancia 10005",
+                "idle1 instancia 10006",
+                "idle1 instancia 10007",
+                "idle1 instancia 10008",
+                "idle1 instancia 10009",
+                "idle1 instancia 10010"
+              ]
+            },
+            {
+              "name": "running",
+              "frameRate": 48,
+              "loop": true,
+              "frames": [
+                "running instancia 10000",
+                "running instancia 10001",
+                "running instancia 10002",
+                "running instancia 10003",
+                "running instancia 10004",
+                "running instancia 10005",
+                "running instancia 10006",
+                "running instancia 10007",
+                "running instancia 10008",
+                "running instancia 10009",
+                "running instancia 10010",
+                "running instancia 10011",
+                "running instancia 10012",
+                "running instancia 10013",
+                "running instancia 10014",
+                "running instancia 10015",
+                "running instancia 10016",
+                "running instancia 10017",
+                "running instancia 10018",
+                "running instancia 10019",
+                "running instancia 10020"
+              ]
+            },
+            {
+              "name": "walking",
+              "frameRate": 32,
+              "loop": true,
+              "frames": [
+                "walking instancia 10000",
+                "walking instancia 10001",
+                "walking instancia 10002",
+                "walking instancia 10003",
+                "walking instancia 10004",
+                "walking instancia 10005",
+                "walking instancia 10006",
+                "walking instancia 10007",
+                "walking instancia 10008",
+                "walking instancia 10009",
+                "walking instancia 10010",
+                "walking instancia 10011",
+                "walking instancia 10012",
+                "walking instancia 10013",
+                "walking instancia 10014",
+                "walking instancia 10015",
+                "walking instancia 10016"
+              ]
+            },
+            {
+              "name": "jumping",
+              "frameRate": 48,
+              "loop": true,
+              "frames": [
+                "falling0000",
+                "falling0001",
+                "falling0002",
+                "falling0003",
+                "falling0004"
+              ]
+            },
+            {
+              "name": "jumping2",
+              "frameRate": 48,
+              "loop": true,
+              "frames": [
+                "jumping2 instancia 10000",
+                "jumping2 instancia 10001",
+                "jumping2 instancia 10002",
+                "jumping2 instancia 10003",
+                "jumping2 instancia 10004",
+                "jumping2 instancia 10005",
+                "jumping2 instancia 10006",
+                "jumping2 instancia 10007",
+                "jumping2 instancia 10008",
+                "jumping2 instancia 10009"
+              ]
+            },
+            {
+              "name": "shoot",
+              "frameRate": 24,
+              "loop": true,
+              "field": true,
+              "frames": [
+                "shooting instancia 10000",
+                "shooting instancia 10001",
+                "shooting instancia 10002"
+              ]
+            },
+            {
+              "name": "shooting",
+              "frameRate": 12,
+              "loop": true,
+              "field": true,
+              "frames": [
+                "shooting instancia 10000",
+                "shooting instancia 10001",
+                "shooting instancia 10002",
+                "shooting instancia 10003"
+              ]
+            },
+            {
+              "name": "climbing",
+              "frameRate": 24,
+              "loop": true,
+              "frames": [
+                "climbing instancia 10000",
+                "climbing instancia 10001",
+                "climbing instancia 10002",
+                "climbing instancia 10003",
+                "climbing instancia 10004",
+                "climbing instancia 10005",
+                "climbing instancia 10006",
+                "climbing instancia 10007",
+                "climbing instancia 10008",
+                "climbing instancia 10009"
+              ]
+            },
+            {
+              "name": "stopClimb",
+              "frameRate": 1,
+              "loop": true,
+              "frames": ["climbing instancia 10009"]
+            },
+            {
+              "name": "shuperShot",
+              "frameRate": 32,
+              "field": true,
+              "autoPlay": true,
+              "frames": [
+                "megaShoot instancia 10000",
+                "megaShoot instancia 10001",
+                "megaShoot instancia 10002",
+                "megaShoot instancia 10003",
+                "megaShoot instancia 10004",
+                "megaShoot instancia 10005",
+                "megaShoot instancia 10006",
+                "megaShoot instancia 10007",
+                "megaShoot instancia 10008",
+                "megaShoot instancia 10009",
+                "megaShoot instancia 10010",
+                "megaShoot instancia 10011",
+                "megaShoot instancia 10012",
+                "megaShoot instancia 10013",
+                "megaShoot instancia 10014",
+                "megaShoot instancia 10015",
+                "megaShoot instancia 10016",
+                "megaShoot instancia 10017",
+                "megaShoot instancia 10018",
+                "megaShoot instancia 10019",
+                "megaShoot instancia 10020",
+                "megaShoot instancia 10021",
+                "megaShoot instancia 10022",
+                "megaShoot instancia 10023",
+                "megaShoot instancia 10024",
+                "megaShoot instancia 10025",
+                "megaShoot instancia 10026",
+                "megaShoot instancia 10027",
+                "megaShoot instancia 10028",
+                "shooting instancia 10000",
+                "shooting instancia 10001",
+                "shooting instancia 10002",
+                "shooting instancia 10003"
+              ]
+            }
+          ],
+          "body": {
+            "type": "ARCADE_RECT",
+            "offsetX": 8.333687782287598,
+            "collideWorldBounds": true,
+            "bounceY": 0.2,
+            "gravityY": 800,
+            "width": 22.02295970916748,
+            "height": 54.81462860107422
+          }
+        }
+      }]
+    }
+  },
+  "type": "SPRITE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "animations",
+    "asset": "atlas3",
+    "sprite": "idle instancia 10000"
+  }},
+  "prefab-table": {}
+}

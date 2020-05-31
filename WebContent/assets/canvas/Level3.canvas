@@ -1,0 +1,1738 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Level3",
+    "sceneWidth": 640,
+    "sceneHeight": 960,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      48,
+      48,
+      48
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": false,
+    "create_after": "\r\n\r\nthis.myCreate();",
+    "state_init_before": "this.myInit();",
+    "state_preload_before": "this.myPreload();"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": false,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "d97d4a29-bf86-461d-8abd-384055296f2b",
+          "asset": "0",
+          "info": {
+            "editorName": "newBackground",
+            "editorPick": false
+          }
+        },
+        {
+          "type": "image",
+          "id": "25831814-a483-4dc1-a804-2bfd9d451421",
+          "asset": "1",
+          "info": {
+            "editorName": "chickRoom",
+            "editorField": true,
+            "x": 478,
+            "y": 671
+          }
+        },
+        {
+          "type": "image",
+          "id": "0fdfaa77-25cf-4b83-89d0-fd649da478e1",
+          "asset": "1",
+          "info": {
+            "editorName": "chickRoomUp",
+            "editorField": true,
+            "x": 480,
+            "y": 680,
+            "alpha": 0,
+            "body": {
+              "type": "ARCADE_RECT",
+              "immovable": true
+            }
+          }
+        },
+        {
+          "type": "prefab",
+          "prefab": "0",
+          "id": "6c1136d6-061f-4206-b969-87df367a50d3",
+          "asset-ref": {
+            "file": "WebContent/assets/pack.json",
+            "section": "animations",
+            "asset": "atlas6",
+            "sprite": "chick0000"
+          },
+          "info": {
+            "editorName": "chick",
+            "editorField": true,
+            "x": 575,
+            "y": 747
+          }
+        },
+        {
+          "type": "group",
+          "id": "097a8157-5b47-469b-b56d-bcb1f05129fa",
+          "info": {
+            "editorName": "escaleras",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "ace562c6-bd93-4f25-9cc0-ad888ad8310e",
+          "info": {
+            "editorName": "walls",
+            "editorField": true,
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "95a2e888-492c-43e2-914f-3ae42b919fc3",
+                "asset": "2",
+                "info": {
+                  "editorName": "bigWall1",
+                  "x": -1,
+                  "y": -669,
+                  "scale.y": 3,
+                  "alpha": 0,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "offsetX": -34.5925669670105,
+                    "offsetY": -6,
+                    "moves": false,
+                    "immovable": true,
+                    "width": 62.5925669670105,
+                    "height": 926.2138671875
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "94ce081c-4d79-4785-8966-0aaaa3592a8b",
+                "asset": "2",
+                "info": {
+                  "editorName": "bigWall",
+                  "x": 1278,
+                  "y": -450,
+                  "scale.y": 3,
+                  "alpha": 0,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "offsetY": -6,
+                    "moves": false,
+                    "immovable": true,
+                    "width": 28,
+                    "height": 926.2138671875
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "image",
+          "id": "eb0b8936-216b-490a-85dc-8636bcd7d5f9",
+          "asset": "3",
+          "info": {
+            "editorName": "elevatorSpace",
+            "x": 525,
+            "y": 183,
+            "scale.x": 0.6,
+            "scale.y": 0.2
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "35346f84-f4d7-48e2-be28-d9e684db9a61",
+          "asset": "4",
+          "info": {
+            "editorName": "lamp4",
+            "x": 16,
+            "y": 573
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "494ef6a1-6f52-4a39-8bab-e77f1a2f07bd",
+          "asset": "4",
+          "info": {
+            "editorName": "lamp3",
+            "x": 17,
+            "y": 365
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "64946410-4080-4200-89b5-3775e0f11c21",
+          "asset": "4",
+          "info": {
+            "editorName": "lamp1",
+            "x": 425,
+            "y": 244
+          }
+        },
+        {
+          "type": "group",
+          "id": "052e9ced-1b10-4f4e-90eb-9687230c416e",
+          "info": {
+            "editorName": "platforms",
+            "editorField": true,
+            "x": 56,
+            "y": 401,
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "3ea32bd8-303f-479d-8548-1e656a69de75",
+                "asset": "5",
+                "info": {
+                  "editorName": "floor",
+                  "x": -58,
+                  "y": 373,
+                  "data": "{\r\ndirection:true,\r\nzombiesWalking:[]\r\n\r\n}",
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "35c26363-0070-48c5-9f7b-40019ab0961b",
+                "asset": "6",
+                "info": {
+                  "editorName": "thaCeiling",
+                  "x": -892,
+                  "y": -219,
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "2443ccc1-65ce-4263-8293-3c5448faac1c",
+                "asset": "7",
+                "info": {
+                  "editorName": "floorNew",
+                  "editorField": true,
+                  "x": -207,
+                  "y": -48,
+                  "data": "{\r\ndirection:true,\r\nzombiesWalking:[]\r\n}",
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "2f306ea0-f941-49fe-b545-fa7842375455",
+                "asset": "7",
+                "info": {
+                  "editorName": "floorNew2",
+                  "x": 71,
+                  "y": 56,
+                  "data": "{\r\ndirection:false,\r\nzombiesWalking:[]\r\n}",
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "6e9b15b5-fee9-4861-ac84-8dddeefbbdba",
+                "asset": "7",
+                "info": {
+                  "editorName": "floorNew3",
+                  "x": 58,
+                  "y": 268,
+                  "data": "{\r\ndirection:false,\r\nzombiesWalking:[]\r\n\r\n}",
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "c9e834c0-e01a-413f-aa37-de8bd45af03c",
+                "asset": "6",
+                "info": {
+                  "editorName": "thaCeiling2",
+                  "editorField": true,
+                  "x": -340,
+                  "y": -219,
+                  "data": "{\r\ndirection:false,\r\nzombiesWalking:[],\r\nname:'topCeil'\r\n}",
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "32d5c4d4-0d6e-43a2-8ab3-8bae85504be7",
+                "asset": "7",
+                "info": {
+                  "editorName": "floorNew4",
+                  "x": -58,
+                  "y": 165,
+                  "data": "{\r\ndirection:true,\r\nzombiesWalking:[]\r\n}",
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "8fbbb61b-8234-4035-ae38-7ec834ed18bd",
+                "asset": "6",
+                "info": {
+                  "editorName": "thaCeiling3",
+                  "x": 468,
+                  "y": -15,
+                  "data": "{\r\ndirection:false,\r\nzombiesWalking:[]\r\n}",
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "moves": false,
+                    "immovable": true
+                  }
+                }
+              },
+              {
+                "type": "image",
+                "id": "47ed25b0-e082-4262-8b8e-ceca91957d1e",
+                "asset": "8",
+                "info": {
+                  "editorName": "storeBgBlack1",
+                  "x": 574,
+                  "y": -410,
+                  "scale.y": 1.5,
+                  "data": "{\r\ndirection:false,\r\nzombiesWalking:[],\r\nname:'topCeil'\r\n\r\n}",
+                  "body": {
+                    "type": "ARCADE_RECT",
+                    "immovable": true
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "efbd74fc-2c15-4768-956e-4513d5cbef39",
+          "info": {
+            "editorName": "sewer",
+            "x": 167,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "1daff2cf-5cd2-41a8-b92d-524929d79e4a",
+          "info": {
+            "editorName": "elevators",
+            "editorField": true,
+            "x": 64,
+            "y": 402,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "03afa359-9ec4-4b9c-bb20-9560e68913ee",
+          "info": {
+            "editorName": "cannons",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "4f316744-1954-46ce-94e7-49ba0159dd8c",
+          "info": {
+            "editorName": "enemies",
+            "editorField": true,
+            "x": -246,
+            "y": -59,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "image",
+          "id": "5e175a7a-ac32-42f8-b982-dd9121e1b1ab",
+          "asset": "9",
+          "info": {
+            "editorName": "store",
+            "editorField": true,
+            "x": 70,
+            "y": 67,
+            "body": {
+              "type": "ARCADE_RECT",
+              "moves": false,
+              "immovable": true,
+              "width": 141.4524688720703,
+              "height": 109.41566467285156
+            }
+          }
+        },
+        {
+          "type": "image",
+          "id": "e0baf6ab-1289-4c70-8128-5e288b9266b1",
+          "asset": "10",
+          "info": {
+            "editorName": "menuBtn",
+            "editorField": true,
+            "x": 580,
+            "y": 12,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "1d030cfa-680f-4348-8db7-fe25ffc85ba8",
+          "asset": "11",
+          "info": {
+            "editorName": "shootBtn",
+            "editorField": true,
+            "editorShow": false,
+            "x": 14,
+            "y": 844,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "d7bb2988-aa63-4950-be63-f51cf8ebe373",
+          "asset": "12",
+          "info": {
+            "editorName": "pickUpButton",
+            "editorPick": false,
+            "editorField": true,
+            "x": 411,
+            "y": 846,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "f43cf754-d582-4b3f-b9f6-a50b14731fae",
+          "asset": "13",
+          "info": {
+            "editorName": "dropCannonBtn",
+            "editorPick": false,
+            "editorField": true,
+            "x": 523,
+            "y": 845,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "8a181c00-6ef6-43db-96d1-370780b187d9",
+          "asset": "14",
+          "info": {
+            "editorName": "enterHouseBtn",
+            "editorPick": false,
+            "editorField": true,
+            "x": 15,
+            "y": 845,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "group",
+          "id": "4ecf7491-92d0-45cd-91ce-c53edc3427cc",
+          "info": {
+            "editorName": "coins",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "ee3a7f4b-44ad-4b03-ba99-09ff9f4fa06f",
+          "info": {
+            "editorName": "directions",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "prefab",
+          "prefab": "1",
+          "id": "c5bcc7ce-c9be-4f84-8572-22c0adde5884",
+          "asset-ref": {
+            "file": "WebContent/assets/pack.json",
+            "section": "graphics",
+            "asset": "lifeBar"
+          },
+          "info": {
+            "editorName": "lifeBarCanvas",
+            "x": 7,
+            "y": 10
+          }
+        },
+        {
+          "type": "group",
+          "id": "90d1ea13-3356-4c7f-b4bc-dbfd2aaf730d",
+          "info": {
+            "editorName": "clientes",
+            "editorField": true,
+            "x": -665,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "8f618703-ec42-424c-b56c-bc652cad65d5",
+          "info": {
+            "editorName": "pipes",
+            "editorField": true,
+            "setAll": [],
+            "children": [{
+              "type": "image",
+              "id": "2633b2c2-a865-4abf-9abc-2a64e75a2ebd",
+              "asset": "15",
+              "info": {
+                "editorName": "pipe",
+                "editorPick": false,
+                "y": 278,
+                "body": {
+                  "type": "ARCADE_RECT",
+                  "immovable": true,
+                  "collideWorldBounds": true
+                }
+              }
+            }]
+          }
+        },
+        {
+          "type": "group",
+          "id": "72e5e1f7-fc58-4c99-9da2-ba26bfb7b037",
+          "info": {
+            "editorName": "bullets",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "prefab",
+          "prefab": "2",
+          "id": "20783be0-f0d6-4521-9b14-ee7fdced757d",
+          "asset-ref": {
+            "file": "WebContent/assets/pack.json",
+            "section": "animations",
+            "asset": "atlas4",
+            "sprite": "ascensor0000"
+          },
+          "info": {
+            "editorName": "ascensor1",
+            "x": 583,
+            "y": 120
+          }
+        },
+        {
+          "type": "prefab",
+          "prefab": "3",
+          "id": "6ab0e6b3-862d-4c94-b511-0b8cfb6bdbaf",
+          "asset-ref": {
+            "file": "WebContent/assets/pack.json",
+            "section": "animations",
+            "asset": "atlas3",
+            "sprite": "idle instancia 10000"
+          },
+          "info": {
+            "editorName": "Player",
+            "x": 323,
+            "y": 136
+          }
+        },
+        {
+          "type": "group",
+          "id": "75b337e2-78d4-43ef-8938-43f46989b4d7",
+          "info": {
+            "editorName": "storeGroup",
+            "editorField": true,
+            "x": -97,
+            "y": 174,
+            "setAll": [],
+            "children": [
+              {
+                "type": "text",
+                "id": "e0196613-014a-4e99-afa5-c2d7f768629d",
+                "info": {
+                  "editorName": "yourMoney",
+                  "editorField": true,
+                  "x": 173,
+                  "y": 58,
+                  "fixedToCamera": true,
+                  "text": "0000",
+                  "style.fill": "#f0f0f0",
+                  "style.align": "CENTER"
+                }
+              },
+              {
+                "type": "image",
+                "id": "9c024e33-841b-4e4a-ba48-710de22689f3",
+                "asset": "8",
+                "info": {
+                  "editorName": "storeBgBlack",
+                  "editorPick": false,
+                  "x": 72,
+                  "y": 15
+                }
+              },
+              {
+                "type": "image",
+                "id": "3cf72d4d-6c63-4145-a50c-86eebafcc3f8",
+                "asset": "16",
+                "info": {
+                  "editorName": "shop",
+                  "editorPick": false,
+                  "x": 100,
+                  "y": 13
+                }
+              },
+              {
+                "type": "image",
+                "id": "c263a392-06f5-4157-aa9a-4c4e0332ff8e",
+                "asset": "17",
+                "info": {
+                  "editorName": "exitStoreSpace",
+                  "x": 123,
+                  "y": 643
+                }
+              },
+              {
+                "type": "image",
+                "id": "f308d838-dc48-4015-8216-a6488de975d4",
+                "asset": "18",
+                "info": {
+                  "editorName": "shopSpace",
+                  "editorPick": false,
+                  "x": 385,
+                  "y": 643
+                }
+              },
+              {
+                "type": "group",
+                "id": "5123743b-dcbe-46fc-bf5b-6bf73082ef0d",
+                "info": {
+                  "editorName": "buySlot",
+                  "y": 9,
+                  "setAll": [],
+                  "children": [
+                    {
+                      "type": "image",
+                      "id": "6d8abc96-882a-49d9-a96e-e290d11be84b",
+                      "asset": "19",
+                      "info": {
+                        "editorName": "gunBuyBtn",
+                        "editorField": true,
+                        "x": 476,
+                        "y": 665,
+                        "fixedToCamera": true
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "4031c578-5703-4ab4-b54c-8137f663ce2e",
+                      "asset": "20",
+                      "info": {
+                        "editorName": "cannonBuyBtn",
+                        "editorPick": false,
+                        "editorField": true,
+                        "x": 626,
+                        "y": 665,
+                        "fixedToCamera": true
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "ee88a2cf-6fc6-407a-8f19-4269fe1c5020",
+                      "info": {
+                        "editorName": "gunValue",
+                        "editorField": true,
+                        "x": 499,
+                        "y": 727,
+                        "text": "10",
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "36a58c2b-5420-453f-b627-60de85622c2b",
+                      "info": {
+                        "editorName": "cannonValue",
+                        "editorField": true,
+                        "x": 642,
+                        "y": 727,
+                        "text": "100",
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "62790a19-0f8d-4004-8021-b43384dfb390",
+                      "info": {
+                        "editorName": "rollValue",
+                        "editorField": true,
+                        "x": 576,
+                        "y": 726,
+                        "text": "60",
+                        "style.fill": "#f0f0f0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "8484582c-410c-445a-92a2-7cfab52c4705",
+                      "info": {
+                        "editorName": "keyCost",
+                        "editorField": true,
+                        "x": 419,
+                        "y": 727,
+                        "text": "270",
+                        "style.fill": "#f0f0f0",
+                        "style.align": "CENTER"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "group",
+                "id": "ec6cf57d-499b-4c5c-8549-8e6e86a97bfa",
+                "info": {
+                  "editorName": "cookSlot",
+                  "editorField": true,
+                  "y": 9,
+                  "setAll": [],
+                  "children": [
+                    {
+                      "type": "prefab",
+                      "prefab": "4",
+                      "id": "e8177042-205f-4498-aacc-e2b36066448a",
+                      "asset-ref": {
+                        "file": "WebContent/assets/pack.json",
+                        "section": "animations",
+                        "asset": "atlas4",
+                        "sprite": "smallPot instancia 10000"
+                      },
+                      "info": {
+                        "editorName": "pot1",
+                        "name": "pot",
+                        "x": 360,
+                        "y": 333
+                      }
+                    },
+                    {
+                      "type": "prefab",
+                      "prefab": "4",
+                      "id": "a542eaae-d694-4b74-b921-f8e2fc4d068e",
+                      "asset-ref": {
+                        "file": "WebContent/assets/pack.json",
+                        "section": "animations",
+                        "asset": "atlas4",
+                        "sprite": "smallPot instancia 10000"
+                      },
+                      "info": {
+                        "editorName": "pot2",
+                        "name": "pot",
+                        "x": 463,
+                        "y": 333
+                      }
+                    },
+                    {
+                      "type": "prefab",
+                      "prefab": "4",
+                      "id": "2011622d-c411-49d6-a530-66ecf08d1bee",
+                      "asset-ref": {
+                        "file": "WebContent/assets/pack.json",
+                        "section": "animations",
+                        "asset": "atlas4",
+                        "sprite": "smallPot instancia 10000"
+                      },
+                      "info": {
+                        "editorName": "pot3",
+                        "name": "pot",
+                        "x": 566,
+                        "y": 333
+                      }
+                    },
+                    {
+                      "type": "prefab",
+                      "prefab": "5",
+                      "id": "d8aa7250-f751-4acc-8b42-0cca92630d1f",
+                      "asset-ref": {
+                        "file": "WebContent/assets/pack.json",
+                        "section": "animations",
+                        "asset": "atlas4",
+                        "sprite": "ovenCooking0000"
+                      },
+                      "info": {
+                        "editorName": "bigBtn",
+                        "name": "bigPot",
+                        "x": 404,
+                        "y": 541
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "group",
+                "id": "e2a86f0d-c5bf-4c19-b172-e3757bb61786",
+                "info": {
+                  "editorName": "flavorSlot",
+                  "editorField": true,
+                  "y": -8,
+                  "setAll": [],
+                  "children": [
+                    {
+                      "type": "image",
+                      "id": "694ffeab-6c1c-4dc7-95d7-026174e3dc62",
+                      "asset": "21",
+                      "info": {
+                        "editorName": "flavorPot4",
+                        "editorField": true,
+                        "x": 155,
+                        "y": 350,
+                        "alpha": 0
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "4272fc22-ee97-4100-a92d-32b216855f1b",
+                      "asset": "21",
+                      "info": {
+                        "editorName": "flavorPot5",
+                        "editorField": true,
+                        "x": 153,
+                        "y": 439,
+                        "alpha": 0
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "d5a0f55e-4a3a-4a13-9c09-a99cfa020237",
+                      "asset": "21",
+                      "info": {
+                        "editorName": "flavorPot6",
+                        "editorField": true,
+                        "x": 152,
+                        "y": 533,
+                        "alpha": 0
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "e39ad269-88fb-4c59-b4f4-3dcf9b2f3b0a",
+                      "asset": "21",
+                      "info": {
+                        "editorName": "flavorPot1",
+                        "editorField": true,
+                        "x": 313,
+                        "y": 119,
+                        "alpha": 0
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "2f09d69c-79d4-4dcf-bc4e-f8684f74905b",
+                      "asset": "21",
+                      "info": {
+                        "editorName": "flavorPot2",
+                        "editorField": true,
+                        "x": 407,
+                        "y": 119,
+                        "alpha": 0
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "9328bbd7-643d-490b-8667-68dbcc13f0b1",
+                      "asset": "21",
+                      "info": {
+                        "editorName": "flavorPot3",
+                        "editorField": true,
+                        "x": 503,
+                        "y": 119,
+                        "alpha": 0
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "5d81eea5-110f-4fe3-b0c1-f650f28ff57a",
+                      "asset": "22",
+                      "info": {
+                        "editorName": "bannaFlavor",
+                        "editorField": true,
+                        "x": 538,
+                        "y": 154,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "5ca59c96-7739-4585-a712-f5573c0077ab",
+                      "asset": "23",
+                      "info": {
+                        "editorName": "lemonFlavor",
+                        "editorField": true,
+                        "x": 442,
+                        "y": 154,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "moves": false,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "d4113fd4-d77a-4617-bec9-193b8ebf73f6",
+                      "asset": "24",
+                      "info": {
+                        "editorName": "straberryFlavor",
+                        "editorField": true,
+                        "x": 349,
+                        "y": 154,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "moves": false,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "42a087de-87d8-41d3-af34-da14748a6a90",
+                      "info": {
+                        "editorName": "flavor1",
+                        "editorField": true,
+                        "x": 348,
+                        "y": 184,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#5e3056"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "407a0e9c-9126-4b33-97f9-40824469c0bd",
+                      "info": {
+                        "editorName": "flavor2",
+                        "editorField": true,
+                        "x": 440,
+                        "y": 184,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#5e3056"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "17e90f68-2500-42b9-964d-e5dd382ed766",
+                      "info": {
+                        "editorName": "flavor3",
+                        "editorField": true,
+                        "x": 538,
+                        "y": 184,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#5e3056"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "b0576807-8595-4316-a25e-f18a72978a3d",
+                      "info": {
+                        "editorName": "flavor4",
+                        "editorField": true,
+                        "x": 140,
+                        "y": 385,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#5e3056"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "e42b4a79-a387-41d3-9c02-5b15deb346cf",
+                      "info": {
+                        "editorName": "flavor5",
+                        "editorField": true,
+                        "x": 140,
+                        "y": 475,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#5e3056"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "ecd6944f-e083-439e-b87b-fbd34d14de88",
+                      "info": {
+                        "editorName": "flavor6",
+                        "editorField": true,
+                        "x": 140,
+                        "y": 563,
+                        "text": "2",
+                        "style.fontSize": 15,
+                        "style.fill": "#5e3056"
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "0a6e90dc-3754-4d2d-b641-4bc7da1d13f9",
+                      "asset": "25",
+                      "info": {
+                        "editorName": "chocolateCore",
+                        "editorField": true,
+                        "x": 188,
+                        "y": 384,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "4091d2a8-117f-45d3-9460-bee03697eeb7",
+                      "asset": "26",
+                      "info": {
+                        "editorName": "chiliCore",
+                        "editorField": true,
+                        "x": 188,
+                        "y": 474,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "id": "3e5917a4-594d-46ad-9628-fad3007eb524",
+                      "asset": "27",
+                      "info": {
+                        "editorName": "cherryCore",
+                        "editorField": true,
+                        "x": 188,
+                        "y": 570,
+                        "anchor.x": 0.5,
+                        "anchor.y": 0.5,
+                        "body": {
+                          "type": "ARCADE_RECT",
+                          "offsetX": 13,
+                          "offsetY": 9,
+                          "width": 36,
+                          "height": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "prefab",
+                      "prefab": "6",
+                      "id": "c2bf64a4-d360-4719-a118-7702677eadfe",
+                      "asset-ref": {
+                        "file": "WebContent/assets/pack.json",
+                        "section": "animations",
+                        "asset": "atlas4",
+                        "sprite": "BagDone0000"
+                      },
+                      "info": {
+                        "editorName": "BagDone",
+                        "editorField": true,
+                        "x": 598,
+                        "y": 266
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "group",
+                "id": "ff3e8195-6e85-4f13-95d4-de2e5672085b",
+                "info": {
+                  "editorName": "candyReady",
+                  "editorField": true,
+                  "setAll": [],
+                  "children": []
+                }
+              },
+              {
+                "type": "image",
+                "id": "ddc936b9-aebc-4e0d-9c9c-9eb0a7b6b6d4",
+                "asset": "28",
+                "info": {
+                  "editorName": "OpenStoreBtn",
+                  "editorField": true,
+                  "x": 130,
+                  "y": 43
+                }
+              },
+              {
+                "type": "image",
+                "id": "8e642475-4197-473a-ab9d-e0c73cf8bd98",
+                "asset": "29",
+                "info": {
+                  "editorName": "DenyOrderBtn",
+                  "editorField": true,
+                  "x": 462,
+                  "y": 42
+                }
+              },
+              {
+                "type": "image",
+                "id": "6a8c93da-5ad4-4ccc-b5ef-e4788c03e7bd",
+                "asset": "30",
+                "info": {
+                  "editorName": "CloseStoreBtn",
+                  "editorField": true,
+                  "x": 130,
+                  "y": 43
+                }
+              },
+              {
+                "type": "image",
+                "id": "9dda1b99-6fb7-463d-bb96-e7e71d1c3f46",
+                "asset": "31",
+                "info": {
+                  "editorName": "exitHouseBtn",
+                  "editorField": true,
+                  "x": 156,
+                  "y": 652,
+                  "fixedToCamera": true
+                }
+              },
+              {
+                "type": "prefab",
+                "prefab": "7",
+                "id": "5f1f3a3c-417b-40b6-bc6b-9ad1627328e8",
+                "asset-ref": {
+                  "file": "WebContent/assets/pack.json",
+                  "section": "animations",
+                  "asset": "atlas6",
+                  "sprite": "arrows instancia 10000"
+                },
+                "info": {
+                  "editorName": "arrows_instancia_",
+                  "editorField": true,
+                  "x": 653,
+                  "y": 276
+                }
+              },
+              {
+                "type": "image",
+                "id": "0c188d02-a929-4954-9940-c9283c7d0a93",
+                "asset": "32",
+                "info": {
+                  "editorName": "ballModeBtn",
+                  "editorField": true,
+                  "x": 554,
+                  "y": 673
+                }
+              },
+              {
+                "type": "image",
+                "id": "948abe0f-e42c-4344-b3ca-9bbada5bacb3",
+                "asset": "33",
+                "info": {
+                  "editorName": "keyBuyBtn",
+                  "editorField": true,
+                  "x": 402,
+                  "y": 674
+                }
+              },
+              {
+                "type": "image",
+                "id": "ee4024c8-8302-448e-b44c-3c378e47b0ae",
+                "asset": "34",
+                "info": {
+                  "editorName": "helpBtn",
+                  "editorField": true,
+                  "x": 156,
+                  "y": 249
+                }
+              },
+              {
+                "type": "image",
+                "id": "9ce235a7-83fd-4178-be09-234d875c1568",
+                "asset": "35",
+                "info": {
+                  "editorName": "cookSteps",
+                  "editorField": true,
+                  "x": 103,
+                  "y": 18
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "image",
+          "id": "564a72fa-89f2-4674-af7d-3ad7c91f98ce",
+          "asset": "36",
+          "info": {
+            "editorName": "elevatorInn",
+            "editorField": true,
+            "editorShow": false,
+            "x": 15,
+            "y": 845,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "5ed3e85f-d6a6-45a8-a402-214e80835994",
+          "asset": "37",
+          "info": {
+            "editorName": "upgradeCannon",
+            "editorField": true,
+            "x": 125,
+            "y": 846
+          }
+        },
+        {
+          "type": "text",
+          "id": "b569ce89-9760-4c42-a73f-c408ca38954a",
+          "info": {
+            "editorName": "upgradeCost",
+            "editorField": true,
+            "x": 193,
+            "y": 857,
+            "text": "30",
+            "style.fontSize": 18,
+            "style.fill": "#ffffff"
+          }
+        },
+        {
+          "type": "image",
+          "id": "dd59bbbc-8112-4552-a5c0-b5e0e80bab84",
+          "asset": "38",
+          "info": {
+            "editorName": "elevatorOut",
+            "editorField": true,
+            "editorShow": false,
+            "x": 17,
+            "y": 845,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "d3f0b988-32db-4244-a568-2a9e58c003e0",
+          "asset": "39",
+          "info": {
+            "editorName": "changeDirBtn",
+            "editorPick": false,
+            "editorField": true,
+            "editorShow": false,
+            "x": 523,
+            "y": 845
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "f39e1c6e-191e-4df6-a49b-f11acf2a3e2c",
+          "asset": "40",
+          "info": {
+            "editorName": "coin",
+            "x": 417,
+            "y": 20,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "text",
+          "id": "ee917d60-d697-42ee-9cd2-4ee8588192d5",
+          "info": {
+            "editorName": "moneyCount",
+            "editorField": true,
+            "x": 449,
+            "y": 11,
+            "fixedToCamera": true,
+            "text": "0000",
+            "style.fontSize": 40,
+            "style.fill": "#ffffff"
+          }
+        },
+        {
+          "type": "group",
+          "id": "a46b733c-99ab-4cae-a4e0-88e664658409",
+          "info": {
+            "editorName": "ordersFlavor",
+            "editorField": true,
+            "setAll": [],
+            "children": [{
+              "type": "group",
+              "id": "459c7433-82db-4056-b877-ce22e11da4d2",
+              "info": {
+                "editorName": "ordersBG",
+                "editorField": true,
+                "setAll": [],
+                "children": []
+              }
+            }]
+          }
+        },
+        {
+          "type": "group",
+          "id": "8c36d33e-da03-4028-b295-32d3848d0a37",
+          "info": {
+            "editorName": "groupCheer",
+            "editorField": true,
+            "y": 131,
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "835def20-9e36-4c1e-9833-0b1f48ffc541",
+                "asset": "41",
+                "info": {
+                  "editorName": "cartel",
+                  "x": -8,
+                  "y": 831
+                }
+              },
+              {
+                "type": "text",
+                "id": "34ab7f2e-48ad-46ba-a7dd-943d8e3bd4cd",
+                "info": {
+                  "editorName": "oleadaNumero",
+                  "editorField": true,
+                  "x": 388,
+                  "y": 855,
+                  "text": "0",
+                  "style.fontSize": 88,
+                  "style.fill": "#608961"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "6663a6d3-eb28-45f5-8d46-9e2e80f7bf78",
+          "info": {
+            "editorName": "clientReady",
+            "editorField": true,
+            "x": -650,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "text",
+          "id": "97eba968-c0d0-464a-8022-88aa3b82cd3e",
+          "info": {
+            "editorName": "clientsRemain",
+            "editorField": true,
+            "x": 347,
+            "y": 11,
+            "fixedToCamera": true,
+            "text": "00",
+            "style.fontSize": 40,
+            "style.fill": "#ffffff"
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "ceda13f3-b952-47ec-894d-85c7c33523f5",
+          "asset": "42",
+          "info": {
+            "editorName": "cliente",
+            "x": 319,
+            "y": 19,
+            "scale.x": 0.5,
+            "scale.y": 0.5,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "group",
+          "id": "418ddbc3-7e26-4a2f-9fea-0fb16328a46e",
+          "info": {
+            "editorName": "upperBanner",
+            "editorField": true,
+            "x": 76,
+            "y": -139,
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "c457bbba-752b-4251-9e33-59abb02ba2b6",
+                "asset": "43",
+                "info": {
+                  "editorName": "letreroSuperior",
+                  "x": 211,
+                  "y": -3
+                }
+              },
+              {
+                "type": "text",
+                "id": "61a788ca-b48a-491f-a7dc-057679957dc3",
+                "info": {
+                  "editorName": "upBannerTExt",
+                  "editorField": true,
+                  "x": 245,
+                  "y": 105,
+                  "text": "Last client attended",
+                  "style.fill": "#ffffff",
+                  "style.align": "CENTER"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "image",
+          "id": "d6fc3bca-525a-4f6e-ae05-93c99dcdde03",
+          "asset": "44",
+          "info": {
+            "editorName": "greatJob",
+            "editorField": true,
+            "x": -6,
+            "y": 960
+          }
+        },
+        {
+          "type": "image",
+          "id": "80cc45c0-2ea9-4e07-a7c2-c82738dd06b7",
+          "asset": "45",
+          "info": {
+            "editorName": "welcome",
+            "editorField": true,
+            "x": -4,
+            "y": 963
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "newBackground"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "chickRoom"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "bigWall"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "elevatorSpace"
+    },
+    "4": {
+      "file": "WebContent/assets/pack.json",
+      "section": "animations",
+      "asset": "atlas6",
+      "sprite": "lamp instancia 10015"
+    },
+    "5": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "floor21"
+    },
+    "6": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "thaCeiling"
+    },
+    "7": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "floorNew"
+    },
+    "8": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "storeBgBlack"
+    },
+    "9": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "store"
+    },
+    "10": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "menuBtn"
+    },
+    "11": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "shootBtn"
+    },
+    "12": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "pickUpButton"
+    },
+    "13": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "dropCannonBtn"
+    },
+    "14": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "enterHouseBtn"
+    },
+    "15": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "pipe"
+    },
+    "16": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "shop"
+    },
+    "17": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "exitStoreSpace"
+    },
+    "18": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "shopSpace"
+    },
+    "19": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "gunBuyBtn"
+    },
+    "20": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "cannonBuyBtn"
+    },
+    "21": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "emptyBtn"
+    },
+    "22": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "bannaFlavor"
+    },
+    "23": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "lemonFlavor"
+    },
+    "24": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "straberryFlavor"
+    },
+    "25": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "chocolateJar"
+    },
+    "26": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "chiliJar"
+    },
+    "27": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "cherryJar"
+    },
+    "28": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "OpenStoreBtn"
+    },
+    "29": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "DenyOrderBtn"
+    },
+    "30": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "CloseStoreBtn"
+    },
+    "31": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "exitHouseBtn"
+    },
+    "32": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "ballModeBtn"
+    },
+    "33": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "keyBuyBtn"
+    },
+    "34": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "helpBtn"
+    },
+    "35": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "cookSteps"
+    },
+    "36": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "elevatorInn"
+    },
+    "37": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "upgradeCannon"
+    },
+    "38": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "elevatorOut"
+    },
+    "39": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "changeDirBtn"
+    },
+    "40": {
+      "file": "WebContent/assets/pack.json",
+      "section": "animations",
+      "asset": "atlas4",
+      "sprite": "coin0000"
+    },
+    "41": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "cartel"
+    },
+    "42": {
+      "file": "WebContent/assets/pack.json",
+      "section": "animations",
+      "asset": "atlas5",
+      "sprite": "cliente10000"
+    },
+    "43": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "letreroSuperior"
+    },
+    "44": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "greatJob"
+    },
+    "45": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "welcome"
+    }
+  },
+  "prefab-table": {
+    "0": "WebContent/assets/prefabs/chickBear.canvas",
+    "1": "WebContent/assets/prefabs/lifeBar.canvas",
+    "2": "WebContent/assets/prefabs/ascensor.canvas",
+    "3": "WebContent/assets/prefabs/player.canvas",
+    "4": "WebContent/assets/prefabs/smallPot.canvas",
+    "5": "WebContent/assets/prefabs/bigBtn.canvas",
+    "6": "WebContent/assets/prefabs/bag.canvas",
+    "7": "WebContent/assets/prefabs/arrows.canvas"
+  }
+}

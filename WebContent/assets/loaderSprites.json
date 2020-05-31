@@ -1,0 +1,23 @@
+{
+  "loader": [
+    {
+      "type": "image",
+      "key": "loaderContainer",
+      "url": "assets/images/loaderContainer.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "loadBar",
+      "url": "assets/images/loadBar.png",
+      "overwrite": false
+    }
+  ],
+  "meta": {
+    "generated": "1589560755339",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}

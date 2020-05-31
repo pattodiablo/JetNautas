@@ -1,0 +1,105 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Intro",
+    "sceneWidth": 640,
+    "sceneHeight": 960,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      153,
+      102,
+      51
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "\r\n\r\nthis.myCreate();",
+    "state_init_before": "this.myInit();",
+    "state_preload_before": "this.load.pack('loader', 'assets/loaderSprites.json');\n\nthis.myPreload();"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "ea7dfc16-a95a-44df-8e2f-9fc305620dd8",
+          "asset": "0",
+          "info": {"editorName": "backgorund"}
+        },
+        {
+          "type": "image",
+          "id": "34e4a11d-6fad-4753-ab2a-3d7de4de460d",
+          "asset": "1",
+          "info": {"editorName": "cover"}
+        },
+        {
+          "type": "image",
+          "id": "c7fafa74-83aa-46b1-9cda-6210815befca",
+          "asset": "2",
+          "info": {
+            "editorName": "cover1",
+            "editorField": true,
+            "x": 320,
+            "y": 14,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "159be43d-8526-4eef-b7a6-74b8b86265fb",
+          "asset": "3",
+          "info": {"editorName": "cover2"}
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "backgorund"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "cover"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "cover2"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "cover3"
+    }
+  },
+  "prefab-table": {}
+}

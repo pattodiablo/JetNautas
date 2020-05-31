@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta charset="UTF-8" />
+<meta name=viewport content="width=device-width, initial-scale=0.5">
+
+<title>Candy Bear</title>
+
+<script src="lib/phaser.js"></script>
+<script src="js/Main.js"></script>
+
+<script src="assets/canvas/Level3.js"></script>
+<script src="assets/canvas/looseScreen.js"></script>
+<script src="assets/canvas/winScreen.js"></script>
+<script src="assets/canvas/Intro.js"></script>
+<script src="assets/canvas/GameSounds.js"></script>
+<script src="assets/canvas/Instructions.js"></script>
+<script type="text/javascript">
+	
+	document.addEventListener('touchstart', function(event){
+    event.preventDefault();
+}, {passive: false});
+</script>
+<style>
+body {
+	background: #000;
+	margin: 0;
+	padding: 0;
+}
+
+#turn {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: #000;
+	background-image: url('assets/images/playportrait.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	display: none;
+}
+</style>
+
+</head>
+<body>
+	<div id="turn"></div>
+</body>
+</html>

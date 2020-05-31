@@ -1,0 +1,878 @@
+{
+  "graphics": [
+    {
+      "type": "image",
+      "key": "playBtn",
+      "url": "assets/images/playBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "menuBtn",
+      "url": "assets/images/menuBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pauseIcons",
+      "url": "assets/images/pauseIcons.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "OffBtn",
+      "url": "assets/images/OffBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "OnBtn",
+      "url": "assets/images/OnBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "VT323-Regular",
+      "url": "assets/fonts/VT323-Regular.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "how1",
+      "url": "assets/images/how1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "how2",
+      "url": "assets/images/how2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "howToPlayTitle",
+      "url": "assets/images/howToPlayTitle.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "HowToPlayBtn",
+      "url": "assets/images/HowToPlayBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "QuitBtn",
+      "url": "assets/images/QuitBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "floor",
+      "url": "assets/images/floor.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "prizeBanner",
+      "url": "assets/images/prizeBanner.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pruebaOso",
+      "url": "assets/images/pruebaOso.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "backgorund",
+      "url": "assets/images/backgorund.jpg",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "platform1",
+      "url": "assets/images/platform1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "floor2",
+      "url": "assets/images/floor2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "shootBtn",
+      "url": "assets/images/shootBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bullet",
+      "url": "assets/images/bullet.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bigWall",
+      "url": "assets/images/bigWall.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "floor3",
+      "url": "assets/images/floor3.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "wall",
+      "url": "assets/images/wall.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "wall2",
+      "url": "assets/images/wall2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "window",
+      "url": "assets/images/window.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "divisor",
+      "url": "assets/images/divisor.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "newBackground",
+      "url": "assets/images/newBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "floor21",
+      "url": "assets/images/floor2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "longPlatfomr",
+      "url": "assets/images/longPlatfomr.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "candy1",
+      "url": "assets/images/candy1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "candy2",
+      "url": "assets/images/candy2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "candy3",
+      "url": "assets/images/candy3.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "spawner",
+      "url": "assets/images/spawner.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "zombieZewer",
+      "url": "assets/images/zombieZewer.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pickUpButton",
+      "url": "assets/images/pickUpButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "dropCannonBtn",
+      "url": "assets/images/dropCannonBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "separatingWall",
+      "url": "assets/images/separatingWall.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ceil2",
+      "url": "assets/images/ceil2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "floorNew",
+      "url": "assets/images/floorNew.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "directionChange",
+      "url": "assets/images/directionChange.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "store",
+      "url": "assets/images/store.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "enterHouseBtn",
+      "url": "assets/images/enterHouseBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "exitHouseBtn",
+      "url": "assets/images/exitHouseBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "storeBg",
+      "url": "assets/images/storeBg.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cannonBuyBtn",
+      "url": "assets/images/cannonBuyBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "gunBuyBtn",
+      "url": "assets/images/gunBuyBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "elevatorInn",
+      "url": "assets/images/elevatorInn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "elevatorOut",
+      "url": "assets/images/elevatorOut.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "elevatorPipe",
+      "url": "assets/images/elevatorPipe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "thaCeiling",
+      "url": "assets/images/thaCeiling.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "newBackground2",
+      "url": "assets/images/newBackground2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "storeBackground",
+      "url": "assets/images/storeBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "buyBanner",
+      "url": "assets/images/buyBanner.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cookBanner",
+      "url": "assets/images/cookBanner.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bigBtn",
+      "url": "assets/images/bigBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "emptyBtn",
+      "url": "assets/images/emptyBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "flavorBanner",
+      "url": "assets/images/flavorBanner.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bannaFlavor",
+      "url": "assets/images/bannaFlavor.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cherry",
+      "url": "assets/images/cherry.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cherryCore",
+      "url": "assets/images/cherryCore.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "chiliCore",
+      "url": "assets/images/chiliCore.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "chocolateCore",
+      "url": "assets/images/chocolateCore.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "straberryFlavor",
+      "url": "assets/images/straberryFlavor.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lemonFlavor",
+      "url": "assets/images/lemonFlavor.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "roundShape",
+      "url": "assets/images/roundShape.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "squareShape",
+      "url": "assets/images/squareShape.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bananaDone",
+      "url": "assets/images/bananaDone.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lemonDone",
+      "url": "assets/images/lemonDone.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "straberryDone",
+      "url": "assets/images/straberryDone.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bannanaCherry",
+      "url": "assets/images/bannanaCherry.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bannanaChilli",
+      "url": "assets/images/bannanaChilli.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bannanaChocolate",
+      "url": "assets/images/bannanaChocolate.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lemonCherry",
+      "url": "assets/images/lemonCherry.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lemonChilli",
+      "url": "assets/images/lemonChilli.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lemonChocolate",
+      "url": "assets/images/lemonChocolate.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "strawberryCherry",
+      "url": "assets/images/strawberryCherry.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "strawberryChilli",
+      "url": "assets/images/strawberryChilli.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "strawberryChocolate",
+      "url": "assets/images/strawberryChocolate.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "orderItem",
+      "url": "assets/images/orderItem.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "escalera",
+      "url": "assets/images/escalera.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "escalera1",
+      "url": "assets/prefabs/escalera.js"
+    },
+    {
+      "type": "image",
+      "key": "elevatorSpace",
+      "url": "assets/images/elevatorSpace.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "crate",
+      "url": "assets/images/crate.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pipe",
+      "url": "assets/images/pipe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cartel",
+      "url": "assets/images/cartel.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "changeDirBtn",
+      "url": "assets/images/changeDirBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "greatJob",
+      "url": "assets/images/greatJob.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "welcome",
+      "url": "assets/images/welcome.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "shop",
+      "url": "assets/images/shop.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "exitStoreSpace",
+      "url": "assets/images/exitStoreSpace.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "shopSpace",
+      "url": "assets/images/shopSpace.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "storeBgBlack",
+      "url": "assets/images/storeBgBlack.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "CloseStoreBtn",
+      "url": "assets/images/CloseStoreBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "DenyOrderBtn",
+      "url": "assets/images/DenyOrderBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "OpenStoreBtn",
+      "url": "assets/images/OpenStoreBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cherryJar",
+      "url": "assets/images/cherryJar.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "chiliJar",
+      "url": "assets/images/chiliJar.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "chilli",
+      "url": "assets/images/chilli.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "rdyBag",
+      "url": "assets/images/rdyBag.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "chocolateJar",
+      "url": "assets/images/chocolateJar.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "letreroSuperior",
+      "url": "assets/images/letreroSuperior.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lifeBar",
+      "url": "assets/images/lifeBar.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "lifeBar1",
+      "url": "assets/prefabs/lifeBar.js"
+    },
+    {
+      "type": "image",
+      "key": "playerBall",
+      "url": "assets/images/playerBall.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "upgradeCannon",
+      "url": "assets/images/upgradeCannon.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ballModeBtn",
+      "url": "assets/images/ballModeBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "chickRoom",
+      "url": "assets/images/chickRoom.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "keyBuyBtn",
+      "url": "assets/images/keyBuyBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bullet2",
+      "url": "assets/images/bullet2.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "looseScreen",
+      "url": "assets/canvas/looseScreen.js"
+    },
+    {
+      "type": "image",
+      "key": "looseBg",
+      "url": "assets/images/looseBg.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "reloadBtn",
+      "url": "assets/images/reloadBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "winScreen",
+      "url": "assets/canvas/winScreen.js"
+    },
+    {
+      "type": "image",
+      "key": "winBg",
+      "url": "assets/images/winBg.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cover",
+      "url": "assets/images/cover.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cover2",
+      "url": "assets/images/cover2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cover3",
+      "url": "assets/images/cover3.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "snowflakes",
+      "url": "assets/images/snowflakes.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cookSteps",
+      "url": "assets/images/cookSteps.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "helpBtn",
+      "url": "assets/images/helpBtn.png",
+      "overwrite": false
+    }
+  ],
+  "Fonts": [{
+    "type": "bitmapFont",
+    "key": "PixelFont",
+    "textureURL": "assets/fonts/PixelFont_0.png",
+    "atlasURL": "assets/fonts/PixelFont.xml",
+    "xSpacing": 0,
+    "ySpacing": 0
+  }],
+  "animations": [
+    {
+      "type": "atlas",
+      "key": "atlas",
+      "textureURL": "assets/atlas/atlas.png",
+      "atlasURL": "assets/atlas/atlas.xml",
+      "format": "TEXTURE_ATLAS_XML_STARLING"
+    },
+    {
+      "type": "script",
+      "key": "player",
+      "url": "assets/prefabs/player3.js"
+    },
+    {
+      "type": "atlas",
+      "key": "atlas2",
+      "textureURL": "assets/atlas/atlas2.png",
+      "atlasURL": "assets/atlas/atlas2.xml",
+      "format": "TEXTURE_ATLAS_XML_STARLING"
+    },
+    {
+      "type": "atlas",
+      "key": "atlas3",
+      "textureURL": "assets/atlas/atlas3.png",
+      "atlasURL": "assets/atlas/atlas3.xml",
+      "format": "TEXTURE_ATLAS_XML_STARLING"
+    },
+    {
+      "type": "script",
+      "key": "player1",
+      "url": "assets/prefabs/player.js"
+    },
+    {
+      "type": "script",
+      "key": "zombie2",
+      "url": "assets/prefabs/zombie2.js"
+    },
+    {
+      "type": "script",
+      "key": "zombie21",
+      "url": "assets/prefabs/zombie2.js"
+    },
+    {
+      "type": "atlas",
+      "key": "atlas4",
+      "textureURL": "assets/atlas/atlas4.png",
+      "atlasURL": "assets/atlas/atlas4.xml",
+      "format": "TEXTURE_ATLAS_XML_STARLING"
+    },
+    {
+      "type": "script",
+      "key": "cannon",
+      "url": "assets/prefabs/cannon.js"
+    },
+    {
+      "type": "script",
+      "key": "coin",
+      "url": "assets/prefabs/coin.js"
+    },
+    {
+      "type": "script",
+      "key": "elevator",
+      "url": "assets/prefabs/elevator.js"
+    },
+    {
+      "type": "script",
+      "key": "ascensor",
+      "url": "assets/prefabs/ascensor.js"
+    },
+    {
+      "type": "script",
+      "key": "smallPot",
+      "url": "assets/prefabs/smallPot.js"
+    },
+    {
+      "type": "script",
+      "key": "bigBtn1",
+      "url": "assets/prefabs/bigBtn.js"
+    },
+    {
+      "type": "script",
+      "key": "poof",
+      "url": "assets/prefabs/poof.js"
+    },
+    {
+      "type": "atlas",
+      "key": "atlas5",
+      "textureURL": "assets/atlas/atlas5.png",
+      "atlasURL": "assets/atlas/atlas5.xml",
+      "format": "TEXTURE_ATLAS_XML_STARLING"
+    },
+    {
+      "type": "script",
+      "key": "client1",
+      "url": "assets/prefabs/client1.js"
+    },
+    {
+      "type": "script",
+      "key": "orderItem1",
+      "url": "assets/prefabs/orderItem.js"
+    },
+    {
+      "type": "script",
+      "key": "bag",
+      "url": "assets/prefabs/bag.js"
+    },
+    {
+      "type": "atlas",
+      "key": "atlas6",
+      "textureURL": "assets/atlas/atlas6.png",
+      "atlasURL": "assets/atlas/atlas6.xml",
+      "format": "TEXTURE_ATLAS_XML_STARLING"
+    },
+    {
+      "type": "script",
+      "key": "arrows",
+      "url": "assets/prefabs/arrows.js"
+    },
+    {
+      "type": "script",
+      "key": "chickBear",
+      "url": "assets/prefabs/chickBear.js"
+    },
+    {
+      "type": "script",
+      "key": "upgradeBar",
+      "url": "assets/prefabs/upgradeBar.js"
+    },
+    {
+      "type": "script",
+      "key": "lamp",
+      "url": "assets/prefabs/lamp.js"
+    },
+    {
+      "type": "script",
+      "key": "client2",
+      "url": "assets/prefabs/client2.js"
+    },
+    {
+      "type": "script",
+      "key": "client3",
+      "url": "assets/prefabs/client3.js"
+    },
+    {
+      "type": "script",
+      "key": "zombie3",
+      "url": "assets/prefabs/zombie3.js"
+    }
+  ],
+  "meta": {
+    "generated": "1590166015124",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}

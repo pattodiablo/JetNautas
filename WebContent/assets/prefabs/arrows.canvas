@@ -1,0 +1,92 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "arrows",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.Sprite",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "982320d7-1a37-4b7a-b7c2-23adab672d50",
+    "info": {
+      "editorName": "arrows",
+      "setAll": [],
+      "children": [{
+        "type": "atlas-sprite",
+        "id": "4b70ce34-25c7-466c-ae2d-6e1d4d933a90",
+        "asset": "0",
+        "info": {
+          "editorName": "arrows_instancia_10000",
+          "anchor.x": 0.5,
+          "anchor.y": 0.5,
+          "animations": [{
+            "name": "pointing",
+            "frameRate": 24,
+            "loop": true,
+            "autoPlay": true,
+            "frames": [
+              "arrows instancia 10000",
+              "arrows instancia 10001",
+              "arrows instancia 10002",
+              "arrows instancia 10003",
+              "arrows instancia 10004",
+              "arrows instancia 10005",
+              "arrows instancia 10006",
+              "arrows instancia 10007",
+              "arrows instancia 10008",
+              "arrows instancia 10009",
+              "arrows instancia 10010",
+              "arrows instancia 10011",
+              "arrows instancia 10012",
+              "arrows instancia 10013",
+              "arrows instancia 10014",
+              "arrows instancia 10015",
+              "arrows instancia 10016",
+              "arrows instancia 10017",
+              "arrows instancia 10018",
+              "arrows instancia 10019",
+              "arrows instancia 10020",
+              "arrows instancia 10021",
+              "arrows instancia 10022",
+              "arrows instancia 10023"
+            ]
+          }]
+        }
+      }]
+    }
+  },
+  "type": "SPRITE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "animations",
+    "asset": "atlas6",
+    "sprite": "arrows instancia 10000"
+  }},
+  "prefab-table": {}
+}

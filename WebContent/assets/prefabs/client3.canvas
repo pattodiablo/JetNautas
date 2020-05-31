@@ -1,0 +1,100 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "client3",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.Sprite",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "this.myCreate();"
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "ebba1292-1026-43f1-b5d6-e3d8540c82be",
+    "info": {
+      "editorName": "client1",
+      "setAll": [],
+      "children": [{
+        "type": "atlas-sprite",
+        "id": "cf58160d-967a-42d9-a255-cbd2cb25ac03",
+        "asset": "0",
+        "info": {
+          "editorName": "cliente",
+          "anchor.x": 0.5,
+          "anchor.y": 0.5,
+          "animations": [
+            {
+              "name": "walk",
+              "frameRate": 24,
+              "loop": true,
+              "autoPlay": true,
+              "frames": [
+                "cliente30000",
+                "cliente30001",
+                "cliente30002",
+                "cliente30003",
+                "cliente30004",
+                "cliente30005",
+                "cliente30006",
+                "cliente30007",
+                "cliente30008",
+                "cliente30009",
+                "cliente30010",
+                "cliente30011",
+                "cliente30012",
+                "cliente30013",
+                "cliente30014",
+                "cliente30015",
+                "cliente30016"
+              ]
+            },
+            {
+              "name": "idle",
+              "frameRate": 60,
+              "frames": ["cliente30000"]
+            }
+          ],
+          "body": {
+            "type": "ARCADE_RECT",
+            "offsetX": 2,
+            "velocityX": -90,
+            "width": 39,
+            "height": 50
+          }
+        }
+      }]
+    }
+  },
+  "type": "SPRITE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "animations",
+    "asset": "atlas5",
+    "sprite": "cliente30000"
+  }},
+  "prefab-table": {}
+}
