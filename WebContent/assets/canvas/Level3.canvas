@@ -2,8 +2,8 @@
   "canvas-version": 2,
   "settings": {
     "className": "Level3",
-    "sceneWidth": 1920,
-    "sceneHeight": 1080,
+    "sceneWidth": 960,
+    "sceneHeight": 640,
     "generateOnSave": true,
     "enableStepping": false,
     "lang": "JAVA_SCRIPT",
