@@ -36,25 +36,9 @@ Intro.prototype.preload = function () {
 	
 	this.myPreload();
 	
-	this.load.pack('graphics', 'assets/pack.json');
-	
 };
 
 Intro.prototype.create = function () {
-	this.add.sprite(0.0, 0.0, 'backgorund');
-	
-	this.add.sprite(0.0, 0.0, 'cover');
-	
-	var _cover1 = this.add.sprite(320.0, 14.0, 'cover2');
-	_cover1.anchor.set(0.5, 0.5);
-	
-	this.add.sprite(0.0, 0.0, 'cover3');
-	
-	
-	
-	// fields
-	
-	this.fCover1 = _cover1;
 	
 	
 	this.myCreate();
@@ -73,7 +57,7 @@ Intro.prototype.myPreload = function () {
 	this.game.load.image('playBtn', 'assets/images/playBtn.png')
 	
 	
-	this.game.load.audio('IntroMusic', ['assets/audio/introMusic.mp3','assets/audio/introMusic.ogg']);
+
 	
 
 	
