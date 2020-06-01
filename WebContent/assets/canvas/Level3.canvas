@@ -43,19 +43,10 @@
     "info": {
       "editorName": "Level",
       "setAll": [],
-      "children": [{
-        "type": "image",
-        "id": "d97d4a29-bf86-461d-8abd-384055296f2b",
-        "asset": "0",
-        "info": {"editorName": "newBackground"}
-      }]
+      "children": []
     }
   },
   "type": "STATE",
-  "asset-table": {"0": {
-    "file": "WebContent/assets/pack.json",
-    "section": "graphics",
-    "asset": "newBackground"
-  }},
+  "asset-table": {},
   "prefab-table": {}
 }
