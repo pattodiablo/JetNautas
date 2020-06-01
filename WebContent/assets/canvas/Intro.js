@@ -36,9 +36,18 @@ Intro.prototype.preload = function () {
 	
 	this.myPreload();
 	
+	this.load.pack('graphics', 'assets/pack.json');
+	
 };
 
 Intro.prototype.create = function () {
+	var _playBtn = this.add.sprite(-178.0, 96.0, 'playBtn');
+	
+	
+	
+	// fields
+	
+	this.fPlayBtn = _playBtn;
 	
 	
 	this.myCreate();
@@ -55,84 +64,35 @@ Intro.prototype.myPreload = function () {
 	
 
 	this.game.load.image('playBtn', 'assets/images/playBtn.png')
-	
-	
 
-	
-
-	
 	
 };
 
-
-Intro.prototype.update = function () {
-	
-	
-	
-};
 
 
 Intro.prototype.myCreate = function () {
 	
-	   mid_emitter = this.game.add.emitter(this.game.world.centerX, -32, 250);
-	    mid_emitter.makeParticles('snowflakes', [0, 1, 2, 3, 4, 5]);
-	    mid_emitter.maxParticleScale = 1.2;
-	    mid_emitter.minParticleScale = 0.8;
-	    mid_emitter.setYSpeed(50, 150);
-	    mid_emitter.gravity = 0;
-	    mid_emitter.width = this.game.world.width * 1.5;
-	    mid_emitter.minRotation = 0;
-	    mid_emitter.maxRotation = 40;
-
-	    
-	    mid_emitter.start(false, 12000, 100);
-	
-	cover1Move = this.game.add.tween(this.fCover1);
-	cover1Move.to({y:480}, 1000, Phaser.Easing.Bounce.Out);
-	cover1Move.onComplete.add(zoom1, this);
-	cover1Move.start();
-	    
-	function zoom1(){
-		
-		 cover2Move = this.game.add.tween(this.fCover1.scale);
-		 cover2Move.to({x: 1, y:1}, 1000, Phaser.Easing.Linear.None);
-		 cover2Move.onComplete.addOnce(zoom2, this);
-		 cover2Move.start();
-	}
-	
 	 
-	 function zoom2(){
-		 
-		 cover3Move = this.game.add.tween(this.fCover1.scale);
-		 cover3Move.to({x: 1.1, y:1.1}, 1000, Phaser.Easing.Linear.None);
-		 cover3Move.onComplete.addOnce(zoom1, this);
-		 cover3Move.start();
-	 }
-
-
-	IntroMusic = this.game.add.audio('IntroMusic');
-	IntroMusic.allowMultiple = false;
-	IntroMusic.addMarker('IntroMusic', 0, 28.74);
 	
-	this.game.input.onUp.addOnce(doMusic, this);
+	this.game.input.onUp.addOnce(starScene, this);
 	
-	function doMusic(){
+	function starScene(){
 		
-		 IntroMusic.play('IntroMusic');
+
 	
 	//player.sounds.fxCoin.play("coin");
 	
-	 this.startButton = this.game.add.button(this.game.width/2, 955.0, 'playBtn', startGame, this, 2, 1, 0);
-	 this.startButton.anchor.set(0.5);
-	 pigArrives = this.game.add.tween( this.startButton);
+	 this.fPlayBtn = this.game.add.button(this.game.width/2, 955.0, 'playBtn', startGame, this, 2, 1, 0);
+	 this.fPlayBtn.anchor.set(0.5);
+	 pigArrives = this.game.add.tween( this.fPlayBtn);
 	    
-	    pigArrives.to({y:this.game.height/2+300}, 1000, Phaser.Easing.Bounce.Out);
+	    pigArrives.to({y:this.game.height/2}, 1000, Phaser.Easing.Bounce.Out);
 	    pigArrives.onComplete.add(firstTween, this);
 	    pigArrives.start();
 	}   
 	    function firstTween() {
 
-	        s = this.game.add.tween(this.startButton.scale);
+	        s = this.game.add.tween(this.fPlayBtn.scale);
 	        s.to({x: 1.05, y:1.05}, 500, Phaser.Easing.Linear.None);
 	        s.onComplete.addOnce(theEnd, this);
 	        s.start();
@@ -142,7 +102,7 @@ Intro.prototype.myCreate = function () {
 	    function theEnd() {
 	    	
 	    	
-	    	  s = this.game.add.tween(this.startButton.scale);
+	    	  s = this.game.add.tween(this.fPlayBtn.scale);
 		        s.to({x: 1, y:1}, 500, Phaser.Easing.Linear.None);
 		        s.onComplete.addOnce(firstTween, this);
 		        s.start();
@@ -150,7 +110,7 @@ Intro.prototype.myCreate = function () {
 	    }
 	    
 	 function startGame(){
-	 		 IntroMusic.stop('IntroMusic');
+	 
 		 this.game.state.start('Level3');
 		 
 	 }

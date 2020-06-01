@@ -2,8 +2,8 @@
   "canvas-version": 2,
   "settings": {
     "className": "looseScreen",
-    "sceneWidth": 640,
-    "sceneHeight": 960,
+    "sceneWidth": 960,
+    "sceneHeight": 640,
     "generateOnSave": true,
     "enableStepping": false,
     "lang": "JAVA_SCRIPT",
@@ -41,39 +41,24 @@
     "info": {
       "editorName": "looseScreen",
       "setAll": [],
-      "children": [
-        {
-          "type": "image",
-          "id": "65029669-b1cc-445e-a6e2-b89d88fee7e6",
-          "asset": "0",
-          "info": {"editorName": "looseBg"}
-        },
-        {
-          "type": "image",
-          "id": "646bb572-4466-4ff7-9cf5-91e7d85157fb",
-          "asset": "1",
-          "info": {
-            "editorName": "reloadBtn",
-            "editorField": true,
-            "x": 265,
-            "y": 978
-          }
+      "children": [{
+        "type": "image",
+        "id": "646bb572-4466-4ff7-9cf5-91e7d85157fb",
+        "asset": "0",
+        "info": {
+          "editorName": "reloadBtn",
+          "editorField": true,
+          "x": 265,
+          "y": 978
         }
-      ]
+      }]
     }
   },
   "type": "STATE",
-  "asset-table": {
-    "0": {
-      "file": "WebContent/assets/pack.json",
-      "section": "graphics",
-      "asset": "looseBg"
-    },
-    "1": {
-      "file": "WebContent/assets/pack.json",
-      "section": "graphics",
-      "asset": "reloadBtn"
-    }
-  },
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "graphics",
+    "asset": "reloadBtn"
+  }},
   "prefab-table": {}
 }

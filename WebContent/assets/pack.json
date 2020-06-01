@@ -1,9 +1,70 @@
 {
-  "graphics": [],
+  "graphics": [
+    {
+      "type": "image",
+      "key": "reloadBtn",
+      "url": "assets/images/reloadBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "HowToPlayBtn",
+      "url": "assets/images/HowToPlayBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "OffBtn",
+      "url": "assets/images/OffBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "OnBtn",
+      "url": "assets/images/OnBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "QuitBtn",
+      "url": "assets/images/QuitBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "jetBg",
+      "url": "assets/images/jetBg.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "loadBar",
+      "url": "assets/images/loadBar.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "loaderContainer",
+      "url": "assets/images/loaderContainer.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "playBtn",
+      "url": "assets/images/playBtn.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "playportrait",
+      "url": "assets/images/playportrait.png",
+      "overwrite": false
+    }
+  ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1590971872588",
+    "generated": "1590972222194",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

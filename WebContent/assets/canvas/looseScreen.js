@@ -35,8 +35,6 @@ looseScreen.prototype.preload = function () {
 };
 
 looseScreen.prototype.create = function () {
-	this.add.sprite(0.0, 0.0, 'looseBg');
-	
 	var _reloadBtn = this.add.sprite(265.0, 978.0, 'reloadBtn');
 	
 	

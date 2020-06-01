@@ -2,16 +2,16 @@
   "canvas-version": 2,
   "settings": {
     "className": "Level3",
-    "sceneWidth": 960,
-    "sceneHeight": 640,
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
     "generateOnSave": true,
     "enableStepping": false,
     "lang": "JAVA_SCRIPT",
     "baseClass": "Phaser.State",
     "backgroundColor": [
-      48,
-      48,
-      48
+      255,
+      128,
+      64
     ],
     "gridColor": [
       200,
@@ -43,10 +43,19 @@
     "info": {
       "editorName": "Level",
       "setAll": [],
-      "children": []
+      "children": [{
+        "type": "image",
+        "id": "bc2ff9d7-88da-4f50-ab56-62e3a037113e",
+        "asset": "0",
+        "info": {"editorName": "jetBg"}
+      }]
     }
   },
   "type": "STATE",
-  "asset-table": {},
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "graphics",
+    "asset": "jetBg"
+  }},
   "prefab-table": {}
 }

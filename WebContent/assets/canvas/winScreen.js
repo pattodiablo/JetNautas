@@ -35,8 +35,6 @@ winScreen.prototype.preload = function () {
 };
 
 winScreen.prototype.create = function () {
-	this.add.sprite(0.0, 0.0, 'winBg');
-	
 	var _playBtn = this.add.sprite(266.0, 970.0, 'playBtn');
 	
 	

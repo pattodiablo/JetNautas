@@ -37,6 +37,9 @@ Level3.prototype.preload = function () {
 };
 
 Level3.prototype.create = function () {
+	this.add.sprite(0.0, 0.0, 'jetBg');
+	
+	
 	
 	
 	this.myCreate();

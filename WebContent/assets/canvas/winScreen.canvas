@@ -2,8 +2,8 @@
   "canvas-version": 2,
   "settings": {
     "className": "winScreen",
-    "sceneWidth": 640,
-    "sceneHeight": 960,
+    "sceneWidth": 960,
+    "sceneHeight": 640,
     "generateOnSave": true,
     "enableStepping": false,
     "lang": "JAVA_SCRIPT",
@@ -41,39 +41,24 @@
     "info": {
       "editorName": "winScreen",
       "setAll": [],
-      "children": [
-        {
-          "type": "image",
-          "id": "5ab2e646-1f47-43fa-b7dc-b5f522dc948d",
-          "asset": "0",
-          "info": {"editorName": "winBg"}
-        },
-        {
-          "type": "image",
-          "id": "9c797781-6257-424f-b4ff-f5edab682d82",
-          "asset": "1",
-          "info": {
-            "editorName": "playBtn",
-            "editorField": true,
-            "x": 266,
-            "y": 970
-          }
+      "children": [{
+        "type": "image",
+        "id": "9c797781-6257-424f-b4ff-f5edab682d82",
+        "asset": "0",
+        "info": {
+          "editorName": "playBtn",
+          "editorField": true,
+          "x": 266,
+          "y": 970
         }
-      ]
+      }]
     }
   },
   "type": "STATE",
-  "asset-table": {
-    "0": {
-      "file": "WebContent/assets/pack.json",
-      "section": "graphics",
-      "asset": "winBg"
-    },
-    "1": {
-      "file": "WebContent/assets/pack.json",
-      "section": "graphics",
-      "asset": "playBtn"
-    }
-  },
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "graphics",
+    "asset": "playBtn"
+  }},
   "prefab-table": {}
 }
