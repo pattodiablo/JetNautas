@@ -110,12 +110,23 @@
       "type": "script",
       "key": "cristal",
       "url": "assets/prefabs/cristal.js"
+    },
+    {
+      "type": "image",
+      "key": "meteoro",
+      "url": "assets/images/meteoro.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "meteorito",
+      "url": "assets/prefabs/meteorito.js"
     }
   ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1591052996102",
+    "generated": "1591112699228",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

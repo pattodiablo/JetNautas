@@ -10,9 +10,9 @@
  * Level3.
  */
 function Level3() {
-	
+
 	Phaser.State.call(this);
-	
+
 }
 
 /** @type Phaser.State */
@@ -21,50 +21,53 @@ Level3.prototype = Level3_proto;
 Level3.prototype.constructor = Level3;
 
 Level3.prototype.init = function () {
-	
+
 	this.myInit();
-	
+
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	
+
 };
 
 Level3.prototype.preload = function () {
-	
+
 	this.myPreload();
-	
+
 };
 
 Level3.prototype.create = function () {
 	var _jetBg = this.add.sprite(0.0, 0.0, 'jetBg');
-	
+
 	var _platformGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
-	
+
 	this.add.sprite(0.0, 1000.0, 'bigFloorfake');
-	
+
 	this.add.sprite(0.0, 1080.0, 'bottomCover');
-	
+
 	var _coinGroup = this.add.group();
-	
+
 	var _NetplayersGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
-	
+
+	var _flyingObstacles = this.add.group();
+
 	var _player = new player(this.game, 370.0, 137.0);
 	this.add.existing(_player);
-	
-	
-	
+
+
+
 	// fields
-	
+
 	this.fJetBg = _jetBg;
 	this.fPlatformGroup = _platformGroup;
 	this.fCoinGroup = _coinGroup;
 	this.fNetplayersGroup = _NetplayersGroup;
+	this.fFlyingObstacles = _flyingObstacles;
 	this.fPlayer = _player;
-	
-	
+
+
 	this.myCreate();
-	
+
 };
 
 /* --- end generated code --- */
@@ -78,39 +81,49 @@ Level3.prototype.myInit = function () {
 }
 
 Level3.prototype.myCreate = function () {
-	
+
 	this.fNetPLayers = [];
 	this.platformVelo = 5;
 	this.velo = 360;
+	this.timesConnected = 0;
 
-	this.game.input.onDown.add(this.swipeDownAction, this);   
+	this.game.input.onDown.add(this.swipeDownAction, this);
 
 	this.game.input.onUp.add(this.swipeUpAction, this);  //manejo de swipe UP control de pantalla
-	
+
 	this.game.world.setBounds(0, 0, 1920, 1080);
-	
+
     this.game.camera.follow(this.fPlayer);
-    
+
 
 	this.fJetBg.width=1920;
 	this.fJetBg.height=1080;
-	
+
 	this.game.croquetView.setCurrentScene(this.game); //seteamos en que escena me encuentro para croquet
-	
+
 	this.createFirstPlatforms();
 	this.addPhaserNetworkPlayer(); //registro mi jugador en croquet
 
 
 
 }
-Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) { 
+Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
+
+		if(this.game.timesConnected<=0){
 
 	  		console.log('anadiendo croquet player');
 			this.mySession = this.game.croquetView.getSessionID();
 			this.game.croquetView.confirmPlayerAdded(this.mySession);
-   	  		
+			this.game.timesConnected++;
 			//this.updatePos();
 
+		}else{
+
+			this.mySession = this.game.croquetView.getSessionID();
+			this.game.croquetView.updatePlayerList();
+			this.game.croquetView.getPlayersPos();
+
+		}
 		return true;
 
 
@@ -131,7 +144,7 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){
 					//croquetPlayer.visible=false;
 					croquetPlayer.body.collideWorldBounds = true;
 					this.add.existing(croquetPlayer);
-					//agregar aqui jugadores nuevos	
+					//agregar aqui jugadores nuevos
 
 					var NetplayerObject = {NetPlayer:croquetPlayer,id:NetPlayer};
 					this.fNetPLayers.push(NetplayerObject);
@@ -199,13 +212,30 @@ Level3.prototype.updatePos = function() {
 
 	}
 
+
+	Level3.prototype.crearObstaculoCroquet = function(data){
+		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
+			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
+
+	var obstacle = new meteorito(this.game, data.xpos,data.ypos-40);
+	this.add.existing(obstacle);
+
+		this.game.physics.arcade.enable(obstacle);
+		obstacle.body.gravity.y=0;
+		obstacle.body.velocity.x-=data.velocity*5;
+		obstacle.body.moves = true;
+		obstacle.body.immovable = false;
+		this.fFlyingObstacles.add(obstacle);
+		}
+
+
 Level3.prototype.crearMonedas = function(data){
 		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
 			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
-			
+
 	var _cristalCoin = new cristal(this.game, data.xpos,data.ypos-100);
 	this.add.existing(_cristalCoin);
-	
+
 		this.game.physics.arcade.enable(_cristalCoin);
 		_cristalCoin.body.gravity.y=0;
 		_cristalCoin.body.velocity.x-=200;
@@ -219,28 +249,28 @@ Level3.prototype.crearMonedas = function(data){
 			this.fNetPLayers.forEach((NetplayerObject, i) => {
 					console.log('doing action of ' + session);
 					if(session == NetplayerObject.id){
-						
+
 						NetplayerObject.NetPlayer.body.velocity.y = -this.velo; //replico la accion del jugador para smooth the action
-						
+
 					}
 				});
 		}
-		
 
-	}	
+
+	}
 
 Level3.prototype.swipeDownAction = function(pointer) { //manejo de swipe control de pantalla
-		
-		
+
+		if(this.fPlayer.canjump){
     		this.fPlayer.body.velocity.y=-this.velo;
     		this.game.croquetView.croquetPlayerAction(this.mySession);
-			//this.updatePos();	
-						
+			this.updatePos();
+						}
 			}
 
 Level3.prototype.swipeUpAction = function (pointer) {
 
-	
+
 
 }
 
@@ -253,7 +283,7 @@ Level3.prototype.createFirstPlatforms = function () {
 		this.game.physics.arcade.enable(platform);
 		platform.body.moves = false;
 		platform.body.immovable = true;
-		
+
 		this.totalPlatfomrLength = i*platform.width;
 		this.fPlatformGroup.add(platform);
 
@@ -262,28 +292,76 @@ Level3.prototype.createFirstPlatforms = function () {
 }
 Level3.prototype.getCoin = function (player, coin) {
 	console.log('doingsomething');
-coin.destroy();
+	coin.destroy();
 }
+
+Level3.prototype.killPlayer = function (player, obstacle) {
+
+	player.canjump =  false;
+	player.rotation-=0.5;
+	player.body.bounce.y = 0.5;
+	player.body.bounce.x = 0.5;
+	player.body.velocity.x=-200;
+	player.body.collideWorldBounds = false;
+	obstacle.destroy();
+
+
+	this.game.croquetView.playerKilled(this.mySession);
+	
+
+
+}
+
+Level3.prototype.killOnlinePlayer = function(sessionId){ //un jugador que ha sido topado por algun obstaculo que no esta sincronizado
+
+		this.fNetPLayers.forEach((NetplayerObject, i) => {
+			if( sessionId != this.mySession){
+				if(sessionId == NetplayerObject.id ){
+					console.log('quiero matar a ' + sessionId);
+					NetplayerObject.NetPlayer.rotation-=0.5;
+					NetplayerObject.NetPlayer.body.bounce.y = 0.5;
+					NetplayerObject.NetPlayer.body.bounce.x = 0.5;
+					NetplayerObject.NetPlayer.body.velocity.x=-200;
+					NetplayerObject.NetPlayer.body.collideWorldBounds = false;
+				
+				}
+			}
+		});
+
+	}
+
+
+
 Level3.prototype.update = function () {
+
 this.game.physics.arcade.overlap(this.fPlayer , this.fNetplayersGroup);
 this.game.physics.arcade.collide(this.fPlayer , this.fPlatformGroup);
+this.game.physics.arcade.collide(this.fPlayer , this.fFlyingObstacles, this.killPlayer, null, this);
+//this.game.physics.arcade.collide(this.fNetplayersGroup , this.fFlyingObstacles, this.killOnlinePlayer, null, this);
 this.game.physics.arcade.collide(this.fNetplayersGroup , this.fPlatformGroup);
 this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
 
 this.game.physics.arcade.overlap(this.fPlayer , this.fCoinGroup, this.getCoin, null, this);
 this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCoinGroup, this.getCoin, null, this);
 
-this.fPlatformGroup.forEach(function(platform) { 	
+this.fPlatformGroup.forEach(function(platform) {
 
 	if(platform.x<=-platform.width){
 
 		platform.x=this.totalPlatfomrLength; //creo plataforma infinita
-		
+
 	}
 	platform.x-=this.platformVelo;
 
 
 	},this);
+
+if(this.fPlayer.x<=-100){
+
+
+		this.game.state.start("Intro",true,true);
+		//this.game.croquetView.playerKilled(this.mySession);
+}
 }
 
 Level3.prototype.printMessage = function (mensaje) { //para mensajes que se necesiten escribir desde croquet

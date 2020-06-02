@@ -7,39 +7,50 @@
 
 
 /**
- * player
+ * meteorito
  * @param {Phaser.Game} aGame A reference to the currently running game.
  * @param {Number} aX The x coordinate (in world space) to position the Sprite at.
  * @param {Number} aY The y coordinate (in world space) to position the Sprite at.
  * @param {any} aKey This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
  * @param {any} aFrame If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
  */
-function player(aGame, aX, aY, aKey, aFrame) {
-	Phaser.Sprite.call(this, aGame, aX, aY, aKey || 'player1', aFrame == undefined || aFrame == null? null : aFrame);
+function meteorito(aGame, aX, aY, aKey, aFrame) {
+	Phaser.Sprite.call(this, aGame, aX, aY, aKey || 'meteoro', aFrame == undefined || aFrame == null? null : aFrame);
 	this.anchor.set(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
-	this.body.setSize(73.0, 68.28669738769531);
-	this.body.collideWorldBounds = true;
-	this.body.bounce.y = 0.1;
-	this.body.gravity.y = 800.0;
-	
+	this.body.setCircle(34.5, 7.0, 7.0);
+		
 	// fields
 	
-	this.fPlayer1 = this;
+	this.fMeteoro = this;
 	
 	this.myCreate();
 	
 }
 
 /** @type Phaser.Sprite */
-var player_proto = Object.create(Phaser.Sprite.prototype);
-player.prototype = player_proto;
-player.prototype.constructor = player;
+var meteorito_proto = Object.create(Phaser.Sprite.prototype);
+meteorito.prototype = meteorito_proto;
+meteorito.prototype.constructor = meteorito;
 
 /* --- end generated code --- */
 // -- user code here --
-player.prototype.myCreate = function() {
-	this.canjump =  true;
+
+meteorito.prototype.myCreate = function() {
+
+	this.rotationIndex = Math.random()*0.01;
+	this.setScaleMinMax(0.9,0.9,1.2,1.2);
 	
 }
 
+meteorito.prototype.update = function() {
+
+	this.rotation+=this.rotationIndex;
+
+		if(this.x<=-100){
+			
+			this.destroy();
+		}
+		
+
+}
