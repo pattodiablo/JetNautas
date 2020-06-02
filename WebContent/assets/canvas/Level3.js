@@ -49,7 +49,7 @@ Level3.prototype.create = function () {
 	
 	var _NetplayersGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
 	
-	var _player = new player(this.game, 292.0, 137.0);
+	var _player = new player(this.game, 370.0, 137.0);
 	this.add.existing(_player);
 	
 	
@@ -127,8 +127,8 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){
 				if(NetPlayer != this.game.croquetView.getSessionID()){
 					console.log('agrego todos los jugadores nuevos ' + NetPlayer);
 
-					var croquetPlayer = new netPlayer(this.game, 292.0, -100);
-					croquetPlayer.visible=false;
+					var croquetPlayer = new netPlayer(this.game, 370, 137);
+					//croquetPlayer.visible=false;
 					croquetPlayer.body.collideWorldBounds = true;
 					this.add.existing(croquetPlayer);
 					//agregar aqui jugadores nuevos	
@@ -265,7 +265,7 @@ Level3.prototype.getCoin = function (player, coin) {
 coin.destroy();
 }
 Level3.prototype.update = function () {
-
+this.game.physics.arcade.overlap(this.fPlayer , this.fNetplayersGroup);
 this.game.physics.arcade.collide(this.fPlayer , this.fPlatformGroup);
 this.game.physics.arcade.collide(this.fNetplayersGroup , this.fPlatformGroup);
 this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
