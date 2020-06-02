@@ -218,6 +218,7 @@ Level3.prototype.updatePos = function() {
 			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
 
 	var obstacle = new meteorito(this.game, data.xpos,data.ypos-40);
+	var obstacle = new meteorito(this.game, data.xpos,data.ypos-40);
 	this.add.existing(obstacle);
 
 		this.game.physics.arcade.enable(obstacle);
@@ -238,7 +239,7 @@ Level3.prototype.crearMonedas = function(data){
 
 		this.game.physics.arcade.enable(_cristalCoin);
 		_cristalCoin.body.gravity.y=0;
-		_cristalCoin.body.velocity.x-=200;
+		_cristalCoin.body.velocity.x-=500;
 		_cristalCoin.body.moves = true;
 		_cristalCoin.body.immovable = false;
 		this.fCoinGroup.add(_cristalCoin);

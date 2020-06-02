@@ -121,12 +121,23 @@
       "type": "script",
       "key": "meteorito",
       "url": "assets/prefabs/meteorito.js"
+    },
+    {
+      "type": "image",
+      "key": "warningSign",
+      "url": "assets/images/warningSign.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "warning",
+      "url": "assets/prefabs/warning.js"
     }
   ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1591112699228",
+    "generated": "1591139744839",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
