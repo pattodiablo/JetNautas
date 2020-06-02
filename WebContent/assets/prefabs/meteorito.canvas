@@ -1,7 +1,7 @@
 {
   "canvas-version": 2,
   "settings": {
-    "className": "player",
+    "className": "meteorito",
     "sceneWidth": 640,
     "sceneHeight": 360,
     "generateOnSave": true,
@@ -34,26 +34,24 @@
   },
   "world": {
     "type": "group",
-    "id": "26b1e9de-49dd-42c4-aeb3-1c5be9c5f7d7",
+    "id": "fa5fe652-0edd-46f0-9072-db041661fef4",
     "info": {
-      "editorName": "player",
+      "editorName": "meteorito",
       "setAll": [],
       "children": [{
         "type": "image",
-        "id": "de70d9b8-4926-44e4-a1ad-72eca8357ccb",
+        "id": "c015fbbf-8688-4c03-89cb-f05f066c7ec6",
         "asset": "0",
         "info": {
-          "editorName": "player1",
+          "editorName": "meteoro",
           "editorField": true,
           "anchor.x": 0.5,
           "anchor.y": 0.5,
           "body": {
-            "type": "ARCADE_RECT",
-            "collideWorldBounds": true,
-            "bounceY": 0.1,
-            "gravityY": 800,
-            "width": 73,
-            "height": 68.28669738769531
+            "type": "ARCADE_CIRCLE",
+            "offsetX": 7,
+            "offsetY": 7,
+            "radius": 34.5
           }
         }
       }]
@@ -63,7 +61,7 @@
   "asset-table": {"0": {
     "file": "WebContent/assets/pack.json",
     "section": "graphics",
-    "asset": "player1"
+    "asset": "meteoro"
   }},
   "prefab-table": {}
 }

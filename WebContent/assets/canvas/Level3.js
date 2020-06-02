@@ -49,6 +49,8 @@ Level3.prototype.create = function () {
 	
 	var _NetplayersGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
 	
+	var _flyingObstacles = this.add.group();
+	
 	var _player = new player(this.game, 370.0, 137.0);
 	this.add.existing(_player);
 	
@@ -60,6 +62,7 @@ Level3.prototype.create = function () {
 	this.fPlatformGroup = _platformGroup;
 	this.fCoinGroup = _coinGroup;
 	this.fNetplayersGroup = _NetplayersGroup;
+	this.fFlyingObstacles = _flyingObstacles;
 	this.fPlayer = _player;
 	
 	
@@ -199,6 +202,23 @@ Level3.prototype.updatePos = function() {
 
 	}
 
+
+	Level3.prototype.crearObstaculoCroquet = function(data){
+		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
+			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
+			
+	var obstacle = new meteorito(this.game, data.xpos,data.ypos-100);
+	this.add.existing(obstacle);
+	console.log('datavelo ' + data.velocity);
+		this.game.physics.arcade.enable(obstacle);
+		obstacle.body.gravity.y=0;
+		obstacle.body.velocity.x-=data.velocity*5;
+		obstacle.body.moves = true;
+		obstacle.body.immovable = false;
+		this.fFlyingObstacles.add(obstacle);
+		}
+
+
 Level3.prototype.crearMonedas = function(data){
 		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
 			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
@@ -231,11 +251,11 @@ Level3.prototype.crearMonedas = function(data){
 
 Level3.prototype.swipeDownAction = function(pointer) { //manejo de swipe control de pantalla
 		
-		
+		if(this.fPlayer.canjump){
     		this.fPlayer.body.velocity.y=-this.velo;
     		this.game.croquetView.croquetPlayerAction(this.mySession);
 			//this.updatePos();	
-						
+						}
 			}
 
 Level3.prototype.swipeUpAction = function (pointer) {
@@ -262,11 +282,26 @@ Level3.prototype.createFirstPlatforms = function () {
 }
 Level3.prototype.getCoin = function (player, coin) {
 	console.log('doingsomething');
-coin.destroy();
+	coin.destroy();
 }
+
+Level3.prototype.killPlayer = function (player, obstacle) {
+	console.log('doingsomething');
+	player.canjump =  false;
+	player.rotation-=0.5;
+	player.body.bounce.y = 0.5;
+	player.body.velocity.x=-120;
+	player.body.collideWorldBounds = false;
+	obstacle.destroy();
+	
+}
+
 Level3.prototype.update = function () {
+
 this.game.physics.arcade.overlap(this.fPlayer , this.fNetplayersGroup);
 this.game.physics.arcade.collide(this.fPlayer , this.fPlatformGroup);
+this.game.physics.arcade.collide(this.fPlayer , this.fFlyingObstacles, this.killPlayer, null, this);
+this.game.physics.arcade.collide(this.fNetplayersGroup , this.fFlyingObstacles, this.killPlayer, null, this);
 this.game.physics.arcade.collide(this.fNetplayersGroup , this.fPlatformGroup);
 this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
 
@@ -284,6 +319,12 @@ this.fPlatformGroup.forEach(function(platform) {
 
 
 	},this);
+
+if(this.fPlayer.x<=-100){
+
+
+		this.game.state.start("Intro",true,true);
+}
 }
 
 Level3.prototype.printMessage = function (mensaje) { //para mensajes que se necesiten escribir desde croquet
