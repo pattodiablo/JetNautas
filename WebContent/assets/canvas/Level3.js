@@ -86,6 +86,7 @@ Level3.prototype.myCreate = function () {
 	this.platformVelo = 5;
 	this.velo = 360;
 	this.timesConnected = 0;
+	this.alertGroup = [];
 
 	this.game.input.onDown.add(this.swipeDownAction, this);
 
@@ -218,7 +219,9 @@ Level3.prototype.updatePos = function() {
 			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
 
 	var obstacle = new meteorito(this.game, data.xpos,data.ypos-40);
-	var obstacle = new meteorito(this.game, data.xpos,data.ypos-40);
+	var warningSign = new warning(this.game, this.game.width-50,data.ypos-40);
+	obstacle.warningSign = warningSign;
+	this.add.existing(warningSign);
 	this.add.existing(obstacle);
 
 		this.game.physics.arcade.enable(obstacle);
@@ -236,6 +239,8 @@ Level3.prototype.crearMonedas = function(data){
 
 	var _cristalCoin = new cristal(this.game, data.xpos,data.ypos-100);
 	this.add.existing(_cristalCoin);
+
+	
 
 		this.game.physics.arcade.enable(_cristalCoin);
 		_cristalCoin.body.gravity.y=0;

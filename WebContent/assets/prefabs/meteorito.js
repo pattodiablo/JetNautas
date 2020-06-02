@@ -40,6 +40,8 @@ meteorito.prototype.myCreate = function() {
 
 	this.rotationIndex = Math.random()*0.01;
 	this.setScaleMinMax(0.9,0.9,1.2,1.2);
+	this.warningSign = {};
+	this.warningDistance = 300;
 	
 }
 
@@ -47,8 +49,16 @@ meteorito.prototype.update = function() {
 
 	this.rotation+=this.rotationIndex;
 
+	if(this.x<this.game.width+this.warningDistanc){
+		
+		this.warningSign.visible =  true;
+	}
+	if(this.x<=this.game.width/2){
+		this.warningSign.destroy();
+	}
+	
 		if(this.x<=-100){
-			
+		
 			this.destroy();
 		}
 		
