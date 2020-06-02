@@ -4,27 +4,28 @@
 
 <meta charset="UTF-8" />
 <meta name=viewport content="width=device-width, initial-scale=0.5">
+
 <script src="https://croquet.io/sdk/croquet-latest.min.js"></script>
-
-<meta name=viewport content="width=device-width, initial-scale=1">
-
-<title>JetONautas</title>
-
-
-
 <script src="lib/phaser.js"></script>
 <script src="assets/canvas/Level3.js"></script>
 <script src="assets/canvas/Intro.js"></script>
 <script src="assets/canvas/GameSounds.js"></script>
 
-
+<title>JetONautas</title>
 
 <script type="text/javascript">
-	
+
+window.onload = function() {
+
+
+const Q = Croquet.Constants;
+Q.TICK_MS = 300;
+
 class MirrorModel extends Croquet.Model {
 
 		init() {
 
+			this.allPlayers = new Array();
 			this.subscribe('gameNetwork',"darEmitiendoMensaje",this.emitirMensaje);
 			this.subscribe('gameNetwork',"createNetworkPlayer", this.createCroquetPlayer);
 			this.subscribe('gameNetwork',"confirmPlayer",this.storePlayer);
@@ -32,11 +33,37 @@ class MirrorModel extends Croquet.Model {
 		  	this.subscribe(this.sessionId, "view-exit", this.deleteUser);
 			this.subscribe('gameNetwork',"updatePlayerList",this.updatePlayerList);
 		  	this.subscribe('gameNetwork',"updatePos", this.moveNetPlayer);
+			this.subscribe('gameNetwork',"croquetPlayerAction", this.emmitAction);
 
-			this.allPlayers = [];
+			this.crearMonedas();
 			console.log('mySessionID ' + this.sessionId);
 		}
 
+
+		emmitAction(sessionId){
+
+			this.publish('gameNetwork',"croquetPlayerExecuteAction",sessionId);
+			
+		}
+
+		crearMonedas(){
+			if(this.allPlayers.length > 0){
+
+				//console.log('voy a crear monedas');
+						
+						var ypos = Math.random()*1000;
+						var xpos = 2000;
+						var type = 'cristals';
+						var data = {ypos:ypos, xpos:xpos, type:type};
+
+						this.publish('gameNetwork',"crearMonedasCroquet",data);
+				
+					
+			}
+			this.future(Q.TICK_MS).crearMonedas();
+		}
+
+		
 		addUser(id) {
 
 			console.log(id + ' acaba de ingresar');
@@ -59,8 +86,10 @@ class MirrorModel extends Croquet.Model {
 
 				this.allPlayers.push(sessionId);
 				console.log('sesion registrada:' +  this.allPlayers);
+				
 				this.publish('gameNetwork', "populatePlayers", this.allPlayers);
 				//console.log('hasta aqui ' + allPlayers.getLength());
+				
 			}
 
 		updatePlayerList(sessionId){
@@ -107,18 +136,26 @@ class ClientViews extends Croquet.View {
 			this.subscribe('gameNetwork',"removePlayer",this.removeCroquetPlayer);
  			this.subscribe('gameNetwork', "populatePlayers", this.populatePlayers);
 			this.subscribe('gameNetwork',"populateMovement",  this.moveNetPhaserPlayer);
+			this.subscribe('gameNetwork',"crearMonedasCroquet",this.crearMonedas);
+			this.subscribe('gameNetwork',"croquetPlayerExecuteAction", this.doAction);
 
 			this.game = null;
 			this.crearJuego(this); //me paso croquet
 			console.log('MyCroquetId ' + this.viewId);
 		}
 
-
+		doAction(sessionId){
+			if(typeof(this.gameScene) != 'undefined'){
+				if(this.gameScene.key == 'Level3'){
+				this.gameScene.croquetAction(sessionId);
+				}
+			}
+		}
 
 		crearJuego(croquetView){ //recibo croquet
 
-			var width = 960  ;﻿﻿﻿
-			var height = 640 ;
+			var width = document.body.clientWidth;﻿﻿﻿
+			var height = document.documentElement["scrollHeight"];
 			var firstRunLandscape = true;
 
 		var game = new Phaser.Game(width,height, Phaser.CANVAS);
@@ -148,11 +185,6 @@ class ClientViews extends Croquet.View {
 			
 		this.load.pack('loader', 'assets/loaderSprites.json');
 
- 		var loadSprite = game.add.sprite(0, 0, 'loadBar');
-
-	        loadSprite.x = game.world.centerX - loadSprite.width / 2;
-	        loadSprite.y = game.world.centerY - 16;
-
 	
 		};
 
@@ -160,7 +192,13 @@ class ClientViews extends Croquet.View {
 
 		Boot.prototype.create = function () {
 		
-			game.time.events.add(Phaser.Timer.SECOND * 1, iniciarJuego, this);
+		this.loadSprite = game.add.sprite(0, 0, 'loadBar');
+		this.loadSprite.x = game.world.centerX - this.loadSprite.width / 2;
+		this.loadSprite.y = game.world.centerY - 16;
+		var loadSprite = this.loadSprite;
+
+		iniciarJuego();
+		//	game.time.events.add(Phaser.Timer.SECOND * 2, iniciarJuego, this);
 
 			function iniciarJuego(){
 
@@ -179,13 +217,9 @@ class ClientViews extends Croquet.View {
 		}
 
 		var LoaderTime_proto = Object.create(Phaser.State.prototype);
+
 			LoaderTime.prototype = LoaderTime_proto;
 			LoaderTime.prototype.constructor = LoaderTime;
-
-			LoaderTime.prototype.init = function () {
-			
-			
-		};
 
 		LoaderTime.prototype.preload = function () {
 
@@ -263,13 +297,14 @@ class ClientViews extends Croquet.View {
 
 			game.state.add("Level3", Level3);
 			game.state.add("Intro", Intro);
-			game.state.start("Boot",true,true);
+			game.state.start("Intro",true,true);
 
 		}
 
-		setCurrentScene(scene){
 
-			this.gameScene =  scene;
+		setCurrentScene(game){
+
+			this.gameScene = game.state.getCurrentState﻿();
 			console.log('gameScene ' + this.gameScene);
 
 		}
@@ -289,12 +324,20 @@ class ClientViews extends Croquet.View {
 		}
 
 		populatePlayers(allPlayers){
-			console.log('populando')
-			this.game.scene.keys.Scene1.addPhaserNetworkOnlinePlayer(allPlayers);
+			console.log('populando');
+				if(typeof(this.gameScene) != 'undefined'){
+				if(this.gameScene.key == 'Level3'){
+			this.gameScene.addPhaserNetworkOnlinePlayer(allPlayers);
+			}
+			}
 		}
 
 		removeCroquetPlayer(sessionId){
-			this.game.scene.keys.Scene1.removePhaserNetworkPlayer(sessionId);
+			if(typeof(this.gameScene) != 'undefined'){
+				if(this.gameScene.key == 'Level3'){
+			this.gameScene.removePhaserNetworkPlayer(sessionId);
+			}
+			}
 		}
 
 		updatePlayerList(){
@@ -305,19 +348,43 @@ class ClientViews extends Croquet.View {
 
 		createCroquetPlayer(allPlayers){
 
+			if(typeof(this.gameScene) != 'undefined'){
+				if(this.gameScene.key == 'Level3'){
 			var hasPlayer =	this.gameScene.addPhaserNetworkPlayer(allPlayers);
-
+			}
+			}
 
 		}
+
+		crearMonedas(data){
+		//	console.log('nombre escena  ' + this.gameScene.key);
+			if(typeof(this.gameScene) != 'undefined'){
+				if(this.gameScene.key == 'Level3'){
+					this.gameScene.crearMonedas(data);
+				}
+			}
+		
+		}
+
 
 		getPlayersPos(){
-			this.gameScene.updatePos();
+		if(typeof(this.gameScene) != 'undefined'){
+			if(this.gameScene.key == 'Level3'){
+				this.gameScene.updatePos();
+			}
+				}
 		}
 
+		croquetPlayerAction(sessionId){
+
+			this.publish('gameNetwork',"croquetPlayerAction", sessionId);
+		}
 		moveNetPhaserPlayer(data){
 				
 				if(typeof(this.gameScene) != 'undefined'){
+						if(this.gameScene.key == 'Level3'){
 				this.gameScene.moveNetPhaserPlayer(data);
+					}
 				}
 				
 		}
@@ -332,21 +399,25 @@ class ClientViews extends Croquet.View {
 		}
 
 		escribirMensaje(mensaje){
+			if(typeof(this.gameScene) != 'undefined'){
+			if(this.gameScene.key == 'Level3'){
 			this.gameScene.printMessage(mensaje);
+			}
+			}
 		}
 
 
 	}
 
 
-	Croquet.Session.join('Player',MirrorModel,ClientViews);
+	Croquet.Session.join('JetONautas',MirrorModel,ClientViews);
 
 
 document.addEventListener('touchstart', function(event){
     event.preventDefault();
 }, {passive: false});
 
-
+}
 </script>
 
 

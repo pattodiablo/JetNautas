@@ -68,6 +68,12 @@ Intro.prototype.myPreload = function () {
 	
 };
 
+	Intro.prototype.removePhaserNetworkPlayer = function(sessionId){
+
+
+		console.log('nothign to remove here ');
+
+	}
 
 
 Intro.prototype.myCreate = function () {
@@ -115,5 +121,16 @@ Intro.prototype.myCreate = function () {
 		 
 	 }
 	
+	this.game.croquetView.setCurrentScene(this.game); //seteamos en que escena me encuentro para croquet
 };
 
+
+Intro.prototype.crearMonedas = function(data){
+			console.log('no time now for monedas');
+		
+		}
+
+Intro.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){
+
+	console.log('no time now to add players, this should be in the Level3 scene');
+}

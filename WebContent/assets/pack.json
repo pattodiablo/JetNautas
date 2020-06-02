@@ -59,12 +59,63 @@
       "key": "playportrait",
       "url": "assets/images/playportrait.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "platform1",
+      "url": "assets/images/platform1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "player1",
+      "url": "assets/images/player1.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "player",
+      "url": "assets/prefabs/player.js"
+    },
+    {
+      "type": "image",
+      "key": "bigFloorfake",
+      "url": "assets/images/bigFloorfake.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bottomCover",
+      "url": "assets/images/bottomCover.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "netPlayers",
+      "url": "assets/images/netPlayers.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "netPlayer",
+      "url": "assets/prefabs/netPlayer.js"
+    },
+    {
+      "type": "image",
+      "key": "cristalCoin",
+      "url": "assets/images/cristalCoin.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "cristal",
+      "url": "assets/prefabs/cristal.js"
     }
   ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1590972222194",
+    "generated": "1591052996102",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

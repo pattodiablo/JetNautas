@@ -1,0 +1,64 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "netPlayer",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.Sprite",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8f1a27f9-02ad-4662-b576-865b8de8d3c4",
+    "info": {
+      "editorName": "netPlayer",
+      "setAll": [],
+      "children": [{
+        "type": "image",
+        "id": "54c02dfc-9bdf-4140-8dda-49f4d5c7b163",
+        "asset": "0",
+        "info": {
+          "editorName": "netPlayers",
+          "anchor.x": 0.5,
+          "anchor.y": 0.5,
+          "body": {
+            "type": "ARCADE_RECT",
+            "bounceY": 0.1,
+            "gravityY": 800
+          }
+        }
+      }]
+    }
+  },
+  "type": "SPRITE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "graphics",
+    "asset": "netPlayers"
+  }},
+  "prefab-table": {}
+}
