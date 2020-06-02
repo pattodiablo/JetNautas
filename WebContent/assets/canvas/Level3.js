@@ -239,7 +239,7 @@ Level3.prototype.crearMonedas = function(data){
 
 		this.game.physics.arcade.enable(_cristalCoin);
 		_cristalCoin.body.gravity.y=0;
-		_cristalCoin.body.velocity.x-=500;
+		_cristalCoin.body.velocity.x-=450;
 		_cristalCoin.body.moves = true;
 		_cristalCoin.body.immovable = false;
 		this.fCoinGroup.add(_cristalCoin);
