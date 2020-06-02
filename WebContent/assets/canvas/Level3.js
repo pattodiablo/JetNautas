@@ -207,7 +207,7 @@ Level3.prototype.updatePos = function() {
 		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
 			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
 			
-	var obstacle = new meteorito(this.game, data.xpos,data.ypos-100);
+	var obstacle = new meteorito(this.game, data.xpos,data.ypos-40);
 	this.add.existing(obstacle);
 	console.log('datavelo ' + data.velocity);
 		this.game.physics.arcade.enable(obstacle);
