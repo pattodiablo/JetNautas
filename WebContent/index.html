@@ -31,11 +31,11 @@ class MirrorModel extends Croquet.Model {
 			this.subscribe('gameNetwork',"createNetworkPlayer", this.createCroquetPlayer);
 			this.subscribe('gameNetwork',"confirmPlayer",this.storePlayer);
  			this.subscribe(this.sessionId, "view-join", this.addUser);
-		  this.subscribe(this.sessionId, "view-exit", this.deleteUser);
+		 	this.subscribe(this.sessionId, "view-exit", this.deleteUser);
 			this.subscribe('gameNetwork',"updatePlayerList",this.updatePlayerList);
 		  	this.subscribe('gameNetwork',"updatePos", this.moveNetPlayer);
 			this.subscribe('gameNetwork',"croquetPlayerAction", this.emmitAction);
-			this.subscribe('gameNetwork',"playerKilled",  this.deleteUser);
+			this.subscribe('gameNetwork',"playerKilled",  this.propagateKill);
 
 			this.crearMonedas();
 			this.crearObstaculo();
@@ -75,6 +75,9 @@ class MirrorModel extends Croquet.Model {
 						var xpos = 2000;
 						var type = 'cristals';
 						var velocity = Math.random()*200;
+						if(velocity<=100){
+							velocity =  100;
+						}
 						var data = {ypos:ypos, xpos:xpos, type:type, velocity:velocity};
 
 						this.publish('gameNetwork',"crearObstaculoCroquet",data);
@@ -90,6 +93,14 @@ class MirrorModel extends Croquet.Model {
 			console.log(id + ' acaba de ingresar');
 
 		}
+
+		propagateKill(id) {
+
+
+				this.publish('gameNetwork',"propagateKilledPlayer",id);
+				console.log('user ' + id + ' has been meteorized');
+
+	     }
 
 		deleteUser(id) {
 
@@ -159,7 +170,7 @@ class ClientViews extends Croquet.View {
 			this.subscribe('gameNetwork',"populateMovement",  this.moveNetPhaserPlayer);
 			this.subscribe('gameNetwork',"crearMonedasCroquet",this.crearMonedas);
 			this.subscribe('gameNetwork',"crearObstaculoCroquet",this.crearObstaculoCroquet);
-
+			this.subscribe('gameNetwork',"propagateKilledPlayer",this.killOnlinePlayer);
 			this.subscribe('gameNetwork',"croquetPlayerExecuteAction", this.doAction);
 
 			this.game = null;
@@ -167,7 +178,16 @@ class ClientViews extends Croquet.View {
 			console.log('MyCroquetId ' + this.viewId);
 		}
 
+			killOnlinePlayer(sessionId){
+				console.log('estoy en killOnlinePlayer de croquetView');
+				if(typeof(this.gameScene) != 'undefined'){
+					if(this.gameScene.key == 'Level3'){
 
+						this.gameScene.killOnlinePlayer(sessionId);
+
+						}
+					}
+			}
 			playerKilled(sessionId){
 				this.publish('gameNetwork',"playerKilled",  sessionId);
 			}
@@ -200,7 +220,7 @@ class ClientViews extends Croquet.View {
 
 		var game = new Phaser.Game(width,height, Phaser.CANVAS);
 		game.croquetView = croquetView; //envio croquet a phaser
-
+		game.timesConnected = 0;
 
 
 	function Boot() {
@@ -345,7 +365,7 @@ class ClientViews extends Croquet.View {
 		setCurrentScene(game){
 
 			this.gameScene = game.state.getCurrentState﻿();
-			console.log('gameScene ' + this.gameScene);
+			console.log('gameScene ' + this.gameScene.key);
 
 		}
 
@@ -450,7 +470,7 @@ class ClientViews extends Croquet.View {
 	}
 
 
-	Croquet.Session.join('JetONautas',MirrorModel,ClientViews);
+	Croquet.Session.join('JetONautasC',MirrorModel,ClientViews);
 
 
 document.addEventListener('touchstart', function(event){
