@@ -2,8 +2,8 @@
   "canvas-version": 2,
   "settings": {
     "className": "Level3",
-    "sceneWidth": 960,
-    "sceneHeight": 640,
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
     "generateOnSave": true,
     "enableStepping": false,
     "lang": "JAVA_SCRIPT",
@@ -43,19 +43,101 @@
     "info": {
       "editorName": "Level",
       "setAll": [],
-      "children": [{
-        "type": "image",
-        "id": "bc2ff9d7-88da-4f50-ab56-62e3a037113e",
-        "asset": "0",
-        "info": {"editorName": "jetBg"}
-      }]
+      "children": [
+        {
+          "type": "image",
+          "id": "bc2ff9d7-88da-4f50-ab56-62e3a037113e",
+          "asset": "0",
+          "info": {
+            "editorName": "jetBg",
+            "editorField": true
+          }
+        },
+        {
+          "type": "group",
+          "id": "030c896a-7279-4cf2-8f3d-949db9d2f295",
+          "info": {
+            "editorName": "platformGroup",
+            "editorField": true,
+            "physicsGroup": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "image",
+          "id": "38153df1-662b-418f-beb9-698f5202f55b",
+          "asset": "1",
+          "info": {
+            "editorName": "bigFloorfake",
+            "y": 1000
+          }
+        },
+        {
+          "type": "image",
+          "id": "c059c15d-9521-487f-9fbb-5dde83521228",
+          "asset": "2",
+          "info": {
+            "editorName": "bottomCover",
+            "y": 1080
+          }
+        },
+        {
+          "type": "group",
+          "id": "ed9b0e64-0ff8-4970-b9a0-5030f0b5f619",
+          "info": {
+            "editorName": "coinGroup",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "b9443b34-65a6-4c8a-ac65-3d3711289899",
+          "info": {
+            "editorName": "NetplayersGroup",
+            "editorField": true,
+            "physicsGroup": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "prefab",
+          "prefab": "0",
+          "id": "d266159a-6f56-4224-aa71-169f097eecf8",
+          "asset-ref": {
+            "file": "WebContent/assets/pack.json",
+            "section": "graphics",
+            "asset": "player1"
+          },
+          "info": {
+            "editorName": "player",
+            "x": 370,
+            "y": 137
+          }
+        }
+      ]
     }
   },
   "type": "STATE",
-  "asset-table": {"0": {
-    "file": "WebContent/assets/pack.json",
-    "section": "graphics",
-    "asset": "jetBg"
-  }},
-  "prefab-table": {}
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "jetBg"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "bigFloorfake"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "bottomCover"
+    }
+  },
+  "prefab-table": {"0": "WebContent/assets/prefabs/player.canvas"}
 }

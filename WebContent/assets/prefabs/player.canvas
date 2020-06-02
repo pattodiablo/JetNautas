@@ -1,0 +1,68 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "player",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.Sprite",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "26b1e9de-49dd-42c4-aeb3-1c5be9c5f7d7",
+    "info": {
+      "editorName": "player",
+      "setAll": [],
+      "children": [{
+        "type": "image",
+        "id": "de70d9b8-4926-44e4-a1ad-72eca8357ccb",
+        "asset": "0",
+        "info": {
+          "editorName": "player1",
+          "editorField": true,
+          "anchor.x": 0.5,
+          "anchor.y": 0.5,
+          "body": {
+            "type": "ARCADE_RECT",
+            "collideWorldBounds": true,
+            "bounceY": 0.1,
+            "gravityY": 800,
+            "width": 73,
+            "height": 68.28669738769531
+          }
+        }
+      }]
+    }
+  },
+  "type": "SPRITE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "graphics",
+    "asset": "player1"
+  }},
+  "prefab-table": {}
+}
