@@ -18,7 +18,8 @@
       200,
       200
     ],
-    "showGrid": true
+    "showGrid": true,
+    "create_after": "this.myCreate();"
   },
   "stateSettings": {
     "stageBackgroundColor": [

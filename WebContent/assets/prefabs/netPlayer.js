@@ -21,6 +21,8 @@ function netPlayer(aGame, aX, aY, aKey, aFrame) {
 	this.body.bounce.y = 0.1;
 	this.body.gravity.y = 800.0;
 	
+	this.myCreate();
+	
 }
 
 /** @type Phaser.Sprite */
@@ -30,3 +32,8 @@ netPlayer.prototype.constructor = netPlayer;
 
 /* --- end generated code --- */
 // -- user code here --
+netPlayer.prototype.myCreate = function() {
+	
+	this.isPlaying =  false;
+	
+}

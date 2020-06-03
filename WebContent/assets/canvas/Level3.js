@@ -116,21 +116,23 @@ Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
 			this.mySession = this.game.croquetView.getSessionID();
 			this.game.croquetView.confirmPlayerAdded(this.mySession);
 			this.game.timesConnected++;
+
 			//this.updatePos();
 
-		}else{
-
-			this.mySession = this.game.croquetView.getSessionID();
-			this.game.croquetView.updatePlayerList();
-			this.game.croquetView.getPlayersPos();
-
 		}
+
+		this.game.croquetView.updatePlayerList(); //recargo lista de usuarios
+		this.mySession = this.game.croquetView.getSessionID(); //me asigno mi id de usario
+		
+		this.game.croquetView.getPlayersPos();
+
+		this.fPlayer.isPlaying = true;
 		return true;
 
 
 }
 
-Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){
+Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add online player
 
 		console.log('--creando online players--');
 		console.log('online players: ' + allPlayers);
@@ -142,7 +144,13 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){
 					console.log('agrego todos los jugadores nuevos ' + NetPlayer);
 
 					var croquetPlayer = new netPlayer(this.game, 370, 137);
-					//croquetPlayer.visible=false;
+
+					if(croquetPlayer.isPlaying){
+						croquetPlayer.visible=true;
+					}else{
+						croquetPlayer.visible=false;
+					}
+					
 					croquetPlayer.body.collideWorldBounds = true;
 					this.add.existing(croquetPlayer);
 					//agregar aqui jugadores nuevos
@@ -185,7 +193,7 @@ Level3.prototype.updatePos = function() {
 	Level3.prototype.moveNetPhaserPlayer = function(data){
 
 		this.fNetPLayers.forEach((NetplayerObject, i) => {
-
+	if(NetplayerObject.NetPlayer.body != null){
 			if(data.sessionId == NetplayerObject.id){
 				NetplayerObject.NetPlayer.visible=true;
 				NetplayerObject.NetPlayer.x = data.xpos;
@@ -193,6 +201,7 @@ Level3.prototype.updatePos = function() {
 				NetplayerObject.NetPlayer.body.velocity.x = data.xvelo;
 				NetplayerObject.NetPlayer.body.velocity.y = data.yvelo;
 				NetplayerObject.NetPlayer.rotation = data.rotation;
+				}
 			}
 		});
 
@@ -256,8 +265,12 @@ Level3.prototype.crearMonedas = function(data){
 					console.log('doing action of ' + session);
 					if(session == NetplayerObject.id){
 
-						NetplayerObject.NetPlayer.body.velocity.y = -this.velo; //replico la accion del jugador para smooth the action
+							if(NetplayerObject.NetPlayer.body != null){
 
+
+							NetplayerObject.NetPlayer.body.velocity.y = -this.velo; //replico la accion del jugador para smooth the action
+							
+							}else{console.log('no player for action')}
 					}
 				});
 		}

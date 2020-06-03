@@ -57,7 +57,7 @@ Intro.prototype.create = function () {
 /* --- end generated code --- */
 // -- user code here --
 Intro.prototype.myInit = function () {
-	
+	this.game.stage.disableVisibilityChange = true;
 };
 
 Intro.prototype.myPreload = function () {

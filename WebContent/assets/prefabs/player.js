@@ -39,6 +39,7 @@ player.prototype.constructor = player;
 /* --- end generated code --- */
 // -- user code here --
 player.prototype.myCreate = function() {
+	this.isplaying = false;
 	this.canjump =  true;
 	
 }
