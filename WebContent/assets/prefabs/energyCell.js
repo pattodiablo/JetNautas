@@ -7,43 +7,49 @@
 
 
 /**
- * cristal
+ * energyCell
  * @param {Phaser.Game} aGame A reference to the currently running game.
  * @param {Number} aX The x coordinate (in world space) to position the Sprite at.
  * @param {Number} aY The y coordinate (in world space) to position the Sprite at.
  * @param {any} aKey This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
  * @param {any} aFrame If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
  */
-function cristal(aGame, aX, aY, aKey, aFrame) {
-	Phaser.Sprite.call(this, aGame, aX, aY, aKey || 'cristalCoin', aFrame == undefined || aFrame == null? null : aFrame);
-	this.scale.set(1.5, 1.5);
+function energyCell(aGame, aX, aY, aKey, aFrame) {
+	Phaser.Sprite.call(this, aGame, aX, aY, aKey || 'energyCell', aFrame == undefined || aFrame == null? null : aFrame);
+	this.scale.set(0.4, 0.4);
 	this.anchor.set(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
-	
-	// fields
-	
-	this.fCristalCoin = this;
+	this.body.setCircle(26.5, 9.0, 9.0);
 	
 	this.myCreate();
 	
 }
 
 /** @type Phaser.Sprite */
-var cristal_proto = Object.create(Phaser.Sprite.prototype);
-cristal.prototype = cristal_proto;
-cristal.prototype.constructor = cristal;
+var energyCell_proto = Object.create(Phaser.Sprite.prototype);
+energyCell.prototype = energyCell_proto;
+energyCell.prototype.constructor = energyCell;
 
 /* --- end generated code --- */
 // -- user code here --
-cristal.prototype.myCreate = function() {
+
+energyCell.prototype.myCreate = function() {
+	
+	this.rotationIndex=Math.random() * (0.03 - 0.01) + 0.01;
+	this.setScaleMinMax(0.75,0.75,0.8,0.8);
 	
 	
+	 	timer = this.game.time.create(false);
+	    timer.loop(100, this.changeAlpha, this);
+	    timer.start();
 }
 
-cristal.prototype.update = function() {
-	if(this.x<=-100){
-		
-		this.destroy();
-	}
+energyCell.prototype.changeAlpha = function(){
+	this.maxAlpha =   Math.random() * (0.8 - 0.4) + 0.4;
+	this.alpha=this.maxAlpha;
+}
+energyCell.prototype.update = function(){
 	
+
+	this.rotation+=this.rotationIndex;
 }

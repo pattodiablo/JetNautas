@@ -19,7 +19,7 @@ window.onload = function() {
 
 
 const Q = Croquet.Constants;
-Q.CoinRate = 150;
+Q.CoinRate = 300;
 Q.ObstacleRate = 1000;
 
 class MirrorModel extends Croquet.Model {
@@ -90,7 +90,7 @@ class MirrorModel extends Croquet.Model {
 						packmonedas.push(data)
 
 					}
-					console.log('pack moneda creado ' + packmonedas.length)
+				
 					this.publish('gameNetwork',"crearMonedaSenoCroquet",packmonedas);
 						
 			}
@@ -137,7 +137,7 @@ class MirrorModel extends Croquet.Model {
 
 
 				this.publish('gameNetwork',"propagateKilledRemove",id);
-				console.log('user ' + id + ' has been removed');
+				console.log('user ' + id + ' propagated to be removed ');
 
 	     }
 
@@ -158,7 +158,7 @@ class MirrorModel extends Croquet.Model {
 				this.allPlayers.push(sessionId);
 				console.log('sesion registrada:' +  this.allPlayers);
 
-				this.publish('gameNetwork', "populatePlayers", this.allPlayers);
+			//	this.publish('gameNetwork', "populatePlayers", this.allPlayers);
 				//console.log('hasta aqui ' + allPlayers.getLength());
 
 			}

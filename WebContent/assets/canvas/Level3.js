@@ -10,9 +10,9 @@
  * Level3.
  */
 function Level3() {
-
+	
 	Phaser.State.call(this);
-
+	
 }
 
 /** @type Phaser.State */
@@ -21,53 +21,56 @@ Level3.prototype = Level3_proto;
 Level3.prototype.constructor = Level3;
 
 Level3.prototype.init = function () {
-
+	
 	this.myInit();
-
+	
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-
+	
 };
 
 Level3.prototype.preload = function () {
-
+	
 	this.myPreload();
-
+	
 };
 
 Level3.prototype.create = function () {
 	var _jetBg = this.add.sprite(0.0, 0.0, 'jetBg');
-
+	
 	var _platformGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
-
+	
 	this.add.sprite(0.0, 1000.0, 'bigFloorfake');
-
+	
 	this.add.sprite(0.0, 1080.0, 'bottomCover');
-
+	
 	var _coinGroup = this.add.group();
-
+	
 	var _NetplayersGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
-
+	
+	var _onlinePlayersFire = this.add.group(_NetplayersGroup);
+	
 	var _flyingObstacles = this.add.group();
-
+	
 	var _player = new player(this.game, 370.0, 137.0);
 	this.add.existing(_player);
-
-
-
+	
+	
+	
 	// fields
-
+	
 	this.fJetBg = _jetBg;
 	this.fPlatformGroup = _platformGroup;
 	this.fCoinGroup = _coinGroup;
 	this.fNetplayersGroup = _NetplayersGroup;
+	this.fOnlinePlayersFire = _onlinePlayersFire;
 	this.fFlyingObstacles = _flyingObstacles;
 	this.fPlayer = _player;
-
-
+	
+	
 	this.myCreate();
-
+	
 };
 
 /* --- end generated code --- */
@@ -94,7 +97,7 @@ Level3.prototype.myCreate = function () {
 
 	this.game.world.setBounds(0, 0, 1920, 1080);
 
-    this.game.camera.follow(this.fPlayer);
+    this.game.camera.follow(this.fPlayer,Phaser.Camera.FOLLOW_LOCKON,0.1, 0.1,0,0);
 
 
 	this.fJetBg.width=1920;
@@ -104,6 +107,25 @@ Level3.prototype.myCreate = function () {
 
 	this.createFirstPlatforms();
 	this.addPhaserNetworkPlayer(); //registro mi jugador en croquet
+
+		var emitter = this.game.add.emitter(this.game.width/2, this.game.height/2, 400);
+    
+    	emitter.width = this.game.world.width;
+    	emitter.height = this.game.world.height;
+    	emitter.angle = 0; // uncomment to set an angle for the rain.
+     	emitter.gravity = 0;
+    	emitter.makeParticles('particle');
+    	emitter.lifespan = 5000;
+    	emitter.minParticleScale = 0.6;
+    	emitter.maxParticleScale = 1;
+    
+    	emitter.setYSpeed(0);
+    	emitter.setXSpeed(-800, -900);
+    
+    	emitter.minRotation = 0;
+    	emitter.maxRotation = 0;
+    
+    	emitter.start(false, 200, 0, 0);
 
 
 
@@ -118,12 +140,11 @@ Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
 			this.game.timesConnected++;
 
 			//this.updatePos();
-
 		}
 
 		this.game.croquetView.updatePlayerList(); //recargo lista de usuarios
 		this.mySession = this.game.croquetView.getSessionID(); //me asigno mi id de usario
-			this.updatePos();
+		this.updatePos();
 		//this.game.croquetView.getPlayersPos();
 
 		this.fPlayer.isPlaying = true;
@@ -137,32 +158,42 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add onli
 		console.log('--creando online players--');
 		console.log('online players: ' + allPlayers);
 		if(allPlayers.length>0){
+			
 			allPlayers.forEach((NetPlayer, i) => {
 				console.log('id de NetPlayer -> ' + NetPlayer);
 				console.log('mi session es -> ' + this.game.croquetView.getSessionID());
-				if(NetPlayer != this.game.croquetView.getSessionID()){
-					console.log('agrego todos los jugadores nuevos ' + NetPlayer);
+				if(allPlayers.length-1 != this.fNetPLayers.length){
 
-					var croquetPlayer = new netPlayer(this.game, 370, 137);
+			
+					if(NetPlayer != this.game.croquetView.getSessionID()){
+						
+						console.log('agrego todos los jugadores nuevos ' + NetPlayer);
 
-					if(croquetPlayer.isPlaying){
-						croquetPlayer.visible=true;
+						var croquetPlayer = new netPlayer(this.game, 370, 137);
+
+						if(croquetPlayer.isPlaying){
+							croquetPlayer.visible=true;
+						}else{
+							croquetPlayer.visible=false;
+						}
+						
+						croquetPlayer.body.collideWorldBounds = true;
+						this.add.existing(croquetPlayer);
+						//agregar aqui jugadores nuevos
+
+						var NetplayerObject = {NetPlayer:croquetPlayer,id:NetPlayer};
+						this.fNetPLayers.push(NetplayerObject);
+						this.fNetplayersGroup.add(croquetPlayer);
 					}else{
-						croquetPlayer.visible=false;
-					}
-					
-					croquetPlayer.body.collideWorldBounds = true;
-					this.add.existing(croquetPlayer);
-					//agregar aqui jugadores nuevos
 
-					var NetplayerObject = {NetPlayer:croquetPlayer,id:NetPlayer};
-					this.fNetPLayers.push(NetplayerObject);
-					this.fNetplayersGroup.add(croquetPlayer);
+						console.log('este jugador ya esta creado')
+					}
+
 				}else{
 
-					console.log('este jugador ya esta creado')
-				}
+					console.log('al parecer no hay jugadores nuevos en la siguiente lista: ' + JSON.stringify(this.fNetPLayers,["id"]) );
 
+				}
 			});
 		}else {
 			console.log('no hay jugadores online');
@@ -213,10 +244,15 @@ Level3.prototype.updatePos = function() {
 		console.log('nedd to remove ' + sessionId);
 
 		this.fNetPLayers.forEach((NetplayerObject, i) => {
-			console.log('iteracion id: ' + NetplayerObject);
+			console.log('searching to remove in game a : ' + sessionId);
 			if(sessionId == NetplayerObject.id){
 				console.log('removing ' + NetplayerObject.id);
 					NetplayerObject.NetPlayer.destroy();
+					const index =  this.fNetPLayers.indexOf(NetplayerObject);
+					if (index > -1) {
+					  var removed = this.fNetPLayers.splice(index, 1);
+					  console.log('splice result ' + JSON.stringify(removed,["id"]))
+					}
 			}
 		});
 
@@ -242,14 +278,10 @@ Level3.prototype.updatePos = function() {
 		}
 
 
-Level3.prototype.crearMonedas = function(data){
-		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
-			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
+Level3.prototype.crearMonedas = function(data){ //creacion de combustible o monedas tipo 1
 
-	var _cristalCoin = new cristal(this.game, data.xpos,data.ypos-100);
+	var _cristalCoin = new energyCell(this.game, data.xpos,data.ypos-100);
 	this.add.existing(_cristalCoin);
-
-	
 
 		this.game.physics.arcade.enable(_cristalCoin);
 		_cristalCoin.body.gravity.y=0;
@@ -260,10 +292,8 @@ Level3.prototype.crearMonedas = function(data){
 		}
 
 
-Level3.prototype.crearMonedaSeno = function(packmonedas){
-		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
-			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
-console.log('Moneda Seno creada ' + packmonedas.length);
+Level3.prototype.crearMonedaSeno = function(packmonedas){ //creacion de monedas tipo seno
+
 	packmonedas.forEach((moneda, i) => {
 					
 		var _cristalCoin = new cristal(this.game, moneda.xpos,moneda.ypos);
@@ -276,7 +306,7 @@ console.log('Moneda Seno creada ' + packmonedas.length);
 		_cristalCoin.body.moves = true;
 		_cristalCoin.body.immovable = false;
 		this.fCoinGroup.add(_cristalCoin);
-console.log('posicion moneda: '+_cristalCoin.x +' '+_cristalCoin.y)
+
 				});
 
 	
@@ -286,7 +316,7 @@ console.log('posicion moneda: '+_cristalCoin.x +' '+_cristalCoin.y)
 	Level3.prototype.croquetAction = function(session) {
 		if(session !== this.mySession){
 			this.fNetPLayers.forEach((NetplayerObject, i) => {
-					console.log('doing action of ' + session);
+					console.log('jugador ' + session + "se impulsa");
 					if(session == NetplayerObject.id){
 
 							if(NetplayerObject.NetPlayer.body != null){
@@ -333,8 +363,7 @@ Level3.prototype.createFirstPlatforms = function () {
 	}
 
 }
-Level3.prototype.getCoin = function (player, coin) {
-	console.log('doingsomething');
+Level3.prototype.getCoin = function (player, coin) { //recoger monedas
 	coin.destroy();
 }
 
@@ -347,8 +376,8 @@ Level3.prototype.killPlayer = function (player, obstacle) {
 	player.body.velocity.x=-200;
 	player.body.collideWorldBounds = false;
 	obstacle.destroy();
-
-
+  	this.game.camera.shake(0.02, 250);
+  	this.game.camera.flash(0xff0000, 500)
 	this.game.croquetView.playerKilled(this.mySession);
 	
 
@@ -361,6 +390,7 @@ Level3.prototype.killOnlinePlayer = function(sessionId){ //un jugador que ha sid
 			if( sessionId != this.mySession){
 				if(sessionId == NetplayerObject.id ){
 					console.log('quiero matar a ' + sessionId);
+					NetplayerObject.NetPlayer.canjump=false;
 					NetplayerObject.NetPlayer.rotation-=0.5;
 					NetplayerObject.NetPlayer.body.bounce.y = 0.5;
 					NetplayerObject.NetPlayer.body.bounce.x = 0.5;
@@ -378,14 +408,22 @@ Level3.prototype.killOnlinePlayer = function(sessionId){ //un jugador que ha sid
 Level3.prototype.update = function () {
 
 this.game.physics.arcade.overlap(this.fPlayer , this.fNetplayersGroup);
-this.game.physics.arcade.collide(this.fPlayer , this.fPlatformGroup);
+this.IslayerOnFloor = this.game.physics.arcade.collide(this.fPlayer , this.fPlatformGroup);
 this.game.physics.arcade.collide(this.fPlayer , this.fFlyingObstacles, this.killPlayer, null, this);
 //this.game.physics.arcade.collide(this.fNetplayersGroup , this.fFlyingObstacles, this.killOnlinePlayer, null, this);
-this.game.physics.arcade.collide(this.fNetplayersGroup , this.fPlatformGroup);
+
 //this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
 
 this.game.physics.arcade.overlap(this.fPlayer , this.fCoinGroup, this.getCoin, null, this);
 this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCoinGroup, this.getCoin, null, this);
+
+if(this.IslayerOnFloor){
+
+	this.fPlayer.isWalking = true;
+}else{
+
+	this.fPlayer.isWalking = false;
+}
 
 this.fPlatformGroup.forEach(function(platform) {
 
@@ -401,22 +439,14 @@ this.fPlatformGroup.forEach(function(platform) {
 
 if(this.fPlayer.x<=-100){
 
-
-		this.game.state.start("Intro",true,true);
+		this.fNetPLayers = [];
 		this.game.croquetView.playerRemoved(this.mySession);
+		this.game.state.start("Intro",true,true);
+		
 }
 
 
-this.fNetPLayers.forEach((NetplayerObject, i) => {
-			
-				if(NetplayerObject.NetPlayer.x <= -100 ){
-					console.log(NetplayerObject.id + 'is been deleted');
-					NetplayerObject.NetPlayer.destroy();
-					
-				
-				}
-			}
-		);
+
 
 
 }
@@ -425,5 +455,9 @@ Level3.prototype.printMessage = function (mensaje) { //para mensajes que se nece
 
 	console.log(mensaje);
 }
+Level3.prototype.render = function() {
 
+    this.game.debug.body(this.fNetPLayers);
+
+}
 // -- user code here --

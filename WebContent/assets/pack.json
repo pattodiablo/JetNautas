@@ -132,12 +132,35 @@
       "type": "script",
       "key": "warning",
       "url": "assets/prefabs/warning.js"
+    },
+    {
+      "type": "image",
+      "key": "energyCell",
+      "url": "assets/images/energyCell.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "energyCell1",
+      "url": "assets/prefabs/energyCell.js"
+    },
+    {
+      "type": "image",
+      "key": "particle",
+      "url": "assets/images/particle.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "playerThrust",
+      "url": "assets/images/playerThrust.png",
+      "overwrite": false
     }
   ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1591139744839",
+    "generated": "1591283073740",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
