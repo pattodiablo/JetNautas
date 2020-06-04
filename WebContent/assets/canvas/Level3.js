@@ -123,8 +123,8 @@ Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
 
 		this.game.croquetView.updatePlayerList(); //recargo lista de usuarios
 		this.mySession = this.game.croquetView.getSessionID(); //me asigno mi id de usario
-		
-		this.game.croquetView.getPlayersPos();
+			this.updatePos();
+		//this.game.croquetView.getPlayersPos();
 
 		this.fPlayer.isPlaying = true;
 		return true;
@@ -170,7 +170,7 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add onli
 
 
   	this.updatePos();
-	this.game.croquetView.getPlayersPos();
+	//this.game.croquetView.getPlayersPos();
 
 
 	}
@@ -379,8 +379,22 @@ if(this.fPlayer.x<=-100){
 
 
 		this.game.state.start("Intro",true,true);
-		//this.game.croquetView.playerKilled(this.mySession);
+		this.game.croquetView.playerRemoved(this.mySession);
 }
+
+
+this.fNetPLayers.forEach((NetplayerObject, i) => {
+			
+				if(NetplayerObject.NetPlayer.x <= -100 ){
+					console.log(NetplayerObject.id + 'is been deleted');
+					NetplayerObject.NetPlayer.destroy();
+					
+				
+				}
+			}
+		);
+
+
 }
 
 Level3.prototype.printMessage = function (mensaje) { //para mensajes que se necesiten escribir desde croquet

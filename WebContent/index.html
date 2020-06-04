@@ -36,6 +36,7 @@ class MirrorModel extends Croquet.Model {
 		  	this.subscribe('gameNetwork',"updatePos", this.moveNetPlayer);
 			this.subscribe('gameNetwork',"croquetPlayerAction", this.emmitAction);
 			this.subscribe('gameNetwork',"playerKilled",  this.propagateKill);
+			this.subscribe('gameNetwork',"playerRemoved",  this.propagateRemove);
 
 			this.crearMonedas();
 			this.crearObstaculo();
@@ -99,6 +100,14 @@ class MirrorModel extends Croquet.Model {
 
 				this.publish('gameNetwork',"propagateKilledPlayer",id);
 				console.log('user ' + id + ' has been meteorized');
+
+	     }
+
+	     propagateRemove(id) {
+
+
+				this.publish('gameNetwork',"propagateKilledRemove",id);
+				console.log('user ' + id + ' has been removed');
 
 	     }
 
@@ -171,12 +180,25 @@ class ClientViews extends Croquet.View {
 			this.subscribe('gameNetwork',"crearMonedasCroquet",this.crearMonedas);
 			this.subscribe('gameNetwork',"crearObstaculoCroquet",this.crearObstaculoCroquet);
 			this.subscribe('gameNetwork',"propagateKilledPlayer",this.killOnlinePlayer);
+			this.subscribe('gameNetwork',"propagateKilledRemove",this.removeOnlinePlayer);
 			this.subscribe('gameNetwork',"croquetPlayerExecuteAction", this.doAction);
 
 			this.game = null;
 			this.crearJuego(this); //me paso croquet
 			console.log('MyCroquetId ' + this.viewId);
 		}
+
+			removeOnlinePlayer(sessionId){
+
+console.log('estoy en RemoveOnlinePlayer de croquetView');
+				if(typeof(this.gameScene) != 'undefined'){
+					if(this.gameScene.key == 'Level3'){
+
+						this.gameScene.removePhaserNetworkPlayer(sessionId);
+
+						}
+					}
+			}
 
 			killOnlinePlayer(sessionId){
 				console.log('estoy en killOnlinePlayer de croquetView');
@@ -190,6 +212,10 @@ class ClientViews extends Croquet.View {
 			}
 			playerKilled(sessionId){
 				this.publish('gameNetwork',"playerKilled",  sessionId);
+			}
+
+			playerRemoved(sessionId){
+				this.publish('gameNetwork',"playerRemoved",  sessionId);
 			}
 
 			crearObstaculoCroquet(data){
