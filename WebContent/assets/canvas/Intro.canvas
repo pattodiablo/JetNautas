@@ -43,17 +43,30 @@
     "info": {
       "editorName": "Level",
       "setAll": [],
-      "children": [{
-        "type": "image",
-        "id": "a3cd2064-6c1b-495d-a15e-ff96c393ba2a",
-        "asset": "0",
-        "info": {
-          "editorName": "playBtn",
-          "editorField": true,
-          "x": -178,
-          "y": 96
+      "children": [
+        {
+          "type": "image",
+          "id": "a3cd2064-6c1b-495d-a15e-ff96c393ba2a",
+          "asset": "0",
+          "info": {
+            "editorName": "playBtn",
+            "editorField": true,
+            "x": -178,
+            "y": 96
+          }
+        },
+        {
+          "type": "text",
+          "id": "d2ffebfb-8763-4851-8c24-ba89ed501e2d",
+          "info": {
+            "editorName": "text",
+            "x": 7,
+            "y": 15,
+            "text": "click anywhere to begin",
+            "style.fill": "#ffffff"
+          }
         }
-      }]
+      ]
     }
   },
   "type": "STATE",

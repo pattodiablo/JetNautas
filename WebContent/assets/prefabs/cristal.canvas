@@ -45,6 +45,8 @@
         "info": {
           "editorName": "cristalCoin",
           "editorField": true,
+          "scale.x": 1.5,
+          "scale.y": 1.5,
           "anchor.x": 0.5,
           "anchor.y": 0.5,
           "body": {"type": "ARCADE_RECT"}

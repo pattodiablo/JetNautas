@@ -43,6 +43,8 @@ Intro.prototype.preload = function () {
 Intro.prototype.create = function () {
 	var _playBtn = this.add.sprite(-178.0, 96.0, 'playBtn');
 	
+	this.add.text(7.0, 15.0, 'click anywhere to begin', {"font":"bold 20px Arial","fill":"#ffffff"});
+	
 	
 	
 	// fields

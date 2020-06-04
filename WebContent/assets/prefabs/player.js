@@ -18,9 +18,10 @@ function player(aGame, aX, aY, aKey, aFrame) {
 	Phaser.Sprite.call(this, aGame, aX, aY, aKey || 'player1', aFrame == undefined || aFrame == null? null : aFrame);
 	this.anchor.set(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
-	this.body.setSize(73.0, 68.28669738769531);
+	this.body.setSize(73.0, 71.0);
 	this.body.collideWorldBounds = true;
-	this.body.bounce.y = 0.1;
+	this.body.bounce.x = 0.5;
+	this.body.bounce.y = 0.3;
 	this.body.gravity.y = 800.0;
 	
 	// fields
@@ -40,7 +41,27 @@ player.prototype.constructor = player;
 // -- user code here --
 player.prototype.myCreate = function() {
 	this.isplaying = false;
+	this.isWalking =  false;
 	this.canjump =  true;
+	this.playerThrust=this.game.add.sprite(this.x,this.y,'playerThrust');
+	this.playerThrust.visible=false;
+}
+
+player.prototype.update = function() {
 	
+
+if(!this.isWalking){
+	if(this.canjump){
+	this.playerThrust.visible=true;
+}else{
+	this.playerThrust.visible=false;
+}
+	
+}else{
+	this.playerThrust.visible=false;
+}
+
+	this.playerThrust.x = this.x-15;
+	this.playerThrust.y =  this.y+25;
 }
 

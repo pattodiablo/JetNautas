@@ -100,7 +100,16 @@
             "editorField": true,
             "physicsGroup": true,
             "setAll": [],
-            "children": []
+            "children": [{
+              "type": "group",
+              "id": "235d3699-ca8a-4a19-888c-9ef29dd1f5f0",
+              "info": {
+                "editorName": "onlinePlayersFire",
+                "editorField": true,
+                "setAll": [],
+                "children": []
+              }
+            }]
           }
         },
         {
