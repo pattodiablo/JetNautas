@@ -259,6 +259,30 @@ Level3.prototype.crearMonedas = function(data){
 		this.fCoinGroup.add(_cristalCoin);
 		}
 
+
+Level3.prototype.crearMonedaSeno = function(packmonedas){
+		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
+			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
+console.log('Moneda Seno creada ' + packmonedas.length);
+	packmonedas.forEach((moneda, i) => {
+					
+		var _cristalCoin = new cristal(this.game, moneda.xpos,moneda.ypos);
+		this.add.existing(_cristalCoin);
+
+
+		this.game.physics.arcade.enable(_cristalCoin);
+		_cristalCoin.body.gravity.y=0;
+		_cristalCoin.body.velocity.x-=450;
+		_cristalCoin.body.moves = true;
+		_cristalCoin.body.immovable = false;
+		this.fCoinGroup.add(_cristalCoin);
+console.log('posicion moneda: '+_cristalCoin.x +' '+_cristalCoin.y)
+				});
+
+	
+		}
+
+
 	Level3.prototype.croquetAction = function(session) {
 		if(session !== this.mySession){
 			this.fNetPLayers.forEach((NetplayerObject, i) => {
@@ -358,7 +382,7 @@ this.game.physics.arcade.collide(this.fPlayer , this.fPlatformGroup);
 this.game.physics.arcade.collide(this.fPlayer , this.fFlyingObstacles, this.killPlayer, null, this);
 //this.game.physics.arcade.collide(this.fNetplayersGroup , this.fFlyingObstacles, this.killOnlinePlayer, null, this);
 this.game.physics.arcade.collide(this.fNetplayersGroup , this.fPlatformGroup);
-this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
+//this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
 
 this.game.physics.arcade.overlap(this.fPlayer , this.fCoinGroup, this.getCoin, null, this);
 this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCoinGroup, this.getCoin, null, this);
