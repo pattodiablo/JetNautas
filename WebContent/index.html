@@ -37,7 +37,7 @@ class MirrorModel extends Croquet.Model {
 			this.subscribe('gameNetwork',"croquetPlayerAction", this.emmitAction);
 			this.subscribe('gameNetwork',"playerKilled",  this.propagateKill);
 
-			//this.crearMonedas();
+			this.crearMonedas();
 			this.crearMonedaSeno();
 			this.crearObstaculo();
 			console.log('mySessionID ' + this.sessionId);
@@ -67,16 +67,22 @@ class MirrorModel extends Croquet.Model {
 			this.future(Q.CoinRate).crearMonedas();
 		}
 
+
+
 		crearMonedaSeno(){
 			if(this.allPlayers.length > 0){
 
 				//console.log('voy a crear monedas');
 					var packmonedas = [];
 					var siglong = 500;
-					var Ts = 5;
-					for (var i = 0; i <= siglong ; i+=siglong/Ts) {
-						var xpos = (siglong/Ts)*i+2000;
-						var ypos = 800 + 100*Math.sin(xpos);
+					var Nc = Math.random()*40;
+					var offset = 2000;
+					var yoffset = Math.random()*650;
+					var amp = Math.random()*200;
+					var freq = 1/siglong
+					for (var i = 0+offset; i <= siglong + offset ; i+=siglong/Nc) {
+						var xpos = i;
+						var ypos =  yoffset + amp*Math.sin(2*Math.PI*(freq)*xpos);
 						
 						var type = 'cristals';
 						var data = {ypos:ypos, xpos:xpos, type:type};

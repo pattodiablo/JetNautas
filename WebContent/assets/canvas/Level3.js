@@ -369,7 +369,7 @@ this.game.physics.arcade.collide(this.fPlayer , this.fPlatformGroup);
 this.game.physics.arcade.collide(this.fPlayer , this.fFlyingObstacles, this.killPlayer, null, this);
 //this.game.physics.arcade.collide(this.fNetplayersGroup , this.fFlyingObstacles, this.killOnlinePlayer, null, this);
 this.game.physics.arcade.collide(this.fNetplayersGroup , this.fPlatformGroup);
-this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
+//this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
 
 this.game.physics.arcade.overlap(this.fPlayer , this.fCoinGroup, this.getCoin, null, this);
 this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCoinGroup, this.getCoin, null, this);
