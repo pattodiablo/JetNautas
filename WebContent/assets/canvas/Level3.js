@@ -125,11 +125,10 @@ Level3.prototype.myCreate = function () {
     	emitter.minRotation = 0;
     	emitter.maxRotation = 0;
     
-    	emitter.start(false, 200, 0, 0);
-
-
+    	//emitter.start(false, 200, 0, 0);
 
 }
+
 Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
 
 		if(this.game.timesConnected<=0){
