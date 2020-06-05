@@ -45,7 +45,7 @@ player.prototype.myCreate = function() {
 	this.canjump =  true;
 	this.playerThrust=this.game.add.sprite(this.x,this.y,'playerThrust');
 	this.playerThrust.visible=false;
-	this.fuel = 100;
+	this.fuel = 250;
 }
 
 player.prototype.update = function() {

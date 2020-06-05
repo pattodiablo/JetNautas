@@ -136,6 +136,29 @@
             "x": 370,
             "y": 137
           }
+        },
+        {
+          "type": "image",
+          "id": "a6798a1d-7405-4f5c-bc84-bc22a510cbe4",
+          "asset": "3",
+          "info": {
+            "editorName": "visor",
+            "y": -73,
+            "fixedToCamera": true
+          }
+        },
+        {
+          "type": "image",
+          "id": "c13f8120-9fc4-4c80-b26e-262d5eed50cd",
+          "asset": "4",
+          "info": {
+            "editorName": "energyCell",
+            "x": 7,
+            "y": 5,
+            "scale.x": 0.8,
+            "scale.y": 0.8,
+            "fixedToCamera": true
+          }
         }
       ]
     }
@@ -156,6 +179,16 @@
       "file": "WebContent/assets/pack.json",
       "section": "graphics",
       "asset": "bottomCover"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "visor"
+    },
+    "4": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "energyCell"
     }
   },
   "prefab-table": {"0": "WebContent/assets/prefabs/player.canvas"}
