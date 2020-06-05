@@ -55,6 +55,16 @@
         },
         {
           "type": "group",
+          "id": "ed3851b5-59df-4245-b026-ca6dc701cb5d",
+          "info": {
+            "editorName": "planets",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
           "id": "030c896a-7279-4cf2-8f3d-949db9d2f295",
           "info": {
             "editorName": "platformGroup",
@@ -87,6 +97,16 @@
           "id": "ed9b0e64-0ff8-4970-b9a0-5030f0b5f619",
           "info": {
             "editorName": "coinGroup",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "34971214-4f14-4757-954c-850f241f0c58",
+          "info": {
+            "editorName": "cristalsGroup",
             "editorField": true,
             "setAll": [],
             "children": []

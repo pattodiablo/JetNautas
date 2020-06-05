@@ -46,6 +46,7 @@ player.prototype.myCreate = function() {
 	this.playerThrust=this.game.add.sprite(this.x,this.y,'playerThrust');
 	this.playerThrust.visible=false;
 	this.fuel = 250;
+	this.cristals = 0;
 }
 
 player.prototype.update = function() {
