@@ -39,6 +39,8 @@ Level3.prototype.preload = function () {
 Level3.prototype.create = function () {
 	var _jetBg = this.add.sprite(0.0, 0.0, 'jetBg');
 	
+	var _planets = this.add.group();
+	
 	var _platformGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
 	
 	this.add.sprite(0.0, 1000.0, 'bigFloorfake');
@@ -46,6 +48,8 @@ Level3.prototype.create = function () {
 	this.add.sprite(0.0, 1080.0, 'bottomCover');
 	
 	var _coinGroup = this.add.group();
+	
+	var _cristalsGroup = this.add.group();
 	
 	var _NetplayersGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
 	
@@ -68,12 +72,14 @@ Level3.prototype.create = function () {
 	// fields
 	
 	this.fJetBg = _jetBg;
+	this.fPlanets = _planets;
 	this.fPlatformGroup = _platformGroup;
 	this.fCoinGroup = _coinGroup;
+	this.fCristalsGroup = _cristalsGroup;
 	this.fNetplayersGroup = _NetplayersGroup;
 	this.fOnlinePlayersFire = _onlinePlayersFire;
 	this.fFlyingObstacles = _flyingObstacles;
-	this.fPLayer = _player;
+	this.fPlayer = _player;
 	
 	
 	this.myCreate();
@@ -104,7 +110,7 @@ Level3.prototype.myCreate = function () {
 
 	this.game.world.setBounds(0, 0, 1920, 1080);
 
-    this.game.camera.follow(this.fPLayer,Phaser.Camera.FOLLOW_LOCKON,0.1, 0.1,0,0);
+    this.game.camera.follow(this.fPlayer,Phaser.Camera.FOLLOW_LOCKON,0.1, 0.1,0,0);
 
 
      	
@@ -191,7 +197,7 @@ Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
 		this.updatePos();
 		//this.game.croquetView.getPlayersPos();
 
-		this.fPLayer.isPlaying = true;
+		this.fPlayer.isPlaying = true;
 		return true;
 
 
@@ -255,12 +261,12 @@ Level3.prototype.updatePos = function() {
 
 	this.netData = {
 				sessionId:this.mySession,
-				xpos:this.fPLayer.x,
-				ypos:this.fPLayer.y,
-				xvelo:this.fPLayer.body.velocity.x,
-				yvelo:this.fPLayer.body.velocity.y,
-				rotation:this.fPLayer.rotation,
-				isPlaying:this.fPLayer.isPlaying
+				xpos:this.fPlayer.x,
+				ypos:this.fPlayer.y,
+				xvelo:this.fPlayer.body.velocity.x,
+				yvelo:this.fPlayer.body.velocity.y,
+				rotation:this.fPlayer.rotation,
+				isPlaying:this.fPlayer.isPlaying
 			}
 
 		this.game.croquetView.updatePos(this.netData);
@@ -303,6 +309,33 @@ Level3.prototype.updatePos = function() {
 		});
 
 	}
+
+
+	Level3.prototype.crearPlaneta = function(data){
+		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
+			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
+			switch(data.type){
+				case 1:
+						var planeta=this.game.add.sprite(data.xpos,data.ypos,'planet1');
+				break;
+				case 2:
+						var planeta=this.game.add.sprite(data.xpos,data.ypos,'planet2');
+				break;
+				case 3:
+						var planeta=this.game.add.sprite(data.xpos,data.ypos,'planet3');
+				break;
+			}
+	
+			planeta.anchor.x = 0.5;
+			planeta.anchor.y = 0.5;
+			planeta.scale.y = data.size;
+			planeta.blendMode = PIXI.blendModes.MULTIPLY;
+			this.game.physics.arcade.enable(planeta);
+			planeta.body.velocity.x-=data.velo;
+			planeta.scale.x = data.size;
+			
+			this.fPlanets.add(planeta);
+		}
 
 
 	Level3.prototype.crearObstaculoCroquet = function(data){
@@ -351,7 +384,7 @@ Level3.prototype.crearMonedaSeno = function(packmonedas){ //creacion de monedas 
 		_cristalCoin.body.velocity.x-=450;
 		_cristalCoin.body.moves = true;
 		_cristalCoin.body.immovable = false;
-		this.fCoinGroup.add(_cristalCoin);
+		this.fCristalsGroup.add(_cristalCoin);
 
 				});
 
@@ -380,16 +413,19 @@ Level3.prototype.crearMonedaSeno = function(packmonedas){ //creacion de monedas 
 
 Level3.prototype.swipeDownAction = function(pointer) { //manejo de swipe control de pantalla
 
-		if(this.fPLayer.canjump){
-    		this.fPLayer.body.velocity.y=-this.velo;
+		if(this.fPlayer.canjump){
+    		this.fPlayer.body.velocity.y=-this.velo;
     		
 
-    		if(this.fPLayer.fuel <= 0){
+    		if(this.fPlayer.fuel <= 0){
 
     			this.killPlayerByFuel();
     		}else{
-    			this.fPLayer.fuel-=25;
-    		
+
+    			this.fPlayer.fuel-=25;
+    		if(this.fPlayer.fuel <= 0){
+    			this.fPlayer.fuel=0;
+    		}
     		}
     		this.game.croquetView.croquetPlayerAction(this.mySession);
 			this.updatePos();
@@ -419,10 +455,10 @@ Level3.prototype.createFirstPlatforms = function () {
 
 }
 Level3.prototype.getCoin = function (player, coin) { //recoger monedas
-	this.fPLayer.fuel+=25;
+	this.fPlayer.fuel+=25;
 	
-	if(this.fPLayer.fuel >=250){
-		this.fPLayer.fuel = 250;
+	if(this.fPlayer.fuel >=250){
+		this.fPlayer.fuel = 250;
 	
 	}
 	
@@ -430,19 +466,39 @@ Level3.prototype.getCoin = function (player, coin) { //recoger monedas
 	coin.destroy();
 }
 
+Level3.prototype.getCristal = function (player, cristal) { //recoger monedas
+	this.fPlayer.cristal++;
+	
+	cristal.destroy();
+}
+
+Level3.prototype.getOnlineCristal = function (player, cristal) { //recoger monedas
+
+	
+	cristal.destroy();
+}
+
+Level3.prototype.getOnlineCoin = function (player, coin) { //recoger monedas
+	
+	
+	coin.destroy();
+}
+
+
 
 Level3.prototype.killPlayerByFuel = function () {
 
-	this.fPLayer.canjump =  false;
-	this.fPLayer.rotation-=0.5;
-	this.fPLayer.body.bounce.y = 0.5;
-	this.fPLayer.body.bounce.x = 0.5;
-	this.fPLayer.body.velocity.x=-200;
-	this.fPLayer.body.collideWorldBounds = false;
+	this.fPlayer.canjump =  false;
+	this.fPlayer.rotation+=0.5;
+	this.fPlayer.body.bounce.y = 0.5;
+	this.fPlayer.body.bounce.x = 0.5;
+	this.fPlayer.body.velocity.x -=200;
+	//this.fPlayer.body.gravity.y=200;
+	this.fPlayer.body.collideWorldBounds = false;
 
   	this.game.camera.shake(0.02, 250);
-  	this.game.camera.flash(0xff0000, 500)
-	this.game.croquetView.playerKilled(this.mySession);
+  	this.game.camera.flash(0xfdc736, 1000)
+	this.game.croquetView.playerKilledByFuel(this.mySession);
 	
 
 }
@@ -464,6 +520,25 @@ Level3.prototype.killPlayer = function (player, obstacle) {
 
 
 }
+
+Level3.prototype.killOnlinePlayerByFuel = function(sessionId){ //un jugador que ha sido topado por algun obstaculo que no esta sincronizado
+
+		this.fNetPLayers.forEach((NetplayerObject, i) => {
+			if( sessionId != this.mySession){
+				if(sessionId == NetplayerObject.id ){
+					console.log('quiero matar a ' + sessionId);
+					NetplayerObject.NetPlayer.canjump=false;
+					NetplayerObject.NetPlayer.rotation+=0.5;
+					NetplayerObject.NetPlayer.body.bounce.y = 0.5;
+					NetplayerObject.NetPlayer.body.bounce.x = 0.5;
+					NetplayerObject.NetPlayer.body.velocity.x=-200;
+					NetplayerObject.NetPlayer.body.collideWorldBounds = false;
+				
+				}
+			}
+		});
+
+	}
 
 Level3.prototype.killOnlinePlayer = function(sessionId){ //un jugador que ha sido topado por algun obstaculo que no esta sincronizado
 
@@ -487,23 +562,32 @@ Level3.prototype.killOnlinePlayer = function(sessionId){ //un jugador que ha sid
 
 
 Level3.prototype.update = function () {
-this.energyBar.width=this.fPLayer.fuel;
-this.game.physics.arcade.overlap(this.fPLayer , this.fNetplayersGroup);
-this.IslayerOnFloor = this.game.physics.arcade.collide(this.fPLayer , this.fPlatformGroup);
-this.game.physics.arcade.collide(this.fPLayer , this.fFlyingObstacles, this.killPlayer, null, this);
+
+this.energyBar.width=this.fPlayer.fuel;
+
+this.game.physics.arcade.overlap(this.fPlayer , this.fNetplayersGroup);
+this.IslayerOnFloor = this.game.physics.arcade.collide(this.fPlayer , this.fPlatformGroup);
+this.game.physics.arcade.collide(this.fPlayer , this.fFlyingObstacles, this.killPlayer, null, this);
 //this.game.physics.arcade.collide(this.fNetplayersGroup , this.fFlyingObstacles, this.killOnlinePlayer, null, this);
 
 //this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
 
-this.game.physics.arcade.overlap(this.fPLayer , this.fCoinGroup, this.getCoin, null, this);
-this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCoinGroup, this.getCoin, null, this);
+this.game.physics.arcade.overlap(this.fPlayer , this.fCoinGroup, this.getCoin, null, this);
+this.game.physics.arcade.overlap(this.fPlayer , this.fCristalsGroup, this.getCristal, null, this);
+this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCoinGroup, this.getOnlineCoin, null, this);
+this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCristalsGroup, this.getOnlineCristal, null, this);
+
 
 if(this.IslayerOnFloor){
 
-	this.fPLayer.isWalking = true;
+	this.fPlayer.isWalking = true;
+	this.fPlayer.fuel++
+	if(this.fPlayer.fuel>=250){
+			this.fPlayer.fuel = 250;
+	}
 }else{
 
-	this.fPLayer.isWalking = false;
+	this.fPlayer.isWalking = false;
 }
 
 this.fPlatformGroup.forEach(function(platform) {
@@ -518,14 +602,14 @@ this.fPlatformGroup.forEach(function(platform) {
 
 	},this);
 
-if(this.fPLayer.x<=-100){
+if(this.fPlayer.x<=-100){
 
 		this.fNetPLayers = [];
 		this.game.croquetView.playerRemoved(this.mySession);
 		this.game.state.start("Intro",true,true);
 		
 }
-if(this.fPLayer.y>=1280){
+if(this.fPlayer.y>=1280){
 
 
 		this.fNetPLayers = [];
@@ -542,7 +626,7 @@ Level3.prototype.printMessage = function (mensaje) { //para mensajes que se nece
 }
 Level3.prototype.render = function() {
 
-  /*  this.game.debug.body(this.fPLayer);
+  /*  this.game.debug.body(this.fPlayer);
 
 		this.fNetPLayers.forEach((NetplayerObject, i) => {
 	if(NetplayerObject.NetPlayer.body != null){

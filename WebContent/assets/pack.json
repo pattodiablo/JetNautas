@@ -161,12 +161,30 @@
       "key": "visor",
       "url": "assets/images/visor.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "planet1",
+      "url": "assets/images/planet1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "planet2",
+      "url": "assets/images/planet2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "planet3",
+      "url": "assets/images/planet3.png",
+      "overwrite": false
     }
   ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1591312163267",
+    "generated": "1591388382794",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
