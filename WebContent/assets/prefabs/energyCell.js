@@ -50,6 +50,10 @@ energyCell.prototype.changeAlpha = function(){
 }
 energyCell.prototype.update = function(){
 	
-
+	if(this.x<=-100){
+		
+		this.destroy();
+	}
+	
 	this.rotation+=this.rotationIndex;
 }
