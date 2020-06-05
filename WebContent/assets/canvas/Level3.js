@@ -95,6 +95,9 @@ Level3.prototype.myPreload = function () {
 	this.game.load.audio('hurt', ['assets/audio/hurt.mp3','assets/audio/hurt.ogg']);
 	this.game.load.audio('getFuel', ['assets/audio/getFuel.mp3','assets/audio/getFuel.ogg']);
 	this.game.load.audio('pickCristal', ['assets/audio/pickCristal.mp3','assets/audio/pickCristal.ogg']);
+	this.game.load.audio('elevate1', ['assets/audio/elevate1.mp3','assets/audio/elevate1.ogg']);
+	this.game.load.audio('elevate2', ['assets/audio/elevate2.mp3','assets/audio/elevate2.ogg']);
+	this.game.load.audio('elevate3', ['assets/audio/elevate3.mp3','assets/audio/elevate3.ogg']);
 
 
 }
@@ -139,10 +142,22 @@ Level3.prototype.bgMusicPlay = function () {
 	getFuel.addMarker('getFuel', 0, 0.30	);
 
 	pickCristal = this.game.add.audio('pickCristal', 0.2);
-	pickCristal.allowMultiple = false;
+	pickCristal.allowMultiple = true;
 	pickCristal.addMarker('pickCristal', 0, 0.18	);
 
-	this.fxSounds = [hurt]; //agreagar aqui todos los sound fx que se necesita adminstrar
+	elevate1 = this.game.add.audio('elevate1', 0.2);
+	elevate1.allowMultiple = true;
+	elevate1.addMarker('elevate1', 0, 0.13	);
+
+	elevate2 = this.game.add.audio('elevate2', 0.2);
+	elevate2.allowMultiple = true;
+	elevate2.addMarker('elevate2', 0, 0.13	);
+
+	elevate3 = this.game.add.audio('elevate3', 0.2);
+	elevate3.allowMultiple = true;
+	elevate3.addMarker('elevate3', 0, 0.13	);
+
+	this.fxSounds = [hurt,getFuel,pickCristal,elevate1,elevate2,elevate3]; //agreagar aqui todos los sound fx que se necesita adminstrar
 
 	if(!fxEnabled){
 		this.fxSounds.forEach(function(soundFx) { 	 //en caso de que se deshabilite los sonidos fxs
@@ -534,17 +549,29 @@ Level3.prototype.crearMonedaSeno = function(packmonedas){ //creacion de monedas 
 	}
 
 Level3.prototype.swipeDownAction = function(pointer) { //manejo de swipe control de pantalla
+const elevateSoundSelect =  Math.ceil(Math.random()*3);
 
 		if(this.fPlayer.canjump){
     		this.fPlayer.body.velocity.y=-this.velo;
     		
+    		switch (elevateSoundSelect){
+    			case 1:
+    			elevate1.play('elevate1');
+    			break;
+    			case 2:
+    			elevate2.play('elevate2');
+    			break;
+    			case 3:
+    			elevate3.play('elevate3');
+    			break;
+    		}
 
     		if(this.fPlayer.fuel <= 0){
 
     			this.killPlayerByFuel();
     		}else{
 
-    			this.fPlayer.fuel-=25;
+    			this.fPlayer.fuel-=15;
     		if(this.fPlayer.fuel <= 0){
     			this.fPlayer.fuel=0;
     		}
