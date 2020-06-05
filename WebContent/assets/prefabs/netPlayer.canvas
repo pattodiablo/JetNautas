@@ -48,7 +48,7 @@
           "anchor.y": 0.5,
           "body": {
             "type": "ARCADE_RECT",
-            "bounceY": 0.1,
+            "bounceY": 0.2,
             "gravityY": 800
           }
         }

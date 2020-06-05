@@ -18,7 +18,7 @@ function netPlayer(aGame, aX, aY, aKey, aFrame) {
 	Phaser.Sprite.call(this, aGame, aX, aY, aKey || 'netPlayers', aFrame == undefined || aFrame == null? null : aFrame);
 	this.anchor.set(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
-	this.body.bounce.y = 0.1;
+	this.body.bounce.y = 0.2;
 	this.body.gravity.y = 800.0;
 	
 	this.myCreate();
@@ -38,7 +38,7 @@ netPlayer.prototype.myCreate = function() {
 	this.isWalking =  false;
 	this.canjump =  true;
 	this.playerThrust=this.game.add.sprite(this.x,this.y,'playerThrust');
-	this.playerThrust.visible=false;
+	this.playerThrust.visible=this.visible;
 	this.game.state.getCurrentState﻿().fOnlinePlayersFire.add(this.playerThrust);
 	
 }

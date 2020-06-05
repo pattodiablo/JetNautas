@@ -206,19 +206,23 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add onli
 			allPlayers.forEach((NetPlayer, i) => {
 				console.log('id de NetPlayer -> ' + NetPlayer);
 				console.log('mi session es -> ' + this.game.croquetView.getSessionID());
-				if(allPlayers.length-1 != this.fNetPLayers.length){
+		
 
 			
 					if(NetPlayer != this.game.croquetView.getSessionID()){
 						
 						console.log('agrego todos los jugadores nuevos ' + NetPlayer);
 
-						var croquetPlayer = new netPlayer(this.game, 370, 137);
+						var croquetPlayer = new netPlayer(this.game, 0, 0);
 
 						if(croquetPlayer.isPlaying){
 							croquetPlayer.visible=true;
+
+
 						}else{
 							croquetPlayer.visible=false;
+							croquetPlayer.body.enable=false;
+							croquetPlayer.playerThrust.visible=false;
 						}
 						
 						croquetPlayer.body.collideWorldBounds = true;
@@ -233,11 +237,7 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add onli
 						console.log('este jugador ya esta creado')
 					}
 
-				}else{
-
-					console.log('al parecer no hay jugadores nuevos en la siguiente lista: ' + JSON.stringify(this.fNetPLayers,["id"]) );
-
-				}
+				
 			});
 		}else {
 			console.log('no hay jugadores online');
@@ -259,7 +259,8 @@ Level3.prototype.updatePos = function() {
 				ypos:this.fPLayer.y,
 				xvelo:this.fPLayer.body.velocity.x,
 				yvelo:this.fPLayer.body.velocity.y,
-				rotation:this.fPLayer.rotation
+				rotation:this.fPLayer.rotation,
+				isPlaying:this.fPLayer.isPlaying
 			}
 
 		this.game.croquetView.updatePos(this.netData);
@@ -271,6 +272,7 @@ Level3.prototype.updatePos = function() {
 	if(NetplayerObject.NetPlayer.body != null){
 			if(data.sessionId == NetplayerObject.id){
 				NetplayerObject.NetPlayer.visible=true;
+				NetplayerObject.NetPlayer.body.enable=true;
 				NetplayerObject.NetPlayer.x = data.xpos;
 				NetplayerObject.NetPlayer.y = data.ypos;
 				NetplayerObject.NetPlayer.body.velocity.x = data.xvelo;
@@ -380,12 +382,14 @@ Level3.prototype.swipeDownAction = function(pointer) { //manejo de swipe control
 
 		if(this.fPLayer.canjump){
     		this.fPLayer.body.velocity.y=-this.velo;
-    		this.fPLayer.fuel-=25;
-    		this.energyBar.width-=25;
+    		
 
     		if(this.fPLayer.fuel <= 0){
 
     			this.killPlayerByFuel();
+    		}else{
+    			this.fPLayer.fuel-=25;
+    		
     		}
     		this.game.croquetView.croquetPlayerAction(this.mySession);
 			this.updatePos();
@@ -416,12 +420,13 @@ Level3.prototype.createFirstPlatforms = function () {
 }
 Level3.prototype.getCoin = function (player, coin) { //recoger monedas
 	this.fPLayer.fuel+=25;
-	this.energyBar.width+=25;
 	
 	if(this.fPLayer.fuel >=250){
 		this.fPLayer.fuel = 250;
-		this.energyBar.width = 250;
+	
 	}
+	
+	
 	coin.destroy();
 }
 
@@ -482,7 +487,7 @@ Level3.prototype.killOnlinePlayer = function(sessionId){ //un jugador que ha sid
 
 
 Level3.prototype.update = function () {
-
+this.energyBar.width=this.fPLayer.fuel;
 this.game.physics.arcade.overlap(this.fPLayer , this.fNetplayersGroup);
 this.IslayerOnFloor = this.game.physics.arcade.collide(this.fPLayer , this.fPlatformGroup);
 this.game.physics.arcade.collide(this.fPLayer , this.fFlyingObstacles, this.killPlayer, null, this);
@@ -520,11 +525,15 @@ if(this.fPLayer.x<=-100){
 		this.game.state.start("Intro",true,true);
 		
 }
+if(this.fPLayer.y>=1280){
 
 
+		this.fNetPLayers = [];
+		this.game.croquetView.playerRemoved(this.mySession);
+		this.game.state.start("Intro",true,true);
 
 
-
+}
 }
 
 Level3.prototype.printMessage = function (mensaje) { //para mensajes que se necesiten escribir desde croquet
@@ -533,7 +542,15 @@ Level3.prototype.printMessage = function (mensaje) { //para mensajes que se nece
 }
 Level3.prototype.render = function() {
 
-    this.game.debug.body(this.fNetPLayers);
+  /*  this.game.debug.body(this.fPLayer);
 
+		this.fNetPLayers.forEach((NetplayerObject, i) => {
+	if(NetplayerObject.NetPlayer.body != null){
+		 this.game.debug.body(NetplayerObject.NetPlayer);
+				
+				
+			}
+		});
+*/
 }
 // -- user code here --
