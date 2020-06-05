@@ -155,12 +155,18 @@
       "key": "playerThrust",
       "url": "assets/images/playerThrust.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "visor",
+      "url": "assets/images/visor.png",
+      "overwrite": false
     }
   ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1591283073740",
+    "generated": "1591312163267",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

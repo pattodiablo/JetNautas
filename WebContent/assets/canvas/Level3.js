@@ -56,6 +56,13 @@ Level3.prototype.create = function () {
 	var _player = new player(this.game, 370.0, 137.0);
 	this.add.existing(_player);
 	
+	var _visor = this.add.sprite(0.0, -73.0, 'visor');
+	_visor.fixedToCamera = true;
+	
+	var _energyCell = this.add.sprite(7.0, 5.0, 'energyCell');
+	_energyCell.scale.set(0.8, 0.8);
+	_energyCell.fixedToCamera = true;
+	
 	
 	
 	// fields
@@ -66,7 +73,7 @@ Level3.prototype.create = function () {
 	this.fNetplayersGroup = _NetplayersGroup;
 	this.fOnlinePlayersFire = _onlinePlayersFire;
 	this.fFlyingObstacles = _flyingObstacles;
-	this.fPlayer = _player;
+	this.fPLayer = _player;
 	
 	
 	this.myCreate();
@@ -97,13 +104,51 @@ Level3.prototype.myCreate = function () {
 
 	this.game.world.setBounds(0, 0, 1920, 1080);
 
-    this.game.camera.follow(this.fPlayer,Phaser.Camera.FOLLOW_LOCKON,0.1, 0.1,0,0);
+    this.game.camera.follow(this.fPLayer,Phaser.Camera.FOLLOW_LOCKON,0.1, 0.1,0,0);
 
+
+     	
+    	var energyBarLine = this.game.add.graphics(this.game.camera.x,this.game.camera.y);
+	    energyBarLine.beginFill(0xffffff, 0); 
+	    energyBarLine.lineStyle(2, 0xffffff, 1);
+	    energyBarLine.moveTo(0,0);
+	    energyBarLine.lineTo(252, 0);
+	    energyBarLine.lineTo(252, 37);
+	    energyBarLine.lineTo(0, 37);
+	    energyBarLine.lineTo(0, 0);
+
+	    energyBarLine.endFill();
+
+	    this.energyBarLine = this.game.add.sprite(67, 35, energyBarLine.generateTexture());
+	    this.energyBarLine.fixedToCamera = true;
+	    this.energyBarLine.anchor.x = 0;
+        this.energyBarLine.anchor.y = 0.5;
+  		energyBarLine.destroy();
+
+     	var energyBar = this.game.add.graphics(this.game.camera.x,this.game.camera.y);
+	    energyBar.beginFill(0xffffff,0.6); 
+
+	    energyBar.moveTo(0,0);
+	    energyBar.lineTo(250, 0);
+	    energyBar.lineTo(250, 35);
+	    energyBar.lineTo(0, 35);
+	    energyBar.lineTo(0, 0);
+
+	    energyBar.endFill();
+
+	    this.energyBar = this.game.add.sprite(70, 35, energyBar.generateTexture());
+
+        this.energyBar.anchor.x = 0;
+        this.energyBar.anchor.y = 0.5;
+   		this.energyBar.fixedToCamera = true;
+   		energyBar.destroy();
 
 	this.fJetBg.width=1920;
 	this.fJetBg.height=1080;
 
 	this.game.croquetView.setCurrentScene(this.game); //seteamos en que escena me encuentro para croquet
+	
+
 
 	this.createFirstPlatforms();
 	this.addPhaserNetworkPlayer(); //registro mi jugador en croquet
@@ -125,7 +170,7 @@ Level3.prototype.myCreate = function () {
     	emitter.minRotation = 0;
     	emitter.maxRotation = 0;
     
-    	//emitter.start(false, 200, 0, 0);
+    	emitter.start(false, 200, 0, 0);
 
 }
 
@@ -146,7 +191,7 @@ Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
 		this.updatePos();
 		//this.game.croquetView.getPlayersPos();
 
-		this.fPlayer.isPlaying = true;
+		this.fPLayer.isPlaying = true;
 		return true;
 
 
@@ -161,19 +206,23 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add onli
 			allPlayers.forEach((NetPlayer, i) => {
 				console.log('id de NetPlayer -> ' + NetPlayer);
 				console.log('mi session es -> ' + this.game.croquetView.getSessionID());
-				if(allPlayers.length-1 != this.fNetPLayers.length){
+		
 
 			
 					if(NetPlayer != this.game.croquetView.getSessionID()){
 						
 						console.log('agrego todos los jugadores nuevos ' + NetPlayer);
 
-						var croquetPlayer = new netPlayer(this.game, 370, 137);
+						var croquetPlayer = new netPlayer(this.game, 0, 0);
 
 						if(croquetPlayer.isPlaying){
 							croquetPlayer.visible=true;
+
+
 						}else{
 							croquetPlayer.visible=false;
+							croquetPlayer.body.enable=false;
+							croquetPlayer.playerThrust.visible=false;
 						}
 						
 						croquetPlayer.body.collideWorldBounds = true;
@@ -188,11 +237,7 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add onli
 						console.log('este jugador ya esta creado')
 					}
 
-				}else{
-
-					console.log('al parecer no hay jugadores nuevos en la siguiente lista: ' + JSON.stringify(this.fNetPLayers,["id"]) );
-
-				}
+				
 			});
 		}else {
 			console.log('no hay jugadores online');
@@ -210,11 +255,12 @@ Level3.prototype.updatePos = function() {
 
 	this.netData = {
 				sessionId:this.mySession,
-				xpos:this.fPlayer.x,
-				ypos:this.fPlayer.y,
-				xvelo:this.fPlayer.body.velocity.x,
-				yvelo:this.fPlayer.body.velocity.y,
-				rotation:this.fPlayer.rotation
+				xpos:this.fPLayer.x,
+				ypos:this.fPLayer.y,
+				xvelo:this.fPLayer.body.velocity.x,
+				yvelo:this.fPLayer.body.velocity.y,
+				rotation:this.fPLayer.rotation,
+				isPlaying:this.fPLayer.isPlaying
 			}
 
 		this.game.croquetView.updatePos(this.netData);
@@ -226,6 +272,7 @@ Level3.prototype.updatePos = function() {
 	if(NetplayerObject.NetPlayer.body != null){
 			if(data.sessionId == NetplayerObject.id){
 				NetplayerObject.NetPlayer.visible=true;
+				NetplayerObject.NetPlayer.body.enable=true;
 				NetplayerObject.NetPlayer.x = data.xpos;
 				NetplayerObject.NetPlayer.y = data.ypos;
 				NetplayerObject.NetPlayer.body.velocity.x = data.xvelo;
@@ -333,8 +380,17 @@ Level3.prototype.crearMonedaSeno = function(packmonedas){ //creacion de monedas 
 
 Level3.prototype.swipeDownAction = function(pointer) { //manejo de swipe control de pantalla
 
-		if(this.fPlayer.canjump){
-    		this.fPlayer.body.velocity.y=-this.velo;
+		if(this.fPLayer.canjump){
+    		this.fPLayer.body.velocity.y=-this.velo;
+    		
+
+    		if(this.fPLayer.fuel <= 0){
+
+    			this.killPlayerByFuel();
+    		}else{
+    			this.fPLayer.fuel-=25;
+    		
+    		}
     		this.game.croquetView.croquetPlayerAction(this.mySession);
 			this.updatePos();
 						}
@@ -363,8 +419,34 @@ Level3.prototype.createFirstPlatforms = function () {
 
 }
 Level3.prototype.getCoin = function (player, coin) { //recoger monedas
+	this.fPLayer.fuel+=25;
+	
+	if(this.fPLayer.fuel >=250){
+		this.fPLayer.fuel = 250;
+	
+	}
+	
+	
 	coin.destroy();
 }
+
+
+Level3.prototype.killPlayerByFuel = function () {
+
+	this.fPLayer.canjump =  false;
+	this.fPLayer.rotation-=0.5;
+	this.fPLayer.body.bounce.y = 0.5;
+	this.fPLayer.body.bounce.x = 0.5;
+	this.fPLayer.body.velocity.x=-200;
+	this.fPLayer.body.collideWorldBounds = false;
+
+  	this.game.camera.shake(0.02, 250);
+  	this.game.camera.flash(0xff0000, 500)
+	this.game.croquetView.playerKilled(this.mySession);
+	
+
+}
+
 
 Level3.prototype.killPlayer = function (player, obstacle) {
 
@@ -405,23 +487,23 @@ Level3.prototype.killOnlinePlayer = function(sessionId){ //un jugador que ha sid
 
 
 Level3.prototype.update = function () {
-
-this.game.physics.arcade.overlap(this.fPlayer , this.fNetplayersGroup);
-this.IslayerOnFloor = this.game.physics.arcade.collide(this.fPlayer , this.fPlatformGroup);
-this.game.physics.arcade.collide(this.fPlayer , this.fFlyingObstacles, this.killPlayer, null, this);
+this.energyBar.width=this.fPLayer.fuel;
+this.game.physics.arcade.overlap(this.fPLayer , this.fNetplayersGroup);
+this.IslayerOnFloor = this.game.physics.arcade.collide(this.fPLayer , this.fPlatformGroup);
+this.game.physics.arcade.collide(this.fPLayer , this.fFlyingObstacles, this.killPlayer, null, this);
 //this.game.physics.arcade.collide(this.fNetplayersGroup , this.fFlyingObstacles, this.killOnlinePlayer, null, this);
 
 //this.game.physics.arcade.collide(this.fCoinGroup , this.fPlatformGroup);
 
-this.game.physics.arcade.overlap(this.fPlayer , this.fCoinGroup, this.getCoin, null, this);
+this.game.physics.arcade.overlap(this.fPLayer , this.fCoinGroup, this.getCoin, null, this);
 this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCoinGroup, this.getCoin, null, this);
 
 if(this.IslayerOnFloor){
 
-	this.fPlayer.isWalking = true;
+	this.fPLayer.isWalking = true;
 }else{
 
-	this.fPlayer.isWalking = false;
+	this.fPLayer.isWalking = false;
 }
 
 this.fPlatformGroup.forEach(function(platform) {
@@ -436,18 +518,22 @@ this.fPlatformGroup.forEach(function(platform) {
 
 	},this);
 
-if(this.fPlayer.x<=-100){
+if(this.fPLayer.x<=-100){
 
 		this.fNetPLayers = [];
 		this.game.croquetView.playerRemoved(this.mySession);
 		this.game.state.start("Intro",true,true);
 		
 }
+if(this.fPLayer.y>=1280){
 
 
+		this.fNetPLayers = [];
+		this.game.croquetView.playerRemoved(this.mySession);
+		this.game.state.start("Intro",true,true);
 
 
-
+}
 }
 
 Level3.prototype.printMessage = function (mensaje) { //para mensajes que se necesiten escribir desde croquet
@@ -456,7 +542,15 @@ Level3.prototype.printMessage = function (mensaje) { //para mensajes que se nece
 }
 Level3.prototype.render = function() {
 
-    this.game.debug.body(this.fNetPLayers);
+  /*  this.game.debug.body(this.fPLayer);
 
+		this.fNetPLayers.forEach((NetplayerObject, i) => {
+	if(NetplayerObject.NetPlayer.body != null){
+		 this.game.debug.body(NetplayerObject.NetPlayer);
+				
+				
+			}
+		});
+*/
 }
 // -- user code here --
