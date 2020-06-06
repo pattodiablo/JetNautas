@@ -317,20 +317,19 @@ Level3.prototype.myCreate = function () {
 
 }
 
-Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
+Level3.prototype.addPhaserNetworkPlayer = function() {
+		this.mySession = this.game.croquetView.getSessionID(); //me asigno mi id de usario
 
 		if(this.game.timesConnected<=0){
 
 	  		console.log('anadiendo croquet player');
-			this.mySession = this.game.croquetView.getSessionID();
 			this.game.croquetView.confirmPlayerAdded(this.mySession);
 			this.game.timesConnected++;
 
 			//this.updatePos();
 		}
 
-		this.game.croquetView.updatePlayerList(); //recargo lista de usuarios
-		this.mySession = this.game.croquetView.getSessionID(); //me asigno mi id de usario
+		this.game.croquetView.updatePlayerList(); //pido lista de usuarios
 		this.updatePos();
 		//this.game.croquetView.getPlayersPos();
 
@@ -340,22 +339,8 @@ Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
 
 }
 
-Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add online player
-
-		console.log('--creando online players--');
-		console.log('online players: ' + allPlayers);
-		if(allPlayers.length>0){
-			
-			allPlayers.forEach((NetPlayer, i) => {
-				console.log('id de NetPlayer -> ' + NetPlayer);
-				console.log('mi session es -> ' + this.game.croquetView.getSessionID());
-		
-
-			
-					if(NetPlayer != this.game.croquetView.getSessionID()){
-						
-						console.log('agrego todos los jugadores nuevos ' + NetPlayer);
-
+Level3.prototype.addPlayer =function(NetPlayer){
+						console.log('creando a :' + NetPlayer)
 						var croquetPlayer = new netPlayer(this.game, 0, 0);
 
 						if(croquetPlayer.isPlaying){
@@ -375,15 +360,70 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add onli
 						var NetplayerObject = {NetPlayer:croquetPlayer,id:NetPlayer};
 						this.fNetPLayers.push(NetplayerObject);
 						this.fNetplayersGroup.add(croquetPlayer);
-					}else{
+						console.log('largoUsuariosRegistradosEnMiSesion ' + this.fNetPLayers.length);
+				
+}
+
+Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add online player
+
+		if(this.game.timesConnected<=0){
+
+		console.log('--creando online players--');
+		console.log('online players: ' + allPlayers);
+		if(allPlayers.length>0){
+			
+			allPlayers.forEach((NetPlayer, i) => {
+				console.log('id de NetPlayer -> ' + NetPlayer);
+				console.log('mi session es -> ' + this.game.croquetView.getSessionID());
+		
+
+			
+					if(NetPlayer != this.game.croquetView.getSessionID()){
+						
+						console.log('agrego todos los jugadores que ya estaban en lista ' + NetPlayer);
+							this.addPlayer(netPlayer);
+
+							}else{
 
 						console.log('este jugador ya esta creado')
 					}
 
 				
-			});
-		}else {
-			console.log('no hay jugadores online');
+				});
+			}else {
+				console.log('no hay jugadores online');
+			}
+		}else{
+
+				
+				allPlayers.forEach((NetPlayer, i) => {
+				const isAnewPLayer = [];
+					this.fNetPLayers.forEach((localPlayer, j) => { //reviso si el jugador nuevo es alguno de los que ya estan la lista local
+
+							if(NetPlayer == localPlayer.id){
+								isAnewPLayer.push(false);
+							}else{
+								isAnewPLayer.push(true);
+							}
+						});
+
+					const allEqual = arr => arr.every( v => v === true );
+					const isNew = allEqual( isAnewPLayer );
+					console.log('largoUsuariosCroquet ' + allPlayers.length);
+					console.log('largoUsuariosRegistradosEnMiSesion ' + this.fNetPLayers.length);
+					console.log('isAnewPLayer ' + isAnewPLayer.length);
+					console.log('isNew ' + isNew);
+					
+					if(isNew){
+						if(NetPlayer != this.game.croquetView.getSessionID()){
+								console.log('there is a new player');
+								this.addPlayer(NetPlayer);
+
+						}
+					}
+
+				});
+				
 		}
 
 
@@ -775,7 +815,7 @@ Level3.prototype.printMessage = function (mensaje) { //para mensajes que se nece
 }
 Level3.prototype.render = function() {
 
-  /*  this.game.debug.body(this.fPlayer);
+    this.game.debug.body(this.fPlayer);
 
 		this.fNetPLayers.forEach((NetplayerObject, i) => {
 	if(NetplayerObject.NetPlayer.body != null){
@@ -784,6 +824,5 @@ Level3.prototype.render = function() {
 				
 			}
 		});
-*/
 }
 // -- user code here --

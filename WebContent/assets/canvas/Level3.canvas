@@ -133,16 +133,6 @@
           }
         },
         {
-          "type": "group",
-          "id": "94b0077c-4d12-427d-aa50-7dc96521f25d",
-          "info": {
-            "editorName": "flyingObstacles",
-            "editorField": true,
-            "setAll": [],
-            "children": []
-          }
-        },
-        {
           "type": "prefab",
           "prefab": "0",
           "id": "d266159a-6f56-4224-aa71-169f097eecf8",
@@ -155,6 +145,16 @@
             "editorName": "player",
             "x": 370,
             "y": 137
+          }
+        },
+        {
+          "type": "group",
+          "id": "94b0077c-4d12-427d-aa50-7dc96521f25d",
+          "info": {
+            "editorName": "flyingObstacles",
+            "editorField": true,
+            "setAll": [],
+            "children": []
           }
         },
         {
