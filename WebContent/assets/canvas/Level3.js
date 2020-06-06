@@ -331,7 +331,7 @@ Level3.prototype.addPhaserNetworkPlayer = function() {
 
 		this.game.croquetView.updatePlayerList(); //pido lista de usuarios
 		this.updatePos();
-		//this.game.croquetView.getPlayersPos();
+		this.game.croquetView.getPlayersPos();
 
 		this.fPlayer.isPlaying = true;
 		return true;
@@ -428,7 +428,7 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add onli
 
 
   	this.updatePos();
-	//this.game.croquetView.getPlayersPos();
+	this.game.croquetView.getPlayersPos();
 
 
 	}
@@ -814,7 +814,7 @@ Level3.prototype.printMessage = function (mensaje) { //para mensajes que se nece
 	console.log(mensaje);
 }
 Level3.prototype.render = function() {
-
+/*
     this.game.debug.body(this.fPlayer);
 
 		this.fNetPLayers.forEach((NetplayerObject, i) => {
@@ -823,6 +823,6 @@ Level3.prototype.render = function() {
 				
 				
 			}
-		});
+		});*/
 }
 // -- user code here --
