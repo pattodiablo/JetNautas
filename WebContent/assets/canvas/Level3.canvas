@@ -179,6 +179,64 @@
             "scale.y": 0.8,
             "fixedToCamera": true
           }
+        },
+        {
+          "type": "text",
+          "id": "307c832a-0a62-4265-9aa0-651fe69e1bfe",
+          "info": {
+            "editorName": "distance",
+            "editorField": true,
+            "x": 194,
+            "y": 52,
+            "fixedToCamera": true,
+            "text": "000000",
+            "style.fontSize": 28,
+            "style.fill": "#ffffff",
+            "style.align": "RIGHT"
+          }
+        },
+        {
+          "type": "text",
+          "id": "5b3ba9b9-5ef2-40d7-8514-2a1ac0fd7e15",
+          "info": {
+            "editorName": "distanceLabel",
+            "x": 67,
+            "y": 52,
+            "fixedToCamera": true,
+            "text": "Distance:",
+            "style.fontSize": 28,
+            "style.fill": "#ffffff",
+            "style.align": "RIGHT"
+          }
+        },
+        {
+          "type": "text",
+          "id": "43f600c4-5e53-424e-a92c-1fd182b4e1b0",
+          "info": {
+            "editorName": "cristalsCount",
+            "editorField": true,
+            "x": 184,
+            "y": 80,
+            "fixedToCamera": true,
+            "text": "000000",
+            "style.fontSize": 28,
+            "style.fill": "#ffffff",
+            "style.align": "RIGHT"
+          }
+        },
+        {
+          "type": "text",
+          "id": "62454e7f-7997-4948-a3cf-9f626450e18e",
+          "info": {
+            "editorName": "cristalsLabel",
+            "x": 67,
+            "y": 80,
+            "fixedToCamera": true,
+            "text": "Cristals:",
+            "style.fontSize": 28,
+            "style.fill": "#ffffff",
+            "style.align": "RIGHT"
+          }
         }
       ]
     }

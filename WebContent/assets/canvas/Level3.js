@@ -56,10 +56,10 @@ Level3.prototype.create = function () {
 	
 	var _onlinePlayersFire = this.add.group(_NetplayersGroup);
 	
-	var _flyingObstacles = this.add.group();
-	
 	var _player = new player(this.game, 370.0, 137.0);
 	this.add.existing(_player);
+	
+	var _flyingObstacles = this.add.group();
 	
 	var _visor = this.add.sprite(0.0, -73.0, 'visor');
 	_visor.fixedToCamera = true;
@@ -67,6 +67,18 @@ Level3.prototype.create = function () {
 	var _energyCell = this.add.sprite(7.0, 5.0, 'energyCell');
 	_energyCell.scale.set(0.8, 0.8);
 	_energyCell.fixedToCamera = true;
+	
+	var _distance = this.add.text(194.0, 52.0, '000000', {"font":"bold 28px Arial","fill":"#ffffff","align":"right"});
+	_distance.fixedToCamera = true;
+	
+	var _distanceLabel = this.add.text(67.0, 52.0, 'Distance:', {"font":"bold 28px Arial","fill":"#ffffff","align":"right"});
+	_distanceLabel.fixedToCamera = true;
+	
+	var _cristalsCount = this.add.text(184.0, 80.0, '000000', {"font":"bold 28px Arial","fill":"#ffffff","align":"right"});
+	_cristalsCount.fixedToCamera = true;
+	
+	var _cristalsLabel = this.add.text(67.0, 80.0, 'Cristals:', {"font":"bold 28px Arial","fill":"#ffffff","align":"right"});
+	_cristalsLabel.fixedToCamera = true;
 	
 	
 	
@@ -79,8 +91,10 @@ Level3.prototype.create = function () {
 	this.fCristalsGroup = _cristalsGroup;
 	this.fNetplayersGroup = _NetplayersGroup;
 	this.fOnlinePlayersFire = _onlinePlayersFire;
-	this.fFlyingObstacles = _flyingObstacles;
 	this.fPlayer = _player;
+	this.fFlyingObstacles = _flyingObstacles;
+	this.fDistance = _distance;
+	this.fCristalsCount = _cristalsCount;
 	
 	
 	this.myCreate();
@@ -656,7 +670,7 @@ Level3.prototype.getCoin = function (player, coin) { //recoger monedas
 }
 
 Level3.prototype.getCristal = function (player, cristal) { //recoger monedas
-	this.fPlayer.cristal++;
+	this.fPlayer.cristals++;
 	pickCristal.play('pickCristal');
 	cristal.destroy();
 }
@@ -765,6 +779,15 @@ this.game.physics.arcade.overlap(this.fPlayer , this.fCoinGroup, this.getCoin, n
 this.game.physics.arcade.overlap(this.fPlayer , this.fCristalsGroup, this.getCristal, null, this);
 this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCoinGroup, this.getOnlineCoin, null, this);
 this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCristalsGroup, this.getOnlineCristal, null, this);
+
+if(this.fPlayer.canjump){
+	this.fPlayer.distance++;
+	this.fDistance.text= this.fPlayer.distance/10;
+}
+
+if(this.fPlayer.canjump){
+	this.fCristalsCount.text = this.fPlayer.cristals;
+}
 
 
 if(this.IslayerOnFloor){
