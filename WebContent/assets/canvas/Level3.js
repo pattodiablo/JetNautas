@@ -104,15 +104,15 @@ Level3.prototype.create = function () {
 /* --- end generated code --- */
 Level3.prototype.myPreload = function () {
 
-	this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
-	this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
+	
 	this.game.load.audio('hurt', ['assets/audio/hurt.mp3','assets/audio/hurt.ogg']);
 	this.game.load.audio('getFuel', ['assets/audio/getFuel.mp3','assets/audio/getFuel.ogg']);
 	this.game.load.audio('pickCristal', ['assets/audio/pickCristal.mp3','assets/audio/pickCristal.ogg']);
 	this.game.load.audio('elevate1', ['assets/audio/elevate1.mp3','assets/audio/elevate1.ogg']);
 	this.game.load.audio('elevate2', ['assets/audio/elevate2.mp3','assets/audio/elevate2.ogg']);
 	this.game.load.audio('elevate3', ['assets/audio/elevate3.mp3','assets/audio/elevate3.ogg']);
-
+	this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
+	this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
 
 }
 
@@ -133,19 +133,28 @@ Level3.prototype.bgMusicPlay = function () {
 	BgMusic2.loop = true;
 	
 	var BgMusicSelector = Math.round(Math.random()) //agreagar musica de bg randomicamente
+	
+	switch (this.game.musicOption){
 
-	if(BgMusicSelector >= 0.5 && musicEnabled){
-		console.log('rola 1 selected!');
-		this.BgMusic = 1;
-		BgMusic.play();
-		
+		case "1":
+			console.log('rola 1 selected!');
+			this.BgMusic = 1;
+			BgMusic.play();
+		break;
+			
+
+		case "2":
+			console.log('rola 2 selected!');
+			this.BgMusic = 2;
+			BgMusic2.play();
+		break;
+
+		default:
+			console.log('no rola selected');
+		break;
+
 	}
-	if(BgMusicSelector <= 0.5 && musicEnabled){
-		console.log('rola 2 selected!');
-		this.BgMusic = 2;
-		BgMusic2.play();
-		
-	}
+	
 
 	hurt = this.game.add.audio('hurt', 0.2);
 	hurt.allowMultiple = false;
@@ -337,11 +346,14 @@ Level3.prototype.addPhaserNetworkPlayer = function() {
 		if(this.game.timesConnected<=0){
 
 	  		console.log('anadiendo croquet player');
-			this.game.croquetView.confirmPlayerAdded(this.mySession);
+			this.game.croquetView.confirmPlayerAdded(this.mySession,this.game.nickName);
 			this.game.timesConnected++;
-
+			
 			//this.updatePos();
 		}
+		this.myName = this.add.text(this.fPlayer.x-30, this.fPlayer.y, this.game.nickName, {"font":"bold 18px Arial","fill":"#ffffff","align":"right"});
+		this.myName.anchor.x = 0.5;
+		this.myName.anchor.y = 0.5;
 
 		this.game.croquetView.updatePlayerList(); //pido lista de usuarios
 		this.updatePos();
@@ -354,6 +366,7 @@ Level3.prototype.addPhaserNetworkPlayer = function() {
 }
 
 Level3.prototype.addPlayer =function(NetPlayer){
+
 						console.log('creando a :' + NetPlayer)
 						var croquetPlayer = new netPlayer(this.game, 0, 0);
 
@@ -363,7 +376,7 @@ Level3.prototype.addPlayer =function(NetPlayer){
 
 						}else{
 							croquetPlayer.visible=false;
-							croquetPlayer.body.enable=false;
+							croquetPlayer.body.true=false;
 							croquetPlayer.playerThrust.visible=false;
 						}
 						
@@ -766,6 +779,9 @@ Level3.prototype.killOnlinePlayer = function(sessionId){ //un jugador que ha sid
 
 Level3.prototype.update = function () {
 
+this.myName.x = this.fPlayer.x;
+this.myName.y = this.fPlayer.y-50;
+
 this.energyBar.width=this.fPlayer.fuel;
 
 this.game.physics.arcade.overlap(this.fPlayer , this.fNetplayersGroup);
@@ -810,6 +826,17 @@ this.fPlatformGroup.forEach(function(platform) {
 
 	}
 	platform.x-=this.platformVelo;
+
+
+	},this);
+
+this.fPlatformGroup.forEach(function(planet) {
+
+	if(planet.x<=-500){
+
+		planet.destroy() //creo plataforma infinita
+
+	}
 
 
 	},this);

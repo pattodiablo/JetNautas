@@ -41,12 +41,19 @@ netPlayer.prototype.myCreate = function() {
 	this.playerThrust.visible=this.visible;
 	this.game.state.getCurrentState﻿().fOnlinePlayersFire.add(this.playerThrust);
 	
+	this.NetPlayerName = this.game.add.text(this.x-30, this.y, 'noName', {"font":"bold 18px Arial","fill":"#ffffff","align":"right"});
+	this.NetPlayerName.anchor.x = 0.5;
+	this.NetPlayerName.anchor.y = 0.5;
+	
 }
 
 netPlayer.prototype.update = function() {
 	
 	this.IsOnlineplayerOnFloor = this.game.physics.arcade.collide(this, this.game.state.getCurrentState﻿().fPlatformGroup);
 	
+
+	this.NetPlayerName.x = this.x;
+	this.NetPlayerName.y = this.y-50;
 
 	
 if(this.IsOnlineplayerOnFloor){
