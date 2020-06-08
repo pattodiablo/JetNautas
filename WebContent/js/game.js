@@ -10,6 +10,7 @@ class MirrorModel extends Croquet.Model {
 		init() {
 
 			this.allPlayers = new Array();
+			this.allPlayerObjects =  new Array();
 			this.subscribe('gameNetwork',"darEmitiendoMensaje",this.emitirMensaje);
 			this.subscribe('gameNetwork',"createNetworkPlayer", this.createCroquetPlayer);
 			this.subscribe('gameNetwork',"confirmPlayer",this.storePlayer);
@@ -21,6 +22,7 @@ class MirrorModel extends Croquet.Model {
 			this.subscribe('gameNetwork',"playerKilled",  this.propagateKill);
 			this.subscribe('gameNetwork',"playerKilledByFuel",  this.propagateKillByFuel);
 			this.subscribe('gameNetwork',"playerRemoved",  this.propagateRemove);
+			this.subscribe('gameNetwork',"getPlayersName",  this.sendNames);
 
 			this.crearMonedas();
 			this.crearMonedaSeno();
@@ -29,7 +31,11 @@ class MirrorModel extends Croquet.Model {
 			console.log('mySessionID ' + this.sessionId);
 		}
 
+			sendNames(sessionId){
 
+				this.publish('gameNetwork',"sendNames",  this.allPlayerObjects);
+
+			}
 		emmitAction(sessionId){
 
 			this.publish('gameNetwork',"croquetPlayerExecuteAction",sessionId);
@@ -158,20 +164,39 @@ class MirrorModel extends Croquet.Model {
 
 		deleteUser(id) {
 
+
+
 				const index =  this.allPlayers.indexOf(id);
+
+
+				this.allPlayerObjects.forEach((PlayerObject, j) => { 
+					
+					if(PlayerObject.sessionId == id){
+
+						var removedObject = this.allPlayerObjects.indexOf(PlayerObject);
+
+						if (removedObject > -1) {
+						   this.allPlayerObjects.splice(removedObject, 1);
+						}
+					}
+
+				});
+
 				if (index > -1) {
 				   this.allPlayers.splice(index, 1);
 				}
+	
 
 				this.publish('gameNetwork',"removePlayer",id);
 				console.log('user ' + id + ' has been removed from Model');
 
 	     }
 
-		storePlayer(sessionId){
+		storePlayer(sessionObject){
 
-				this.allPlayers.push(sessionId);
-				console.log('sesion registrada: ' +  this.allPlayers );
+				this.allPlayers.push(sessionObject.sessionId);
+				this.allPlayerObjects.push(sessionObject); //ide con relacion a nickname de cada jugador
+				console.log('sesion registrada: ' +  sessionObject.nickName );
 
 			//	this.publish('gameNetwork', "populatePlayers", this.allPlayers);
 				//console.log('hasta aqui ' + allPlayers.getLength());
@@ -230,12 +255,20 @@ class ClientViews extends Croquet.View {
 			this.subscribe('gameNetwork',"propagateKilledRemove",this.removeOnlinePlayer);
 			this.subscribe('gameNetwork',"croquetPlayerExecuteAction", this.doAction);
 			this.subscribe('gameNetwork',"crearPlanetasCroquet",this.crearPlaneta);
+			this.subscribe('gameNetwork',"sendNames",  this.emitNickNames);
 
 			this.game = null;
 			this.crearJuego(this); //me paso croquet
 			console.log('MyCroquetId ' + this.viewId);
 		}
+			
+			emitNickNames(allPlayerObjects){
+				if(typeof(this.gameScene) != 'undefined'){
+					if(this.gameScene.key == 'Level3'){
+						this.gameScene.sincronizarNombres(allPlayerObjects);
 
+				}}
+			}
 
 			crearPlaneta(data){
 
@@ -319,6 +352,12 @@ class ClientViews extends Croquet.View {
 
 			var width = document.body.clientWidth;﻿﻿﻿
 			var height = document.documentElement["scrollHeight"];
+			if(width>=1920){
+				width=1920;
+			}
+			if(height>=1080){
+				height=1080;
+			}
 			var firstRunLandscape = true;
 
 		var game = new Phaser.Game(width,height, Phaser.CANVAS);
@@ -473,9 +512,10 @@ class ClientViews extends Croquet.View {
 
 		}
 
-		confirmPlayerAdded(sessionId){
-				console.log('registrando en croquet usuario ' + sessionId);
-				this.publish('gameNetwork',"confirmPlayer", sessionId);
+		confirmPlayerAdded(sessionId, nickName){
+				console.log('registrando en croquet usuario ' + sessionId + 'con nickName: ' + nickName);
+				var sessionObject={ sessionId:sessionId, nickName:nickName}
+				this.publish('gameNetwork',"confirmPlayer", sessionObject);
 
 		}
 		getSessionID(){
@@ -494,6 +534,10 @@ class ClientViews extends Croquet.View {
 			this.gameScene.addPhaserNetworkOnlinePlayer(allPlayers);
 			}
 			}
+		}
+
+		getPlayersName(){
+			this.publish('gameNetwork',"getPlayersName");
 		}
 
 		removeCroquetPlayer(sessionId){

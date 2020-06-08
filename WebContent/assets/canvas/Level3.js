@@ -111,9 +111,14 @@ Level3.prototype.myPreload = function () {
 	this.game.load.audio('elevate1', ['assets/audio/elevate1.mp3','assets/audio/elevate1.ogg']);
 	this.game.load.audio('elevate2', ['assets/audio/elevate2.mp3','assets/audio/elevate2.ogg']);
 	this.game.load.audio('elevate3', ['assets/audio/elevate3.mp3','assets/audio/elevate3.ogg']);
-	this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
-	this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
 
+	if(this.game.musicOption != '3'){ 
+
+		this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
+		this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
+
+	}
+	
 }
 
 
@@ -388,7 +393,21 @@ Level3.prototype.addPlayer =function(NetPlayer){
 						this.fNetPLayers.push(NetplayerObject);
 						this.fNetplayersGroup.add(croquetPlayer);
 						console.log('largoUsuariosRegistradosEnMiSesion ' + this.fNetPLayers.length);
-				
+						this.game.croquetView.getPlayersName();
+}
+
+Level3.prototype.sincronizarNombres = function(allPlayerObjects){ 
+ console.log('nickNames ' + JSON.stringify(allPlayerObjects,["sessionId"]));
+		allPlayerObjects.forEach((PlayerObject, i) => {	
+				this.fNetPLayers.forEach((localPlayer, j) => { 
+					
+					if(PlayerObject.sessionId == localPlayer.id){
+						console.log('encontre a alguien para ponerle nombre');
+						localPlayer.NetPlayer.NetPlayerName.text = PlayerObject.nickName;
+					}
+
+				});
+		});
 }
 
 Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add online player
@@ -502,8 +521,12 @@ Level3.prototype.updatePos = function() {
 		this.fNetPLayers.forEach((NetplayerObject, i) => {
 			console.log('searching to remove in game a : ' + sessionId);
 			if(sessionId == NetplayerObject.id){
-				console.log('removing ' + NetplayerObject.id);
+
+					console.log('removing ' + NetplayerObject.id);
+					NetplayerObject.NetPlayer.playerThrust.destroy();
+					NetplayerObject.NetPlayer.NetPlayerName.destroy();
 					NetplayerObject.NetPlayer.destroy();
+
 					const index =  this.fNetPLayers.indexOf(NetplayerObject);
 					if (index > -1) {
 					  var removed = this.fNetPLayers.splice(index, 1);

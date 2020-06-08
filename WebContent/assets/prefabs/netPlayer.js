@@ -44,10 +44,11 @@ netPlayer.prototype.myCreate = function() {
 	this.NetPlayerName = this.game.add.text(this.x-30, this.y, 'noName', {"font":"bold 18px Arial","fill":"#ffffff","align":"right"});
 	this.NetPlayerName.anchor.x = 0.5;
 	this.NetPlayerName.anchor.y = 0.5;
-	
+	this.game.state.getCurrentState﻿().fOnlinePlayersFire.add(this.NetPlayerName);
 }
 
 netPlayer.prototype.update = function() {
+	
 	
 	this.IsOnlineplayerOnFloor = this.game.physics.arcade.collide(this, this.game.state.getCurrentState﻿().fPlatformGroup);
 	
@@ -56,17 +57,17 @@ netPlayer.prototype.update = function() {
 	this.NetPlayerName.y = this.y-50;
 
 	
-if(this.IsOnlineplayerOnFloor){
-	
-	this.playerThrust.visible=false;
-}else{
-	if(this.canjump){
-		this.playerThrust.visible=true;
-	}else{
-		this.playerThrust.visible=false;
-	}
-	this.playerThrust.visible=true;
-}
+		if(this.IsOnlineplayerOnFloor){
+			
+			this.playerThrust.visible=false;
+		}else{
+			if(this.canjump){
+				this.playerThrust.visible=true;
+			}else{
+				this.playerThrust.visible=false;
+			}
+			this.playerThrust.visible=true;
+		}
 
 	
 		this.playerThrust.x = this.x-15;
