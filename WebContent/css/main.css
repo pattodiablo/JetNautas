@@ -1,5 +1,13 @@
 body {
-	background: #000;
+	background: url("../images/bg.png");
+	background-color: #d65c71;
+	background-repeat: repeat-x;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
+
+.container-fluid { 
+  padding: 0px;
+}
+
