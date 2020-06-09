@@ -56,10 +56,10 @@ Level3.prototype.create = function () {
 	
 	var _onlinePlayersFire = this.add.group(_NetplayersGroup);
 	
-	var _flyingObstacles = this.add.group();
-	
 	var _player = new player(this.game, 370.0, 137.0);
 	this.add.existing(_player);
+	
+	var _flyingObstacles = this.add.group();
 	
 	var _visor = this.add.sprite(0.0, -73.0, 'visor');
 	_visor.fixedToCamera = true;
@@ -67,6 +67,18 @@ Level3.prototype.create = function () {
 	var _energyCell = this.add.sprite(7.0, 5.0, 'energyCell');
 	_energyCell.scale.set(0.8, 0.8);
 	_energyCell.fixedToCamera = true;
+	
+	var _distance = this.add.text(194.0, 52.0, '000000', {"font":"bold 28px Arial","fill":"#ffffff","align":"right"});
+	_distance.fixedToCamera = true;
+	
+	var _distanceLabel = this.add.text(67.0, 52.0, 'Distance:', {"font":"bold 28px Arial","fill":"#ffffff","align":"right"});
+	_distanceLabel.fixedToCamera = true;
+	
+	var _cristalsCount = this.add.text(184.0, 80.0, '000000', {"font":"bold 28px Arial","fill":"#ffffff","align":"right"});
+	_cristalsCount.fixedToCamera = true;
+	
+	var _cristalsLabel = this.add.text(67.0, 80.0, 'Cristals:', {"font":"bold 28px Arial","fill":"#ffffff","align":"right"});
+	_cristalsLabel.fixedToCamera = true;
 	
 	
 	
@@ -79,8 +91,10 @@ Level3.prototype.create = function () {
 	this.fCristalsGroup = _cristalsGroup;
 	this.fNetplayersGroup = _NetplayersGroup;
 	this.fOnlinePlayersFire = _onlinePlayersFire;
-	this.fFlyingObstacles = _flyingObstacles;
 	this.fPlayer = _player;
+	this.fFlyingObstacles = _flyingObstacles;
+	this.fDistance = _distance;
+	this.fCristalsCount = _cristalsCount;
 	
 	
 	this.myCreate();
@@ -90,13 +104,21 @@ Level3.prototype.create = function () {
 /* --- end generated code --- */
 Level3.prototype.myPreload = function () {
 
-	this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
-	this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
+	
 	this.game.load.audio('hurt', ['assets/audio/hurt.mp3','assets/audio/hurt.ogg']);
 	this.game.load.audio('getFuel', ['assets/audio/getFuel.mp3','assets/audio/getFuel.ogg']);
 	this.game.load.audio('pickCristal', ['assets/audio/pickCristal.mp3','assets/audio/pickCristal.ogg']);
+	this.game.load.audio('elevate1', ['assets/audio/elevate1.mp3','assets/audio/elevate1.ogg']);
+	this.game.load.audio('elevate2', ['assets/audio/elevate2.mp3','assets/audio/elevate2.ogg']);
+	this.game.load.audio('elevate3', ['assets/audio/elevate3.mp3','assets/audio/elevate3.ogg']);
 
+	if(this.game.musicOption != '3'){ 
 
+		this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
+		this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
+
+	}
+	
 }
 
 
@@ -116,19 +138,28 @@ Level3.prototype.bgMusicPlay = function () {
 	BgMusic2.loop = true;
 	
 	var BgMusicSelector = Math.round(Math.random()) //agreagar musica de bg randomicamente
+	
+	switch (this.game.musicOption){
 
-	if(BgMusicSelector >= 0.5 && musicEnabled){
-		console.log('rola 1 selected!');
-		this.BgMusic = 1;
-		BgMusic.play();
-		
+		case "1":
+			console.log('rola 1 selected!');
+			this.BgMusic = 1;
+			BgMusic.play();
+		break;
+			
+
+		case "2":
+			console.log('rola 2 selected!');
+			this.BgMusic = 2;
+			BgMusic2.play();
+		break;
+
+		default:
+			console.log('no rola selected');
+		break;
+
 	}
-	if(BgMusicSelector <= 0.5 && musicEnabled){
-		console.log('rola 2 selected!');
-		this.BgMusic = 2;
-		BgMusic2.play();
-		
-	}
+	
 
 	hurt = this.game.add.audio('hurt', 0.2);
 	hurt.allowMultiple = false;
@@ -139,10 +170,22 @@ Level3.prototype.bgMusicPlay = function () {
 	getFuel.addMarker('getFuel', 0, 0.30	);
 
 	pickCristal = this.game.add.audio('pickCristal', 0.2);
-	pickCristal.allowMultiple = false;
+	pickCristal.allowMultiple = true;
 	pickCristal.addMarker('pickCristal', 0, 0.18	);
 
-	this.fxSounds = [hurt]; //agreagar aqui todos los sound fx que se necesita adminstrar
+	elevate1 = this.game.add.audio('elevate1', 0.2);
+	elevate1.allowMultiple = true;
+	elevate1.addMarker('elevate1', 0, 0.13	);
+
+	elevate2 = this.game.add.audio('elevate2', 0.2);
+	elevate2.allowMultiple = true;
+	elevate2.addMarker('elevate2', 0, 0.13	);
+
+	elevate3 = this.game.add.audio('elevate3', 0.2);
+	elevate3.allowMultiple = true;
+	elevate3.addMarker('elevate3', 0, 0.13	);
+
+	this.fxSounds = [hurt,getFuel,pickCristal,elevate1,elevate2,elevate3]; //agreagar aqui todos los sound fx que se necesita adminstrar
 
 	if(!fxEnabled){
 		this.fxSounds.forEach(function(soundFx) { 	 //en caso de que se deshabilite los sonidos fxs
@@ -302,22 +345,24 @@ Level3.prototype.myCreate = function () {
 
 }
 
-Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
+Level3.prototype.addPhaserNetworkPlayer = function() {
+		this.mySession = this.game.croquetView.getSessionID(); //me asigno mi id de usario
 
 		if(this.game.timesConnected<=0){
 
 	  		console.log('anadiendo croquet player');
-			this.mySession = this.game.croquetView.getSessionID();
-			this.game.croquetView.confirmPlayerAdded(this.mySession);
+			this.game.croquetView.confirmPlayerAdded(this.mySession,this.game.nickName);
 			this.game.timesConnected++;
-
+			
 			//this.updatePos();
 		}
+		this.myName = this.add.text(this.fPlayer.x-30, this.fPlayer.y, this.game.nickName, {"font":"bold 18px Arial","fill":"#ffffff","align":"right"});
+		this.myName.anchor.x = 0.5;
+		this.myName.anchor.y = 0.5;
 
-		this.game.croquetView.updatePlayerList(); //recargo lista de usuarios
-		this.mySession = this.game.croquetView.getSessionID(); //me asigno mi id de usario
+		this.game.croquetView.updatePlayerList(); //pido lista de usuarios
 		this.updatePos();
-		//this.game.croquetView.getPlayersPos();
+		this.game.croquetView.getPlayersPos();
 
 		this.fPlayer.isPlaying = true;
 		return true;
@@ -325,7 +370,49 @@ Level3.prototype.addPhaserNetworkPlayer = function(allPlayers) {
 
 }
 
+Level3.prototype.addPlayer =function(NetPlayer){
+
+						console.log('creando a :' + NetPlayer)
+						var croquetPlayer = new netPlayer(this.game, 0, 0);
+
+						if(croquetPlayer.isPlaying){
+							croquetPlayer.visible=true;
+
+
+						}else{
+							croquetPlayer.visible=false;
+							croquetPlayer.body.true=false;
+							croquetPlayer.playerThrust.visible=false;
+						}
+						
+						croquetPlayer.body.collideWorldBounds = true;
+						this.add.existing(croquetPlayer);
+						//agregar aqui jugadores nuevos
+
+						var NetplayerObject = {NetPlayer:croquetPlayer,id:NetPlayer};
+						this.fNetPLayers.push(NetplayerObject);
+						this.fNetplayersGroup.add(croquetPlayer);
+						console.log('largoUsuariosRegistradosEnMiSesion ' + this.fNetPLayers.length);
+						this.game.croquetView.getPlayersName();
+}
+
+Level3.prototype.sincronizarNombres = function(allPlayerObjects){ 
+ console.log('nickNames ' + JSON.stringify(allPlayerObjects,["sessionId"]));
+		allPlayerObjects.forEach((PlayerObject, i) => {	
+				this.fNetPLayers.forEach((localPlayer, j) => { 
+					
+					if(PlayerObject.sessionId == localPlayer.id){
+						console.log('encontre a alguien para ponerle nombre');
+						localPlayer.NetPlayer.NetPlayerName.text = PlayerObject.nickName;
+					}
+
+				});
+		});
+}
+
 Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add online player
+
+		if(this.game.timesConnected<=0){
 
 		console.log('--creando online players--');
 		console.log('online players: ' + allPlayers);
@@ -339,41 +426,55 @@ Level3.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){ //add onli
 			
 					if(NetPlayer != this.game.croquetView.getSessionID()){
 						
-						console.log('agrego todos los jugadores nuevos ' + NetPlayer);
+						console.log('agrego todos los jugadores que ya estaban en lista ' + NetPlayer);
+							this.addPlayer(netPlayer);
 
-						var croquetPlayer = new netPlayer(this.game, 0, 0);
-
-						if(croquetPlayer.isPlaying){
-							croquetPlayer.visible=true;
-
-
-						}else{
-							croquetPlayer.visible=false;
-							croquetPlayer.body.enable=false;
-							croquetPlayer.playerThrust.visible=false;
-						}
-						
-						croquetPlayer.body.collideWorldBounds = true;
-						this.add.existing(croquetPlayer);
-						//agregar aqui jugadores nuevos
-
-						var NetplayerObject = {NetPlayer:croquetPlayer,id:NetPlayer};
-						this.fNetPLayers.push(NetplayerObject);
-						this.fNetplayersGroup.add(croquetPlayer);
-					}else{
+							}else{
 
 						console.log('este jugador ya esta creado')
 					}
 
 				
-			});
-		}else {
-			console.log('no hay jugadores online');
+				});
+			}else {
+				console.log('no hay jugadores online');
+			}
+		}else{
+
+				
+				allPlayers.forEach((NetPlayer, i) => {
+				const isAnewPLayer = [];
+					this.fNetPLayers.forEach((localPlayer, j) => { //reviso si el jugador nuevo es alguno de los que ya estan la lista local
+
+							if(NetPlayer == localPlayer.id){
+								isAnewPLayer.push(false);
+							}else{
+								isAnewPLayer.push(true);
+							}
+						});
+
+					const allEqual = arr => arr.every( v => v === true );
+					const isNew = allEqual( isAnewPLayer );
+					console.log('largoUsuariosCroquet ' + allPlayers.length);
+					console.log('largoUsuariosRegistradosEnMiSesion ' + this.fNetPLayers.length);
+					console.log('isAnewPLayer ' + isAnewPLayer.length);
+					console.log('isNew ' + isNew);
+					
+					if(isNew){
+						if(NetPlayer != this.game.croquetView.getSessionID()){
+								console.log('there is a new player');
+								this.addPlayer(NetPlayer);
+
+						}
+					}
+
+				});
+				
 		}
 
 
   	this.updatePos();
-	//this.game.croquetView.getPlayersPos();
+	this.game.croquetView.getPlayersPos();
 
 
 	}
@@ -420,8 +521,12 @@ Level3.prototype.updatePos = function() {
 		this.fNetPLayers.forEach((NetplayerObject, i) => {
 			console.log('searching to remove in game a : ' + sessionId);
 			if(sessionId == NetplayerObject.id){
-				console.log('removing ' + NetplayerObject.id);
+
+					console.log('removing ' + NetplayerObject.id);
+					NetplayerObject.NetPlayer.playerThrust.destroy();
+					NetplayerObject.NetPlayer.NetPlayerName.destroy();
 					NetplayerObject.NetPlayer.destroy();
+
 					const index =  this.fNetPLayers.indexOf(NetplayerObject);
 					if (index > -1) {
 					  var removed = this.fNetPLayers.splice(index, 1);
@@ -534,17 +639,29 @@ Level3.prototype.crearMonedaSeno = function(packmonedas){ //creacion de monedas 
 	}
 
 Level3.prototype.swipeDownAction = function(pointer) { //manejo de swipe control de pantalla
+const elevateSoundSelect =  Math.ceil(Math.random()*3);
 
 		if(this.fPlayer.canjump){
     		this.fPlayer.body.velocity.y=-this.velo;
     		
+    		switch (elevateSoundSelect){
+    			case 1:
+    			elevate1.play('elevate1');
+    			break;
+    			case 2:
+    			elevate2.play('elevate2');
+    			break;
+    			case 3:
+    			elevate3.play('elevate3');
+    			break;
+    		}
 
     		if(this.fPlayer.fuel <= 0){
 
     			this.killPlayerByFuel();
     		}else{
 
-    			this.fPlayer.fuel-=25;
+    			this.fPlayer.fuel-=15;
     		if(this.fPlayer.fuel <= 0){
     			this.fPlayer.fuel=0;
     		}
@@ -589,7 +706,7 @@ Level3.prototype.getCoin = function (player, coin) { //recoger monedas
 }
 
 Level3.prototype.getCristal = function (player, cristal) { //recoger monedas
-	this.fPlayer.cristal++;
+	this.fPlayer.cristals++;
 	pickCristal.play('pickCristal');
 	cristal.destroy();
 }
@@ -685,6 +802,9 @@ Level3.prototype.killOnlinePlayer = function(sessionId){ //un jugador que ha sid
 
 Level3.prototype.update = function () {
 
+this.myName.x = this.fPlayer.x;
+this.myName.y = this.fPlayer.y-50;
+
 this.energyBar.width=this.fPlayer.fuel;
 
 this.game.physics.arcade.overlap(this.fPlayer , this.fNetplayersGroup);
@@ -698,6 +818,15 @@ this.game.physics.arcade.overlap(this.fPlayer , this.fCoinGroup, this.getCoin, n
 this.game.physics.arcade.overlap(this.fPlayer , this.fCristalsGroup, this.getCristal, null, this);
 this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCoinGroup, this.getOnlineCoin, null, this);
 this.game.physics.arcade.overlap(this.fNetplayersGroup , this.fCristalsGroup, this.getOnlineCristal, null, this);
+
+if(this.fPlayer.canjump){
+	this.fPlayer.distance++;
+	this.fDistance.text= this.fPlayer.distance/10;
+}
+
+if(this.fPlayer.canjump){
+	this.fCristalsCount.text = this.fPlayer.cristals;
+}
 
 
 if(this.IslayerOnFloor){
@@ -720,6 +849,17 @@ this.fPlatformGroup.forEach(function(platform) {
 
 	}
 	platform.x-=this.platformVelo;
+
+
+	},this);
+
+this.fPlatformGroup.forEach(function(planet) {
+
+	if(planet.x<=-500){
+
+		planet.destroy() //creo plataforma infinita
+
+	}
 
 
 	},this);
@@ -747,8 +887,8 @@ Level3.prototype.printMessage = function (mensaje) { //para mensajes que se nece
 	console.log(mensaje);
 }
 Level3.prototype.render = function() {
-
-  /*  this.game.debug.body(this.fPlayer);
+/*
+    this.game.debug.body(this.fPlayer);
 
 		this.fNetPLayers.forEach((NetplayerObject, i) => {
 	if(NetplayerObject.NetPlayer.body != null){
@@ -756,7 +896,6 @@ Level3.prototype.render = function() {
 				
 				
 			}
-		});
-*/
+		});*/
 }
 // -- user code here --

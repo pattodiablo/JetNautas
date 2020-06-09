@@ -47,6 +47,7 @@ player.prototype.myCreate = function() {
 	this.playerThrust.visible=false;
 	this.fuel = 250;
 	this.cristals = 0;
+	this.distance = 0;	
 }
 
 player.prototype.update = function() {
