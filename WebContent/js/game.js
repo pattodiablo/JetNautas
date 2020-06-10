@@ -376,19 +376,13 @@ class ClientViews extends Croquet.View {
 		var Boot_proto = Object.create(Phaser.State.prototype);
 		Boot.prototype = Boot_proto;
 		Boot.prototype.constructor = Boot;
-
 		Boot.prototype.init = function () {
-
-			this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-			this.scale.pageAlignHorizontally = true;
-			this.scale.pageAlignVertically = true;
 
 		};
 
 		Boot.prototype.preload = function () {
 
-		this.load.pack('loader', 'assets/loaderSprites.json');
-
+		//this.load.pack('loader', 'assets/loaderSprites.json');
 
 		};
 
@@ -396,111 +390,16 @@ class ClientViews extends Croquet.View {
 
 		Boot.prototype.create = function () {
 
-		this.loadSprite = game.add.sprite(0, 0, 'loadBar');
-		this.loadSprite.x = game.world.centerX - this.loadSprite.width / 2;
-		this.loadSprite.y = game.world.centerY - 16;
-		var loadSprite = this.loadSprite;
-
-		iniciarJuego();
-		//	game.time.events.add(Phaser.Timer.SECOND * 2, iniciarJuego, this);
-
-			function iniciarJuego(){
-
-				console.log('im here');
-				game.state.start("LoaderTime");
-
-			}
-
-
+		game.state.start("Intro");
+	
 		};
 
-		function LoaderTime() {
-
-			Phaser.State.call(this);
-
-		}
-
-		var LoaderTime_proto = Object.create(Phaser.State.prototype);
-
-			LoaderTime.prototype = LoaderTime_proto;
-			LoaderTime.prototype.constructor = LoaderTime;
-
-		LoaderTime.prototype.preload = function () {
-
-		var loaderContainer = game.add.sprite(0, 0, 'loaderContainer');
-
-        loaderContainer.width = game.width;
-   		loaderContainer.x = game.world.centerX - loaderContainer.width / 2;
-        loaderContainer.y = game.world.centerY - 16;
-
-		var loadSprite = game.add.sprite(0, 0, 'loadBar');
-
-		  //loadSprite.width = 100;
-        loadSprite.x = game.world.centerX - loadSprite.width / 2;
-        loadSprite.y = game.world.centerY - 16;
-
-		 game.load.onFileComplete.add(function (progress, key, success, loaded, total) {
-
-            loadSprite.width = game.width * (progress / 100);
-            loadSprite.x = game.world.centerX - loadSprite.width / 2;
-
-        }, this);
-
-
-
-		this.load.pack('graphics', 'assets/pack.json');
-		this.load.pack('Fonts', 'assets/pack.json');
-		this.load.pack('animations', 'assets/pack.json');
-
-		
-
-				firstRunLandscape = game.scale.isGameLandscape;
-				if(!game.device.desktop){
-					game.scale.forceOrientation(false, false);
-				}else{
-					game.scale.forceOrientation(false, true);
-
-				}
-
-				game.scale.enterIncorrectOrientation.add(handleIncorrect);
-				game.scale.leaveIncorrectOrientation.add(handleCorrect);
-
-				function handleIncorrect(){
-
-			     	if(!game.device.desktop){
-			     		document.getElementById("turn").style.display="block";
-						}
-
-				}
-
-				function handleCorrect(){
-
-					if(!game.device.desktop){
-						if(firstRunLandscape){
-								//gameRatio = window.innerWidth/window.innerHeight;
-								//game.width = Math.ceil(960*gameRatio);
-								//game.height = 640;
-								//game.renderer.resize(game.width,game.height);
-								game.state.start("Level3");
-							}
-							document.getElementById("turn").style.display="none";
-						}
-
-					}
-
-		};
-
-		LoaderTime.prototype.create = function () {
-       	 game.state.start("Intro");
-		};
 
 			// Add the States your game has.
 			game.state.add("Boot", Boot);
-			game.state.add("LoaderTime", LoaderTime);
-
 			game.state.add("Level3", Level3);
 			game.state.add("Intro", Intro);
-			game.state.start("Intro",true,true);
+			game.state.start("Boot",true,true);
 
 		}
 

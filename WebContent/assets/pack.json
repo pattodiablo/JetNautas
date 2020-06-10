@@ -85,12 +85,6 @@
     },
     {
       "type": "image",
-      "key": "bottomCover",
-      "url": "assets/images/bottomCover.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
       "key": "netPlayers",
       "url": "assets/images/netPlayers.png",
       "overwrite": false
@@ -184,7 +178,7 @@
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1591388382794",
+    "generated": "1591801105500",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

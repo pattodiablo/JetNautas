@@ -84,15 +84,6 @@
           }
         },
         {
-          "type": "image",
-          "id": "c059c15d-9521-487f-9fbb-5dde83521228",
-          "asset": "2",
-          "info": {
-            "editorName": "bottomCover",
-            "y": 1080
-          }
-        },
-        {
           "type": "group",
           "id": "ed9b0e64-0ff8-4970-b9a0-5030f0b5f619",
           "info": {
@@ -160,7 +151,7 @@
         {
           "type": "image",
           "id": "a6798a1d-7405-4f5c-bc84-bc22a510cbe4",
-          "asset": "3",
+          "asset": "2",
           "info": {
             "editorName": "visor",
             "y": -73,
@@ -170,7 +161,7 @@
         {
           "type": "image",
           "id": "c13f8120-9fc4-4c80-b26e-262d5eed50cd",
-          "asset": "4",
+          "asset": "3",
           "info": {
             "editorName": "energyCell",
             "x": 7,
@@ -256,14 +247,9 @@
     "2": {
       "file": "WebContent/assets/pack.json",
       "section": "graphics",
-      "asset": "bottomCover"
-    },
-    "3": {
-      "file": "WebContent/assets/pack.json",
-      "section": "graphics",
       "asset": "visor"
     },
-    "4": {
+    "3": {
       "file": "WebContent/assets/pack.json",
       "section": "graphics",
       "asset": "energyCell"

@@ -46,8 +46,6 @@ Level3.prototype.create = function () {
 	
 	this.add.sprite(0.0, 1000.0, 'bigFloorfake');
 	
-	this.add.sprite(0.0, 1080.0, 'bottomCover');
-	
 	var _coinGroup = this.add.group();
 	
 	var _cristalsGroup = this.add.group();
@@ -105,19 +103,8 @@ Level3.prototype.create = function () {
 Level3.prototype.myPreload = function () {
 
 	
-	this.game.load.audio('hurt', ['assets/audio/hurt.mp3','assets/audio/hurt.ogg']);
-	this.game.load.audio('getFuel', ['assets/audio/getFuel.mp3','assets/audio/getFuel.ogg']);
-	this.game.load.audio('pickCristal', ['assets/audio/pickCristal.mp3','assets/audio/pickCristal.ogg']);
-	this.game.load.audio('elevate1', ['assets/audio/elevate1.mp3','assets/audio/elevate1.ogg']);
-	this.game.load.audio('elevate2', ['assets/audio/elevate2.mp3','assets/audio/elevate2.ogg']);
-	this.game.load.audio('elevate3', ['assets/audio/elevate3.mp3','assets/audio/elevate3.ogg']);
+	
 
-	if(this.game.musicOption != '3'){ 
-
-		this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
-		this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
-
-	}
 	
 }
 

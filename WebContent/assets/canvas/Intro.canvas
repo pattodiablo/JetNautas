@@ -46,8 +46,18 @@
       "children": [
         {
           "type": "image",
-          "id": "a3cd2064-6c1b-495d-a15e-ff96c393ba2a",
+          "id": "1f13159c-454e-4f31-8653-6a4e05e88a69",
           "asset": "0",
+          "info": {
+            "editorName": "jetBg",
+            "editorField": true,
+            "y": -4
+          }
+        },
+        {
+          "type": "image",
+          "id": "a3cd2064-6c1b-495d-a15e-ff96c393ba2a",
+          "asset": "1",
           "info": {
             "editorName": "playBtn",
             "editorField": true,
@@ -59,9 +69,10 @@
           "type": "text",
           "id": "d2ffebfb-8763-4851-8c24-ba89ed501e2d",
           "info": {
-            "editorName": "text",
-            "x": 7,
-            "y": 15,
+            "editorName": "ReadyText",
+            "editorField": true,
+            "x": 364,
+            "y": 201,
             "text": "click anywhere to begin",
             "style.fill": "#ffffff"
           }
@@ -70,10 +81,17 @@
     }
   },
   "type": "STATE",
-  "asset-table": {"0": {
-    "file": "WebContent/assets/pack.json",
-    "section": "graphics",
-    "asset": "playBtn"
-  }},
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "jetBg"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "playBtn"
+    }
+  },
   "prefab-table": {}
 }
