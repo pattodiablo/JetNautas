@@ -173,12 +173,17 @@
       "key": "planet3",
       "url": "assets/images/planet3.png",
       "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "ScoreScreen",
+      "url": "assets/canvas/ScoreScreen.js"
     }
   ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1591801105500",
+    "generated": "1591804651069",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

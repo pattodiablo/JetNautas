@@ -51,7 +51,9 @@
           "info": {
             "editorName": "jetBg",
             "editorField": true,
-            "y": -4
+            "y": -4,
+            "pivot.x": 0.5,
+            "pivot.y": 0.5
           }
         },
         {
@@ -71,9 +73,12 @@
           "info": {
             "editorName": "ReadyText",
             "editorField": true,
-            "x": 364,
-            "y": 201,
-            "text": "click anywhere to begin",
+            "x": 12,
+            "y": 20,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5,
+            "text": "READY",
+            "style.fontSize": 60,
             "style.fill": "#ffffff"
           }
         }

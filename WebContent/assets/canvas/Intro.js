@@ -42,10 +42,12 @@ Intro.prototype.preload = function () {
 
 Intro.prototype.create = function () {
 	var _jetBg = this.add.sprite(0.0, -4.0, 'jetBg');
+	_jetBg.pivot.set(0.5, 0.5);
 	
 	var _playBtn = this.add.sprite(-178.0, 96.0, 'playBtn');
 	
-	var _ReadyText = this.add.text(364.0, 201.0, 'click anywhere to begin', {"font":"bold 20px Arial","fill":"#ffffff"});
+	var _ReadyText = this.add.text(12.0, 20.0, 'READY', {"font":"bold 60px Arial","fill":"#ffffff"});
+	_ReadyText.anchor.set(0.5, 0.5);
 	
 	
 	
@@ -68,6 +70,19 @@ Intro.prototype.myInit = function () {
 
 Intro.prototype.myPreload = function () {
 
+	this.game.load.audio('hurt', ['assets/audio/hurt.mp3','assets/audio/hurt.ogg']);
+	this.game.load.audio('getFuel', ['assets/audio/getFuel.mp3','assets/audio/getFuel.ogg']);
+	this.game.load.audio('pickCristal', ['assets/audio/pickCristal.mp3','assets/audio/pickCristal.ogg']);
+	this.game.load.audio('elevate1', ['assets/audio/elevate1.mp3','assets/audio/elevate1.ogg']);
+	this.game.load.audio('elevate2', ['assets/audio/elevate2.mp3','assets/audio/elevate2.ogg']);
+	this.game.load.audio('elevate3', ['assets/audio/elevate3.mp3','assets/audio/elevate3.ogg']);
+
+	if(this.game.musicOption != '3'){ 
+
+		this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
+		this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
+
+	}
 
 		var loaderOutline = this.game.add.graphics(0, 0);
 		
@@ -93,8 +108,6 @@ Intro.prototype.myPreload = function () {
 	    var loaderContainer = this.game.add.sprite(0,0, loaderOutline.generateTexture());
 	    loaderOutline.destroy();
 
-		
-		
         loaderContainer.width = this.game.width;
    		loaderContainer.x = this.game.world.centerX - loaderContainer.width / 2;
         loaderContainer.y = this.game.world.centerY - 16;
@@ -111,7 +124,6 @@ Intro.prototype.myPreload = function () {
         loadSprite.width = this.game.width * (progress / 100);
         loadSprite.x = this.game.world.centerX - loadSprite.width / 2;
  			
-
             console.log('progress: ' + progress);
             console.log('key: ' + key);
             console.log('success: ' + success);
@@ -120,32 +132,14 @@ Intro.prototype.myPreload = function () {
  
         }, this);	
 	
-	this.game.load.audio('hurt', ['assets/audio/hurt.mp3','assets/audio/hurt.ogg']);
-	this.game.load.audio('getFuel', ['assets/audio/getFuel.mp3','assets/audio/getFuel.ogg']);
-	this.game.load.audio('pickCristal', ['assets/audio/pickCristal.mp3','assets/audio/pickCristal.ogg']);
-	this.game.load.audio('elevate1', ['assets/audio/elevate1.mp3','assets/audio/elevate1.ogg']);
-	this.game.load.audio('elevate2', ['assets/audio/elevate2.mp3','assets/audio/elevate2.ogg']);
-	this.game.load.audio('elevate3', ['assets/audio/elevate3.mp3','assets/audio/elevate3.ogg']);
+	
 
-	if(this.game.musicOption != '3'){ 
 
-		this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
-		this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
-
-	}
-
-	this.game.load.image('playBtn', 'assets/images/playBtn.png')
 
 	
 };
 
-	Intro.prototype.removePhaserNetworkPlayer = function(sessionId){
-
-
-		console.log('nothign to remove here ');
-
-	}
-
+	
 
 Intro.prototype.myCreate = function () {
 	
@@ -153,41 +147,11 @@ Intro.prototype.myCreate = function () {
 	this.fJetBg.width =  this.game.width;
 	this.fJetBg.height = this.game.height;
 	this.fReadyText.x = this.game.width/2;	
-	this.game.input.onUp.addOnce(starScene, this);
+	this.fReadyText.y = this.game.height/2-100;
 	
-	function starScene(){
-		
-
-	
-	//player.sounds.fxCoin.play("coin");
-	
-	 this.fPlayBtn = this.game.add.button(this.game.width/2, 955.0, 'playBtn', startGame, this, 2, 1, 0);
-	 this.fPlayBtn.anchor.set(0.5);
-	 pigArrives = this.game.add.tween( this.fPlayBtn);
-	    
-	    pigArrives.to({y:this.game.height/2}, 1000, Phaser.Easing.Bounce.Out);
-	    pigArrives.onComplete.add(firstTween, this);
-	    pigArrives.start();
-	}   
-	    function firstTween() {
-
-	        s = this.game.add.tween(this.fPlayBtn.scale);
-	        s.to({x: 1.05, y:1.05}, 500, Phaser.Easing.Linear.None);
-	        s.onComplete.addOnce(theEnd, this);
-	        s.start();
-
-	    }
-	    
-	    function theEnd() {
-	    	
-	    	
-	    	  s = this.game.add.tween(this.fPlayBtn.scale);
-		        s.to({x: 1, y:1}, 500, Phaser.Easing.Linear.None);
-		        s.onComplete.addOnce(firstTween, this);
-		        s.start();
-
-	    }
-	    
+	this.fPlayBtn = this.game.add.button(this.game.width/2, this.game.height/2, 'playBtn', startGame, this, 2, 1, 0);
+	this.fPlayBtn.anchor.set(0.5);
+    
 	 function startGame(){
 	 
 		 this.game.state.start('Level3');
@@ -196,6 +160,13 @@ Intro.prototype.myCreate = function () {
 	
 	this.game.croquetView.setCurrentScene(this.game); //seteamos en que escena me encuentro para croquet
 };
+
+Intro.prototype.removePhaserNetworkPlayer = function(sessionId){
+
+
+		console.log('nothign to remove here ');
+
+	}
 
 
 Intro.prototype.crearMonedas = function(data){

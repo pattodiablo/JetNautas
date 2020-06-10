@@ -1,20 +1,7 @@
 {
-  "loader": [
-    {
-      "type": "image",
-      "key": "loaderContainer",
-      "url": "assets/images/loaderContainer.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "loadBar",
-      "url": "assets/images/loadBar.png",
-      "overwrite": false
-    }
-  ],
+  "loader": [],
   "meta": {
-    "generated": "1591277058823",
+    "generated": "1591805974612",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

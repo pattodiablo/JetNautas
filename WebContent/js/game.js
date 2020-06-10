@@ -399,6 +399,7 @@ class ClientViews extends Croquet.View {
 			game.state.add("Boot", Boot);
 			game.state.add("Level3", Level3);
 			game.state.add("Intro", Intro);
+			game.state.add("ScoreScreen", ScoreScreen);
 			game.state.start("Boot",true,true);
 
 		}

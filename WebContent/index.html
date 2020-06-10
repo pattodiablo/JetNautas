@@ -13,6 +13,7 @@
 <script src="lib/phaser.js"></script>
 <script src="assets/canvas/Level3.js"></script>
 <script src="assets/canvas/Intro.js"></script>
+<script src="assets/canvas/ScoreScreen.js"></script>
 
 <title>JetONautas</title>
 
@@ -126,13 +127,18 @@ $(document).ready(function(){
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database =  firebase.database();
-var ref = firebase.database().ref();
+
+//database.ref().push({nombre:'Culo'}); //colocar data
+
+var ref = firebase.database().ref(); //retreave data
 
 ref.on("value", function(snapshot) {
    console.log(snapshot.val());
 }, function (error) {
    console.log("Error: " + error.code);
 });
+
+
 </script>
 </body>
 </html>

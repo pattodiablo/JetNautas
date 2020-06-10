@@ -35,6 +35,8 @@ Level3.prototype.preload = function () {
 	
 	this.myPreload();
 	
+	this.load.pack('graphics', 'assets/pack.json');
+	
 };
 
 Level3.prototype.create = function () {
@@ -102,7 +104,19 @@ Level3.prototype.create = function () {
 /* --- end generated code --- */
 Level3.prototype.myPreload = function () {
 
-	
+	this.game.load.audio('hurt', ['assets/audio/hurt.mp3','assets/audio/hurt.ogg']);
+	this.game.load.audio('getFuel', ['assets/audio/getFuel.mp3','assets/audio/getFuel.ogg']);
+	this.game.load.audio('pickCristal', ['assets/audio/pickCristal.mp3','assets/audio/pickCristal.ogg']);
+	this.game.load.audio('elevate1', ['assets/audio/elevate1.mp3','assets/audio/elevate1.ogg']);
+	this.game.load.audio('elevate2', ['assets/audio/elevate2.mp3','assets/audio/elevate2.ogg']);
+	this.game.load.audio('elevate3', ['assets/audio/elevate3.mp3','assets/audio/elevate3.ogg']);
+
+	if(this.game.musicOption != '3'){ 
+
+		this.game.load.audio('bgmusic1', ['assets/audio/soundtrack4_01.mp3','assets/audio/soundtrack4_01.ogg']);
+		this.game.load.audio('bgmusic2', ['assets/audio/soundtrack5_01.mp3','assets/audio/soundtrack5_01.ogg']);
+
+	}
 	
 
 	
@@ -855,7 +869,7 @@ if(this.fPlayer.x<=-100){
 
 		this.fNetPLayers = [];
 		this.game.croquetView.playerRemoved(this.mySession);
-		this.game.state.start("Intro",true,true);
+		this.game.state.start("ScoreScreen",true,true);
 		
 }
 if(this.fPlayer.y>=1280){
@@ -863,7 +877,7 @@ if(this.fPlayer.y>=1280){
 
 		this.fNetPLayers = [];
 		this.game.croquetView.playerRemoved(this.mySession);
-		this.game.state.start("Intro",true,true);
+		this.game.state.start("ScoreScreen",true,true);
 
 
 }
