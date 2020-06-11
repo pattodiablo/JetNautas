@@ -37,8 +37,14 @@ ScoreScreen.prototype.preload = function () {
 ScoreScreen.prototype.create = function () {
 	var _jetBg = this.add.sprite(0.0, 0.0, 'jetBg');
 	
-	var _gOverText = this.add.text(201.0, 100.0, 'GAME OVER \nPLAY AGAIN', {"font":"bold 30px Arial","fill":"#ffffff"});
+	var _gOverText = this.add.text(304.0, 188.0, 'GAME OVER \nPLAY AGAIN', {"font":"bold 30px Arial","fill":"#ffffff"});
 	_gOverText.anchor.set(0.5, 0.5);
+	
+	var _scoreText = this.add.text(287.0, 112.0, '0000\n', {"font":"bold 40px Arial","fill":"#ffffff"});
+	_scoreText.anchor.set(0.5, 0.5);
+	
+	var _yourScore = this.add.text(284.0, 65.0, 'Your score', {"font":"bold 30px Arial","fill":"#ffffff"});
+	_yourScore.anchor.set(0.5, 0.5);
 	
 	
 	
@@ -46,6 +52,8 @@ ScoreScreen.prototype.create = function () {
 	
 	this.fJetBg = _jetBg;
 	this.fGOverText = _gOverText;
+	this.fScoreText = _scoreText;
+	this.fYourScore = _yourScore;
 	this.myCreate();
 	
 };
@@ -54,10 +62,15 @@ ScoreScreen.prototype.create = function () {
 // -- user code here --
 ScoreScreen.prototype.myCreate = function () {
 
+	this.fYourScore.x =  this.game.width/2;
+	this.fYourScore.y = this.game.height/2-150
+	this.fScoreText.x = this.game.width/2;
+	this.fScoreText.y = this.game.height/2-100;
+	this.fScoreText.text = this.game.score;
 	this.fJetBg.width =  this.game.width;
 	this.fJetBg.height = this.game.height;
 	this.fGOverText.x = this.game.width/2;
-	this.fGOverText.y = this.game.height/2-100;
+	this.fGOverText.y = this.game.height/2-250;
 	this.fPlayBtn = this.game.add.button(this.game.width/2, this.game.height/2, 'playBtn', startGame, this, 2, 1, 0);
 	this.fPlayBtn.anchor.set(0.5);
 

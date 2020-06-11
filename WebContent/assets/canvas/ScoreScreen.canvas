@@ -60,11 +60,41 @@
           "info": {
             "editorName": "gOverText",
             "editorField": true,
-            "x": 201,
-            "y": 100,
+            "x": 304,
+            "y": 188,
             "anchor.x": 0.5,
             "anchor.y": 0.5,
             "text": "GAME OVER \r\nPLAY AGAIN",
+            "style.fontSize": 30,
+            "style.fill": "#ffffff"
+          }
+        },
+        {
+          "type": "text",
+          "id": "f3027d31-5f89-4120-9c58-533006344da5",
+          "info": {
+            "editorName": "scoreText",
+            "editorField": true,
+            "x": 287,
+            "y": 112,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5,
+            "text": "0000\r\n",
+            "style.fontSize": 40,
+            "style.fill": "#ffffff"
+          }
+        },
+        {
+          "type": "text",
+          "id": "38c37f89-21eb-4c1c-aef7-e8c78dccebe1",
+          "info": {
+            "editorName": "yourScore",
+            "editorField": true,
+            "x": 284,
+            "y": 65,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5,
+            "text": "Your score",
             "style.fontSize": 30,
             "style.fill": "#ffffff"
           }

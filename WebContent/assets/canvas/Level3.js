@@ -869,6 +869,7 @@ if(this.fPlayer.x<=-100){
 
 		this.fNetPLayers = [];
 		this.game.croquetView.playerRemoved(this.mySession);
+		this.game.score = this.getScore();
 		this.game.state.start("ScoreScreen",true,true);
 		
 }
@@ -877,12 +878,16 @@ if(this.fPlayer.y>=1280){
 
 		this.fNetPLayers = [];
 		this.game.croquetView.playerRemoved(this.mySession);
+		this.game.score = this.getScore();
 		this.game.state.start("ScoreScreen",true,true);
 
 
 }
 }
-
+Level3.prototype.getScore = function () {
+var score =  parseInt(this.fDistance.text) + this.fPlayer.cristals;
+return score;
+}
 Level3.prototype.printMessage = function (mensaje) { //para mensajes que se necesiten escribir desde croquet
 
 	console.log(mensaje);

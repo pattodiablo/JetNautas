@@ -527,7 +527,7 @@ class ClientViews extends Croquet.View {
 	}
 
 
-	Croquet.Session.join('JetONautasC',MirrorModel,ClientViews);
+	Croquet.Session.join(options.roomID,MirrorModel,ClientViews);
 
 
 document.addEventListener('touchstart', function(event){

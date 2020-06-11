@@ -15,43 +15,135 @@
 <script src="assets/canvas/Intro.js"></script>
 <script src="assets/canvas/ScoreScreen.js"></script>
 
-<title>JetONautas</title>
+<title>Spacewalk</title>
 
 <script type="text/javascript">
 
 	
 $(document).ready(function(){
+	 $("#ingresarBtn3").hide();
+	 $("textarea#roomIDField").hide();
+$("#shareText").hide();
+
+
+	  $("textarea#roomIDField").click(function(){
+
+	  	copyToClipboard('hola');
+	  });
+	var generateRoom = function(){
+			console.log(roomID)
+			$("textarea#roomIDField").val(window.location.href + '?room='+ roomID);
+		}
+		
+	function copyToClipboard(element) {
+	 var copyText = document.getElementById("roomIDField");
+	 copyText.select();
+	 copyText.setSelectionRange(0, 99999); 
+	 
+	      document.execCommand("copy");
+	     
+	       	$("textarea#roomIDField").val('URL copied to clipboard');
+	}
+
+	function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+
+	var roomID = getParameterByName('room');
+	console.log(roomID);
+	if(roomID==""){
+	
+	var createInRoom =  true;
+	console.log('no Romo id');
+		var ID = function () { //get a room ID
+		 
+		  return '_' + Math.random().toString(36).substr(2, 9);
+		};
+		var roomID = ID();
+		var o = { 'public': 'foo' };
+		o[roomID] = 'bar';
+		console.log(roomID);
+
+	}else{ //si ya viene con roomNumber
+	 $("#ingresarBtn").hide();
+	 $("#ingresarBtn2").hide();
+	  $("#ingresarBtn3").show();
+	  $("#shareText").show();
+	  	// $("textarea#roomIDField").show();
+	  $("#ingresarBtn3").html('ENTER IN ROOM AND PLAY');
+	  
+	var createInRoom =  false;
+	generateRoom();
+	}
+		
+
+		
+		var validate =  function(nickName,musicOption,conexionType){
+			
+			var nicknameOk =  false;
+			if(nickName.length<=0){
+							$("textarea#roomIDField").show();
+							$("textarea#roomIDField").val('Please specify a valid name');
+						//alert(' please specify a valid nickname');
+
+				}else if(nickName.length>=12){
+					
+							$("textarea#roomIDField").show();
+							$("textarea#roomIDField").val('nickname is too long');
+				
+				}else{
+					nicknameOk =  true;
+				}
+				var options={
+					nickName:nickName,
+					musicOption:musicOption,
+					conexionType:conexionType,
+					roomID:roomID
+				}
+				console.log('rola ' + options.musicOption);
+				if(nicknameOk){
+					$("#loginScreen").hide();
+					loadGame(options);
+				}
+
+		}
 
 	    $("#ingresarBtn").click(function(){
-		
+		 $("#ingresarBtn2").hide();
+
 		var nickName = $("#nickName").val();
 		var musicOption = $("#musicOption").val();
-		var nicknameOk =  false;
-
-
-		if(nickName.length<=0){
-
-				alert('please specify a valid nickname');
-
-		}else if(nickName.length>=12){
-			
-				alert('nickname too long');
+		var conexionType = false;
 		
-		}else{
-			nicknameOk =  true;
-		}
-		var options={
-			nickName:nickName,
-			musicOption:musicOption
-		}
-		console.log('rola ' + options.musicOption);
-		if(nicknameOk){
-			$("#loginScreen").hide();
-			loadGame(options);
-		}
+		validate(nickName,musicOption,conexionType)
 		
 
 		});
+
+		 $("#ingresarBtn2").click(function(){
+		 	 $(this).hide();
+		 	 $("textarea#roomIDField").show();
+		 $("#ingresarBtn3").show();
+		  $("#ingresarBtn").hide();
+		    $("#shareText").show();
+		generateRoom()
+	
+		});
+
+		$("#ingresarBtn3").click(function(){
+		
+		var nickName = $("#nickName").val();
+		var musicOption = $("#musicOption").val();
+		var conexionType = true;
+		
+		validate(nickName,musicOption,conexionType)
+		
+
+		});
+
 
 
 	});
@@ -63,6 +155,7 @@ $(document).ready(function(){
 
 <div class="container-fluid" id="loginScreen">
 <img src="images/aSpaceWalk.svg" class="img-fluid">
+
 <div class="row mt-5">
 
 
@@ -90,9 +183,36 @@ $(document).ready(function(){
 
 	<div class="col-sm-1 col-lg-3"></div>
 	<div class="col-sm-10 col-lg-6 align d-flex justify-content-center mt-3">
-	<button  type="button" id="ingresarBtn" class="btn btn-danger btn-lg btn-block" style="background-color: #972265">PLAY</button>	
+	<button type="submit"  id="ingresarBtn" class="btn btn-danger btn-lg btn-block" style="background-color: #972265">PLAY ALONE</button>	
 	</div>
 	<div class="col-sm-1 col-lg-3"></div>
+
+	<div class="col-sm-1 col-lg-3"></div>
+	<div class="col-sm-10 col-lg-6 align d-flex justify-content-center mt-3">
+	<button type="submit"  id="ingresarBtn2" class="btn btn-danger btn-lg btn-block" style="background-color: #972265">PLAY WITH FRIENDS</button>	
+	</div>
+	<div class="col-sm-1 col-lg-3"></div>
+
+	<div class="col-sm-1 col-lg-3"></div>
+	<div class="col-sm-10 col-lg-6 align d-flex justify-content-center mt-3">
+	<button type="submit"  id="ingresarBtn3" class="btn btn-danger btn-lg btn-block" style="background-color: #972265">ENTER ROOM</button>	
+	</div>
+	<div class="col-sm-1 col-lg-3"></div>
+
+
+	<div class="col-sm-1 col-lg-3"></div>
+	<div class="col-sm-10 col-lg-6 align d-flex justify-content-center">
+	<p id="shareText" style="color: #fff">Please copy the following URL and share with your friends:</p>
+	</div>
+	<div class="col-sm-1 col-lg-3"></div>
+
+	<div class="col-sm-1 col-lg-3"></div>
+	<div class="col-sm-10 col-lg-6 align d-flex justify-content-center mt-3">
+	
+	<textarea class="form-control text-center" id="roomIDField" rows="1"></textarea>
+	</div>
+	<div class="col-sm-1 col-lg-3"></div>
+
 
 
 	<div class="col-sm-2 col-lg-4"></div>
