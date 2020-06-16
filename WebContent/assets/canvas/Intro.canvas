@@ -57,29 +57,27 @@
           }
         },
         {
-          "type": "image",
-          "id": "a3cd2064-6c1b-495d-a15e-ff96c393ba2a",
-          "asset": "1",
+          "type": "group",
+          "id": "fdcf731b-19c1-4612-9f1a-5a8249888fd3",
           "info": {
-            "editorName": "playBtn",
+            "editorName": "meteoritos",
             "editorField": true,
-            "x": -178,
-            "y": 96
+            "setAll": [],
+            "children": []
           }
         },
         {
-          "type": "text",
-          "id": "d2ffebfb-8763-4851-8c24-ba89ed501e2d",
+          "type": "image",
+          "id": "344369c9-a5d7-4f07-a17d-916ce34cb553",
+          "asset": "1",
           "info": {
-            "editorName": "ReadyText",
-            "editorField": true,
-            "x": 12,
-            "y": 20,
+            "editorName": "deployReady",
+            "x": 210,
+            "y": 165,
+            "scale.x": 0.5,
+            "scale.y": 0.5,
             "anchor.x": 0.5,
-            "anchor.y": 0.5,
-            "text": "READY",
-            "style.fontSize": 60,
-            "style.fill": "#ffffff"
+            "anchor.y": 0.5
           }
         }
       ]
@@ -95,7 +93,7 @@
     "1": {
       "file": "WebContent/assets/pack.json",
       "section": "graphics",
-      "asset": "playBtn"
+      "asset": "deployReady"
     }
   },
   "prefab-table": {}
