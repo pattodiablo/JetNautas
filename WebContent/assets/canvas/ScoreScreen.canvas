@@ -56,21 +56,6 @@
         },
         {
           "type": "text",
-          "id": "10e33eea-b1f2-449a-b083-459df004aa2d",
-          "info": {
-            "editorName": "gOverText",
-            "editorField": true,
-            "x": 304,
-            "y": 188,
-            "anchor.x": 0.5,
-            "anchor.y": 0.5,
-            "text": "GAME OVER \r\nPLAY AGAIN",
-            "style.fontSize": 30,
-            "style.fill": "#ffffff"
-          }
-        },
-        {
-          "type": "text",
           "id": "f3027d31-5f89-4120-9c58-533006344da5",
           "info": {
             "editorName": "scoreText",
@@ -98,15 +83,47 @@
             "style.fontSize": 30,
             "style.fill": "#ffffff"
           }
+        },
+        {
+          "type": "image",
+          "id": "e05f454a-953b-4506-8eb0-d4d9912c571b",
+          "asset": "1",
+          "info": {
+            "editorName": "GameOverTag",
+            "editorField": true,
+            "x": 177,
+            "y": 15,
+            "scale.x": 0.5,
+            "scale.y": 0.5,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "group",
+          "id": "f4ad4f4d-74d6-44ba-8017-66bd29976209",
+          "info": {
+            "editorName": "meteoritos",
+            "editorField": true,
+            "setAll": [],
+            "children": []
+          }
         }
       ]
     }
   },
   "type": "STATE",
-  "asset-table": {"0": {
-    "file": "WebContent/assets/pack.json",
-    "section": "graphics",
-    "asset": "jetBg"
-  }},
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "jetBg"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "graphics",
+      "asset": "GameOverTag"
+    }
+  },
   "prefab-table": {}
 }

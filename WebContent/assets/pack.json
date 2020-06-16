@@ -178,12 +178,18 @@
       "type": "script",
       "key": "ScoreScreen",
       "url": "assets/canvas/ScoreScreen.js"
+    },
+    {
+      "type": "image",
+      "key": "GameOverTag",
+      "url": "assets/images/GameOverTag.png",
+      "overwrite": false
     }
   ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1591804651069",
+    "generated": "1592321923101",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
