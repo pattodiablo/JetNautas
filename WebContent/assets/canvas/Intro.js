@@ -44,18 +44,18 @@ Intro.prototype.create = function () {
 	var _jetBg = this.add.sprite(0.0, -4.0, 'jetBg');
 	_jetBg.pivot.set(0.5, 0.5);
 	
-	var _playBtn = this.add.sprite(-178.0, 96.0, 'playBtn');
+	var _meteoritos = this.add.group();
 	
-	var _ReadyText = this.add.text(12.0, 20.0, 'READY', {"font":"bold 60px Arial","fill":"#ffffff"});
-	_ReadyText.anchor.set(0.5, 0.5);
+	var _deployReady = this.add.sprite(210.0, 165.0, 'deployReady');
+	_deployReady.scale.set(0.5, 0.5);
+	_deployReady.anchor.set(0.5, 0.5);
 	
 	
 	
 	// fields
 	
 	this.fJetBg = _jetBg;
-	this.fPlayBtn = _playBtn;
-	this.fReadyText = _ReadyText;
+	this.fMeteoritos = _meteoritos;
 	
 	
 	this.myCreate();
@@ -146,12 +146,29 @@ Intro.prototype.myCreate = function () {
 	 
 	this.fJetBg.width =  this.game.width;
 	this.fJetBg.height = this.game.height;
-	this.fReadyText.x = this.game.width/2;	
-	this.fReadyText.y = this.game.height/2-100;
+
 	
 	this.fPlayBtn = this.game.add.button(this.game.width/2, this.game.height/2, 'playBtn', startGame, this, 2, 1, 0);
+	this.fPlayBtn.scale.set(0.5);
 	this.fPlayBtn.anchor.set(0.5);
     
+    for(var i=0; i<=5; i++){
+
+
+	var obstacle = new meteorito(this.game, this.game.width+50,Math.random()*this.game.height);
+	var warningSign = new warning(this.game, this.game.width+50,Math.random()*this.game.height);
+	obstacle.warningSign = warningSign;
+	this.add.existing(obstacle);
+
+		this.game.physics.arcade.enable(obstacle);
+		obstacle.body.gravity.y=0;
+		obstacle.body.velocity.x-=Math.random()*500;
+		obstacle.body.moves = true;
+		obstacle.body.immovable = false;
+
+		this.fMeteoritos.add(obstacle);
+}
+
 	 function startGame(){
 	 
 		 this.game.state.start('Level3');
@@ -177,4 +194,13 @@ Intro.prototype.crearMonedas = function(data){
 Intro.prototype.addPhaserNetworkOnlinePlayer = function(allPlayers){
 
 	console.log('no time now to add players, this should be in the Level3 scene');
+}
+
+Intro.prototype.update = function(){
+
+	this.fMeteoritos.forEach(function(meteorito) { 	 //en caso de que se deshabilite los sonidos fxs
+		if(meteorito.x <= -50){
+			meteorito.x = this.game.width+50;
+		}
+	},this);
 }
