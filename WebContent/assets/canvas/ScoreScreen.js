@@ -37,23 +37,27 @@ ScoreScreen.prototype.preload = function () {
 ScoreScreen.prototype.create = function () {
 	var _jetBg = this.add.sprite(0.0, 0.0, 'jetBg');
 	
-	var _gOverText = this.add.text(304.0, 188.0, 'GAME OVER \nPLAY AGAIN', {"font":"bold 30px Arial","fill":"#ffffff"});
-	_gOverText.anchor.set(0.5, 0.5);
-	
 	var _scoreText = this.add.text(287.0, 112.0, '0000\n', {"font":"bold 40px Arial","fill":"#ffffff"});
 	_scoreText.anchor.set(0.5, 0.5);
 	
 	var _yourScore = this.add.text(284.0, 65.0, 'Your score', {"font":"bold 30px Arial","fill":"#ffffff"});
 	_yourScore.anchor.set(0.5, 0.5);
 	
+	var _GameOverTag = this.add.sprite(177.0, 15.0, 'GameOverTag');
+	_GameOverTag.scale.set(0.5, 0.5);
+	_GameOverTag.anchor.set(0.5, 0.5);
+	
+	var _meteoritos = this.add.group();
+	
 	
 	
 	// fields
 	
 	this.fJetBg = _jetBg;
-	this.fGOverText = _gOverText;
 	this.fScoreText = _scoreText;
 	this.fYourScore = _yourScore;
+	this.fGameOverTag = _GameOverTag;
+	this.fMeteoritos = _meteoritos;
 	this.myCreate();
 	
 };
@@ -62,16 +66,34 @@ ScoreScreen.prototype.create = function () {
 // -- user code here --
 ScoreScreen.prototype.myCreate = function () {
 
+	this.fGameOverTag.x = this.game.width/2;
+	this.fGameOverTag.y = this.game.height/2-200;
 	this.fYourScore.x =  this.game.width/2;
-	this.fYourScore.y = this.game.height/2-150
+	this.fYourScore.y = this.game.height/2-70
 	this.fScoreText.x = this.game.width/2;
-	this.fScoreText.y = this.game.height/2-100;
+	this.fScoreText.y = this.game.height/2-30;
 	this.fScoreText.text = this.game.score;
 	this.fJetBg.width =  this.game.width;
 	this.fJetBg.height = this.game.height;
-	this.fGOverText.x = this.game.width/2;
-	this.fGOverText.y = this.game.height/2-250;
-	this.fPlayBtn = this.game.add.button(this.game.width/2, this.game.height/2, 'playBtn', startGame, this, 2, 1, 0);
+
+for(var i=0; i<=5; i++){
+
+
+	var obstacle = new meteorito(this.game, this.game.width+50,Math.random()*this.game.height);
+	var warningSign = new warning(this.game, this.game.width+50,Math.random()*this.game.height);
+	obstacle.warningSign = warningSign;
+	this.add.existing(obstacle);
+
+		this.game.physics.arcade.enable(obstacle);
+		obstacle.body.gravity.y=0;
+		obstacle.body.velocity.x-=Math.random()*500;
+		obstacle.body.moves = true;
+		obstacle.body.immovable = false;
+
+		this.fMeteoritos.add(obstacle);
+}
+	this.fPlayBtn = this.game.add.button(this.game.width/2, this.game.height/2+100, 'reloadBtn', startGame, this, 2, 1, 0);
+	this.fPlayBtn.scale.set(0.5);
 	this.fPlayBtn.anchor.set(0.5);
 
 	 function startGame(){
@@ -80,4 +102,13 @@ ScoreScreen.prototype.myCreate = function () {
 		 
 	 }
 	 this.game.croquetView.setCurrentScene(this.game); //seteamos en que escena me encuentro para croquet
+}
+
+ScoreScreen.prototype.update = function () {
+
+	this.fMeteoritos.forEach(function(meteorito) { 	 //en caso de que se deshabilite los sonidos fxs
+		if(meteorito.x <= -50){
+			meteorito.x = this.game.width+50;
+		}
+	},this);
 }
