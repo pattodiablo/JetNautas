@@ -569,12 +569,24 @@ Level3.prototype.updatePos = function() {
 	Level3.prototype.crearObstaculoCroquet = function(data){
 		//	console.log('creando ' + data.xpos + ' ' + data.ypos);
 			//var cristal = new Cristal(this.game,data.xpos,data.ypos-100);
+			console.log('data.type ' + data.type);
+		switch (data.type){
 
-	var obstacle = new meteorito(this.game, data.xpos,data.ypos-40);
-	var warningSign = new warning(this.game, this.game.width-50,data.ypos-40);
-	obstacle.warningSign = warningSign;
-	this.add.existing(warningSign);
-	this.add.existing(obstacle);
+			case true:
+			var obstacle = new meteorito(this.game, data.xpos,data.ypos-40);
+			var warningSign = new warning(this.game, this.game.width-50,data.ypos-40);
+			break;
+
+			case false:
+			var obstacle = new satellite(this.game, data.xpos,data.ypos-40);
+			var warningSign = new warning(this.game, this.game.width-50,data.ypos-40);
+			warningSign.tint = 0xe51c6e;
+			break;
+		}
+
+		obstacle.warningSign = warningSign;
+		this.add.existing(warningSign);
+		this.add.existing(obstacle);
 
 		this.game.physics.arcade.enable(obstacle);
 		obstacle.body.gravity.y=0;

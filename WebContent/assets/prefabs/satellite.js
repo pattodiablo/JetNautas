@@ -7,51 +7,46 @@
 
 
 /**
- * meteorito
+ * satellite
  * @param {Phaser.Game} aGame A reference to the currently running game.
  * @param {Number} aX The x coordinate (in world space) to position the Sprite at.
  * @param {Number} aY The y coordinate (in world space) to position the Sprite at.
  * @param {any} aKey This is the image or texture used by the Sprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
  * @param {any} aFrame If this Sprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
  */
-function meteorito(aGame, aX, aY, aKey, aFrame) {
-	Phaser.Sprite.call(this, aGame, aX, aY, aKey || 'meteoro', aFrame == undefined || aFrame == null? null : aFrame);
+function satellite(aGame, aX, aY, aKey, aFrame) {
+	Phaser.Sprite.call(this, aGame, aX, aY, aKey || 'satellite', aFrame == undefined || aFrame == null? null : aFrame);
 	this.anchor.set(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
-	this.body.setCircle(34.5, 7.0, 7.0);
-	
-	// fields
-	
-	this.fMeteoro = this;
-	
-	this.myCreate();
+	this.body.setSize(188.90306091308594, 112.94997787475586, 39.07142639160156, 53.583683013916016);
 	
 }
 
 /** @type Phaser.Sprite */
-var meteorito_proto = Object.create(Phaser.Sprite.prototype);
-meteorito.prototype = meteorito_proto;
-meteorito.prototype.constructor = meteorito;
+var satellite_proto = Object.create(Phaser.Sprite.prototype);
+satellite.prototype = satellite_proto;
+satellite.prototype.constructor = satellite;
 
 /* --- end generated code --- */
 // -- user code here --
+satellite.prototype.myCreate = function() {
 
-meteorito.prototype.myCreate = function() {
-
-	this.rotationIndex = Math.random()*0.01;
+	this.rotationIndex = Math.random()*0.1;
 	this.setScaleMinMax(0.9,0.9,1.2,1.2);
 	this.warningSign = {};
 	this.warningDistance = 300;
 	
 }
 
-meteorito.prototype.update = function() {
+satellite.prototype.update = function() {
 
 	this.rotation+=this.rotationIndex;
 
 	if(this.x<this.game.width+this.warningDistanc){
 		
 		this.warningSign.visible =  true;
+		this.warningSign.tint = 0xE51C6E;
+		
 	}
 	if(this.x<=this.game.width/2){
 		this.warningSign.destroy();

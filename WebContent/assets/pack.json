@@ -190,12 +190,23 @@
       "key": "deployReady",
       "url": "assets/images/deployReady.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "satellite",
+      "url": "assets/images/satellite.png",
+      "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "satellite1",
+      "url": "assets/prefabs/satellite.js"
     }
   ],
   "Fonts": [],
   "animations": [],
   "meta": {
-    "generated": "1592323703655",
+    "generated": "1592338517102",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
