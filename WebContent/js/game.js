@@ -114,10 +114,15 @@ class MirrorModel extends Croquet.Model {
 			if(this.allPlayers.length > 0){
 
 				//console.log('voy a crear monedas');
+						var tipo = Math.random()*1;
+						if(tipo > 0.1 ){
+							var type =  true;
+						}else{
+							var type = false;
+						}
 
 						var ypos = Math.random()*1000;
 						var xpos = 2000;
-						var type = 'cristals';
 						var velocity = Math.random()*200;
 						if(velocity<=100){
 							velocity =  100;
