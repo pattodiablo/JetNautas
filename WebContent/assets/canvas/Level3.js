@@ -765,6 +765,7 @@ Level3.prototype.killPlayer = function (player, obstacle) {
 	player.body.velocity.x=-200;
 	player.body.collideWorldBounds = false;
 	obstacle.destroy();
+
   	this.game.camera.shake(0.02, 250);
   	this.game.camera.flash(0xff0000, 500)
 	this.game.croquetView.playerKilled(this.mySession);
