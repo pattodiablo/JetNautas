@@ -25,7 +25,7 @@
 $(document).ready(function(){
 	 $("#ingresarBtn3").hide();
 	 $("textarea#roomIDField").hide();
-$("#shareText").hide();
+	 $("#shareText").hide();
 
 
 	  $("textarea#roomIDField").click(function(){
@@ -33,7 +33,7 @@ $("#shareText").hide();
 	  	copyToClipboard('hola');
 	  });
 	var generateRoom = function(){
-			console.log(roomID)
+			console.log('este es el room id ' + roomID)
 			$("textarea#roomIDField").val(window.location.href + '?room='+ roomID);
 		}
 		
@@ -47,17 +47,22 @@ $("#shareText").hide();
 	       	$("textarea#roomIDField").val('URL copied to clipboard');
 	}
 
-	function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-	}
 
-	var roomID = getParameterByName('room');
-	console.log(roomID);
-	if(roomID==""){
 	
+
+	function getParameterByName(name, url = window.location.href) {
+		name = name.replace(/[\[\]]/g, '\\$&');
+		var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, ' '));
+	}
+	var roomID = getParameterByName('room'); // "lorem"
+	
+	console.log(roomID);
+	if(roomID=="" || roomID==null){
+	console.log("room ID vacio, se procede a generar")
 	var createInRoom =  true;
 	console.log('nuemro Romo id');
 		var ID = function () { //get a room ID
