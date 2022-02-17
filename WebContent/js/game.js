@@ -238,7 +238,7 @@ class MirrorModel extends Croquet.Model {
 	}
 
 
-	MirrorModel.register();
+	MirrorModel.register("MirrorModel");
 
 
 class ClientViews extends Croquet.View {
@@ -505,7 +505,7 @@ class ClientViews extends Croquet.View {
 
 				if(typeof(this.gameScene) != 'undefined'){
 						if(this.gameScene.key == 'Level3'){
-				this.gameScene.moveNetPhaserPlayer(data);
+						this.gameScene.moveNetPhaserPlayer(data);
 					}
 				}
 
