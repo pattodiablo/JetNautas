@@ -532,7 +532,13 @@ class ClientViews extends Croquet.View {
 	}
 
 
-	Croquet.Session.join(options.roomID,MirrorModel,ClientViews);
+
+
+const apiKey = "168sOIIM3fuIhJ8qgCiiqvpA9l0JImozIxAxl2AFc"; // paste from croquet.io/keys
+const appId = "com.weveana.spacewalk";
+const name = Croquet.App.autoSession();
+const password = Croquet.App.autoPassword();
+Croquet.Session.join({apiKey, appId, name, password, model: MirrorModel, view: ClientViews});
 
 
 document.addEventListener('touchstart', function(event){
