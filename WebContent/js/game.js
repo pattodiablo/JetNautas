@@ -412,7 +412,7 @@ class ClientViews extends Croquet.View {
 
 		setCurrentScene(game){
 
-			this.gameScene = game.state.getCurrentState﻿();
+			this.gameScene = game.state.getCurrentState();
 			console.log('gameScene ' + this.gameScene.key);
 
 		}
@@ -460,7 +460,7 @@ class ClientViews extends Croquet.View {
 		}
 
 		createCroquetPlayer(allPlayers){
-
+console.log('estoy en crear croquet player');
 			if(typeof(this.gameScene) != 'undefined'){
 				if(this.gameScene.key == 'Level3'){
 			var hasPlayer =	this.gameScene.addPhaserNetworkPlayer(allPlayers);
@@ -538,6 +538,7 @@ const apiKey = "168sOIIM3fuIhJ8qgCiiqvpA9l0JImozIxAxl2AFc"; // paste from croque
 const appId = "com.weveana.spacewalk";
 const name = Croquet.App.autoSession();
 const password = Croquet.App.autoPassword();
+
 Croquet.Session.join({apiKey, appId, name, password, model: MirrorModel, view: ClientViews});
 
 
