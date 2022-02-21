@@ -1,5 +1,5 @@
 function loadGame(options){
-
+	
 		const Q = Croquet.Constants;
 		Q.CoinRate = 300;
 		Q.PlanetRate = 60000;
@@ -537,7 +537,7 @@ console.log('estoy en crear croquet player');
 const apiKey = "168sOIIM3fuIhJ8qgCiiqvpA9l0JImozIxAxl2AFc"; // paste from croquet.io/keys
 const appId = "com.weveana.spacewalk";
 const name = Croquet.App.autoSession();
-const password = Croquet.App.autoPassword();
+const password = "12345";
 
 Croquet.Session.join({apiKey, appId, name, password, model: MirrorModel, view: ClientViews});
 

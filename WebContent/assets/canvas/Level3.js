@@ -347,6 +347,7 @@ Level3.prototype.myCreate = function () {
 }
 
 Level3.prototype.addPhaserNetworkPlayer = function() {
+	console.log("estoy en add network player")
 		this.mySession = this.game.croquetView.getSessionID(); //me asigno mi id de usario
 
 		if(this.game.timesConnected<=0){

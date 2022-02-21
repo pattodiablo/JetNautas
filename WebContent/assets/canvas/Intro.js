@@ -123,13 +123,13 @@ Intro.prototype.myPreload = function () {
  
         loadSprite.width = this.game.width * (progress / 100);
         loadSprite.x = this.game.world.centerX - loadSprite.width / 2;
- 			
+ 		/*	
             console.log('progress: ' + progress);
             console.log('key: ' + key);
             console.log('success: ' + success);
             console.log('loaded: ' + loaded + '\/' + total);
             console.log('**********');
- 
+ 		*/
         }, this);	
 	
 	
@@ -174,7 +174,7 @@ Intro.prototype.myCreate = function () {
 		 this.game.state.start('Level3');
 		 
 	 }
-	
+
 	this.game.croquetView.setCurrentScene(this.game); //seteamos en que escena me encuentro para croquet
 };
 
