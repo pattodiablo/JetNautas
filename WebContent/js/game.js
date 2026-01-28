@@ -537,7 +537,7 @@ console.log('estoy en crear croquet player');
 //const apiKey = "168sOIIM3fuIhJ8qgCiiqvpA9l0JImozIxAxl2AFc"; // paste from croquet.io/keys
 const apiKey = "2pAoonE1pX25Mh9EAxvTGldCmMzWI7MEjJWkCbwB8n"; // paste from croquet.io/keys
 const appId = "com.weveana.spacewalk";
-const name = "MySession"
+const name = "Spacewalk"
 const password = "12345";
 
 Croquet.Session.join({apiKey, appId, name, password, model: MirrorModel, view: ClientViews});
